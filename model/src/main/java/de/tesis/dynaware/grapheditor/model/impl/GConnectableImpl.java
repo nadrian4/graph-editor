@@ -22,142 +22,143 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectableImpl#getConnectors <em>Connectors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public abstract class GConnectableImpl extends MinimalEObjectImpl.Container implements GConnectable {
     /**
-     * The cached value of the '{@link #getConnectors() <em>Connectors</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getConnectors() <em>Connectors</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getConnectors()
-     * @generated
-     * @ordered
-     */
+	 * @see #getConnectors()
+	 * @generated
+	 * @ordered
+	 */
     protected EList<GConnector> connectors;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected GConnectableImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return GraphPackage.Literals.GCONNECTABLE;
-    }
+		return GraphPackage.Literals.GCONNECTABLE;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public EList<GConnector> getConnectors() {
-        if (connectors == null) {
-            connectors = new EObjectContainmentWithInverseEList<GConnector>(GConnector.class, this, GraphPackage.GCONNECTABLE__CONNECTORS, GraphPackage.GCONNECTOR__PARENT);
-        }
-        return connectors;
-    }
+	 * @generated
+	 */
+    @Override
+				public EList<GConnector> getConnectors() {
+		if (connectors == null) {
+			connectors = new EObjectContainmentWithInverseEList<GConnector>(GConnector.class, this, GraphPackage.GCONNECTABLE__CONNECTORS, GraphPackage.GCONNECTOR__PARENT);
+		}
+		return connectors;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     @Override
     public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case GraphPackage.GCONNECTABLE__CONNECTORS:
-                return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnectors()).basicAdd(otherEnd, msgs);
-        }
-        return super.eInverseAdd(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case GraphPackage.GCONNECTABLE__CONNECTORS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnectors()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case GraphPackage.GCONNECTABLE__CONNECTORS:
-                return ((InternalEList<?>)getConnectors()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case GraphPackage.GCONNECTABLE__CONNECTORS:
+				return ((InternalEList<?>)getConnectors()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case GraphPackage.GCONNECTABLE__CONNECTORS:
-                return getConnectors();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case GraphPackage.GCONNECTABLE__CONNECTORS:
+				return getConnectors();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case GraphPackage.GCONNECTABLE__CONNECTORS:
-                getConnectors().clear();
-                getConnectors().addAll((Collection<? extends GConnector>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case GraphPackage.GCONNECTABLE__CONNECTORS:
+				getConnectors().clear();
+				getConnectors().addAll((Collection<? extends GConnector>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case GraphPackage.GCONNECTABLE__CONNECTORS:
-                getConnectors().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case GraphPackage.GCONNECTABLE__CONNECTORS:
+				getConnectors().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case GraphPackage.GCONNECTABLE__CONNECTORS:
-                return connectors != null && !connectors.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case GraphPackage.GCONNECTABLE__CONNECTORS:
+				return connectors != null && !connectors.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //GConnectableImpl

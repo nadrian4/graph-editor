@@ -18,120 +18,126 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static GraphFactory init() {
-        try {
-            GraphFactory theGraphFactory = (GraphFactory)EPackage.Registry.INSTANCE.getEFactory(GraphPackage.eNS_URI);
-            if (theGraphFactory != null) {
-                return theGraphFactory;
-            }
-        }
-        catch (Exception exception) {
-            EcorePlugin.INSTANCE.log(exception);
-        }
-        return new GraphFactoryImpl();
-    }
+		try {
+			GraphFactory theGraphFactory = (GraphFactory)EPackage.Registry.INSTANCE.getEFactory(GraphPackage.eNS_URI);
+			if (theGraphFactory != null) {
+				return theGraphFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new GraphFactoryImpl();
+	}
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public GraphFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public EObject create(EClass eClass) {
-        switch (eClass.getClassifierID()) {
-            case GraphPackage.GMODEL: return createGModel();
-            case GraphPackage.GNODE: return createGNode();
-            case GraphPackage.GCONNECTION: return createGConnection();
-            case GraphPackage.GCONNECTOR: return createGConnector();
-            case GraphPackage.GJOINT: return createGJoint();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eClass.getClassifierID()) {
+			case GraphPackage.GMODEL: return createGModel();
+			case GraphPackage.GNODE: return createGNode();
+			case GraphPackage.GCONNECTION: return createGConnection();
+			case GraphPackage.GCONNECTOR: return createGConnector();
+			case GraphPackage.GJOINT: return createGJoint();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public GModel createGModel() {
-        GModelImpl gModel = new GModelImpl();
-        return gModel;
-    }
+	 * @generated
+	 */
+    @Override
+				public GModel createGModel() {
+		GModelImpl gModel = new GModelImpl();
+		return gModel;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public GNode createGNode() {
-        GNodeImpl gNode = new GNodeImpl();
-        return gNode;
-    }
+	 * @generated
+	 */
+    @Override
+				public GNode createGNode() {
+		GNodeImpl gNode = new GNodeImpl();
+		return gNode;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public GConnector createGConnector() {
-        GConnectorImpl gConnector = new GConnectorImpl();
-        return gConnector;
-    }
+	 * @generated
+	 */
+    @Override
+				public GConnector createGConnector() {
+		GConnectorImpl gConnector = new GConnectorImpl();
+		return gConnector;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public GConnection createGConnection() {
-        GConnectionImpl gConnection = new GConnectionImpl();
-        return gConnection;
-    }
+	 * @generated
+	 */
+    @Override
+				public GConnection createGConnection() {
+		GConnectionImpl gConnection = new GConnectionImpl();
+		return gConnection;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public GJoint createGJoint() {
-        GJointImpl gJoint = new GJointImpl();
-        return gJoint;
-    }
+	 * @generated
+	 */
+    @Override
+				public GJoint createGJoint() {
+		GJointImpl gJoint = new GJointImpl();
+		return gJoint;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    public GraphPackage getGraphPackage() {
-        return (GraphPackage)getEPackage();
-    }
+	 * @generated
+	 */
+    @Override
+				public GraphPackage getGraphPackage() {
+		return (GraphPackage)getEPackage();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @deprecated
-     * @generated
-     */
+	 * @deprecated
+	 * @generated
+	 */
     @Deprecated
     public static GraphPackage getPackage() {
-        return GraphPackage.eINSTANCE;
-    }
+		return GraphPackage.eINSTANCE;
+	}
 
 } //GraphFactoryImpl

@@ -1,16 +1,20 @@
 /**
+ *
  */
 package de.tesis.dynaware.grapheditor.model.impl;
 
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getId <em>Id</em>}</li>
  *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getType <em>Type</em>}</li>
@@ -26,8 +31,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getNodeCategory <em>Node Category</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getGroups <em>Groups</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -163,6 +172,96 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
     protected GModel subgraph;
 
     /**
+     * The default value of the '{@link #getNodeType() <em>Node Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getNodeType()
+     * @generated
+     * @ordered
+     */
+    protected static final String NODE_TYPE_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getNodeType() <em>Node Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getNodeType()
+     * @generated
+     * @ordered
+     */
+    protected String nodeType = NODE_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getNodeCategory() <em>Node Category</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getNodeCategory()
+     * @generated
+     * @ordered
+     */
+    protected static final String NODE_CATEGORY_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getNodeCategory() <em>Node Category</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getNodeCategory()
+     * @generated
+     * @ordered
+     */
+    protected String nodeCategory = NODE_CATEGORY_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getGroups() <em>Groups</em>}' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getGroups()
+     * @generated
+     * @ordered
+     */
+    protected EList<String> groups;
+
+    /**
+     * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
+    protected static final String TITLE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTitle()
+     * @generated
+     * @ordered
+     */
+    protected String title = TITLE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected static final String DESCRIPTION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getDescription()
+     * @generated
+     * @ordered
+     */
+    protected String description = DESCRIPTION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -186,6 +285,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -195,6 +295,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
@@ -207,6 +308,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public String getType() {
         return type;
     }
@@ -216,6 +318,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setType(String newType) {
         String oldType = type;
         type = newType;
@@ -228,6 +331,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public double getX() {
         return x;
     }
@@ -237,6 +341,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setX(double newX) {
         double oldX = x;
         x = newX;
@@ -249,6 +354,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public double getY() {
         return y;
     }
@@ -258,6 +364,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setY(double newY) {
         double oldY = y;
         y = newY;
@@ -270,6 +377,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public double getWidth() {
         return width;
     }
@@ -279,6 +387,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setWidth(double newWidth) {
         double oldWidth = width;
         width = newWidth;
@@ -291,6 +400,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public double getHeight() {
         return height;
     }
@@ -300,6 +410,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setHeight(double newHeight) {
         double oldHeight = height;
         height = newHeight;
@@ -312,6 +423,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public GModel getSubgraph() {
         return subgraph;
     }
@@ -326,7 +438,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
         subgraph = newSubgraph;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__SUBGRAPH, oldSubgraph, newSubgraph);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
+            if (msgs == null) msgs = notification;
+            else msgs.add(notification);
         }
         return msgs;
     }
@@ -336,18 +449,123 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     public void setSubgraph(GModel newSubgraph) {
         if (newSubgraph != subgraph) {
             NotificationChain msgs = null;
             if (subgraph != null)
-                msgs = ((InternalEObject)subgraph).eInverseRemove(this, GraphPackage.GMODEL__SUPERGRAPH, GModel.class, msgs);
+                msgs = ((InternalEObject) subgraph).eInverseRemove(this, GraphPackage.GMODEL__SUPERGRAPH, GModel.class, msgs);
             if (newSubgraph != null)
-                msgs = ((InternalEObject)newSubgraph).eInverseAdd(this, GraphPackage.GMODEL__SUPERGRAPH, GModel.class, msgs);
+                msgs = ((InternalEObject) newSubgraph).eInverseAdd(this, GraphPackage.GMODEL__SUPERGRAPH, GModel.class, msgs);
             msgs = basicSetSubgraph(newSubgraph, msgs);
             if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
+        } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__SUBGRAPH, newSubgraph, newSubgraph));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getNodeType() {
+        return nodeType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setNodeType(String newNodeType) {
+        String oldNodeType = nodeType;
+        nodeType = newNodeType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__NODE_TYPE, oldNodeType, nodeType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getNodeCategory() {
+        return nodeCategory;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setNodeCategory(String newNodeCategory) {
+        String oldNodeCategory = nodeCategory;
+        nodeCategory = newNodeCategory;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__NODE_CATEGORY, oldNodeCategory, nodeCategory));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EList<String> getGroups() {
+        if (groups == null) {
+            groups = new EDataTypeUniqueEList<String>(String.class, this, GraphPackage.GNODE__GROUPS);
+        }
+        return groups;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setTitle(String newTitle) {
+        String oldTitle = title;
+        title = newTitle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__TITLE, oldTitle, title));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setDescription(String newDescription) {
+        String oldDescription = description;
+        description = newDescription;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__DESCRIPTION, oldDescription, description));
     }
 
     /**
@@ -360,8 +578,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
         switch (featureID) {
             case GraphPackage.GNODE__SUBGRAPH:
                 if (subgraph != null)
-                    msgs = ((InternalEObject)subgraph).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GraphPackage.GNODE__SUBGRAPH, null, msgs);
-                return basicSetSubgraph((GModel)otherEnd, msgs);
+                    msgs = ((InternalEObject) subgraph).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GraphPackage.GNODE__SUBGRAPH, null, msgs);
+                return basicSetSubgraph((GModel) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
@@ -402,6 +620,16 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
                 return getHeight();
             case GraphPackage.GNODE__SUBGRAPH:
                 return getSubgraph();
+            case GraphPackage.GNODE__NODE_TYPE:
+                return getNodeType();
+            case GraphPackage.GNODE__NODE_CATEGORY:
+                return getNodeCategory();
+            case GraphPackage.GNODE__GROUPS:
+                return getGroups();
+            case GraphPackage.GNODE__TITLE:
+                return getTitle();
+            case GraphPackage.GNODE__DESCRIPTION:
+                return getDescription();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -411,29 +639,46 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
      * <!-- end-user-doc -->
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case GraphPackage.GNODE__ID:
-                setId((String)newValue);
+                setId((String) newValue);
                 return;
             case GraphPackage.GNODE__TYPE:
-                setType((String)newValue);
+                setType((String) newValue);
                 return;
             case GraphPackage.GNODE__X:
-                setX((Double)newValue);
+                setX((Double) newValue);
                 return;
             case GraphPackage.GNODE__Y:
-                setY((Double)newValue);
+                setY((Double) newValue);
                 return;
             case GraphPackage.GNODE__WIDTH:
-                setWidth((Double)newValue);
+                setWidth((Double) newValue);
                 return;
             case GraphPackage.GNODE__HEIGHT:
-                setHeight((Double)newValue);
+                setHeight((Double) newValue);
                 return;
             case GraphPackage.GNODE__SUBGRAPH:
-                setSubgraph((GModel)newValue);
+                setSubgraph((GModel) newValue);
+                return;
+            case GraphPackage.GNODE__NODE_TYPE:
+                setNodeType((String) newValue);
+                return;
+            case GraphPackage.GNODE__NODE_CATEGORY:
+                setNodeCategory((String) newValue);
+                return;
+            case GraphPackage.GNODE__GROUPS:
+                getGroups().clear();
+                getGroups().addAll((Collection<? extends String>) newValue);
+                return;
+            case GraphPackage.GNODE__TITLE:
+                setTitle((String) newValue);
+                return;
+            case GraphPackage.GNODE__DESCRIPTION:
+                setDescription((String) newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -466,7 +711,22 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
                 setHeight(HEIGHT_EDEFAULT);
                 return;
             case GraphPackage.GNODE__SUBGRAPH:
-                setSubgraph((GModel)null);
+                setSubgraph((GModel) null);
+                return;
+            case GraphPackage.GNODE__NODE_TYPE:
+                setNodeType(NODE_TYPE_EDEFAULT);
+                return;
+            case GraphPackage.GNODE__NODE_CATEGORY:
+                setNodeCategory(NODE_CATEGORY_EDEFAULT);
+                return;
+            case GraphPackage.GNODE__GROUPS:
+                getGroups().clear();
+                return;
+            case GraphPackage.GNODE__TITLE:
+                setTitle(TITLE_EDEFAULT);
+                return;
+            case GraphPackage.GNODE__DESCRIPTION:
+                setDescription(DESCRIPTION_EDEFAULT);
                 return;
         }
         super.eUnset(featureID);
@@ -494,6 +754,16 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
                 return height != HEIGHT_EDEFAULT;
             case GraphPackage.GNODE__SUBGRAPH:
                 return subgraph != null;
+            case GraphPackage.GNODE__NODE_TYPE:
+                return NODE_TYPE_EDEFAULT == null ? nodeType != null : !NODE_TYPE_EDEFAULT.equals(nodeType);
+            case GraphPackage.GNODE__NODE_CATEGORY:
+                return NODE_CATEGORY_EDEFAULT == null ? nodeCategory != null : !NODE_CATEGORY_EDEFAULT.equals(nodeCategory);
+            case GraphPackage.GNODE__GROUPS:
+                return groups != null && !groups.isEmpty();
+            case GraphPackage.GNODE__TITLE:
+                return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+            case GraphPackage.GNODE__DESCRIPTION:
+                return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
         }
         return super.eIsSet(featureID);
     }
@@ -507,7 +777,7 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
     public String toString() {
         if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (id: ");
         result.append(id);
         result.append(", type: ");
@@ -520,6 +790,16 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
         result.append(width);
         result.append(", height: ");
         result.append(height);
+        result.append(", nodeType: ");
+        result.append(nodeType);
+        result.append(", nodeCategory: ");
+        result.append(nodeCategory);
+        result.append(", groups: ");
+        result.append(groups);
+        result.append(", title: ");
+        result.append(title);
+        result.append(", description: ");
+        result.append(description);
         result.append(')');
         return result.toString();
     }
