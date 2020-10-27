@@ -11,10 +11,14 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -26,158 +30,158 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getSource <em>Source</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getJoints <em>Joints</em>}</li>
+ *   <li>{@link GConnectionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GConnectionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GConnectionImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link GConnectionImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link GConnectionImpl#getJoints <em>Joints</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class GConnectionImpl extends GConnectableImpl implements GConnection {
-    /**
+	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String ID_EDEFAULT = null;
+	protected static final String ID_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-    protected String id = ID_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
-    /**
+	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String TYPE_EDEFAULT = null;
+	protected static final String TYPE_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-    protected String type = TYPE_EDEFAULT;
+	protected String type = TYPE_EDEFAULT;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
 	 */
-    protected GConnector source;
+	protected GConnector source;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-    protected GConnector target;
+	protected GConnector target;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getJoints() <em>Joints</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getJoints()
 	 * @generated
 	 * @ordered
 	 */
-    protected EList<GJoint> joints;
+	protected EList<GJoint> joints;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected GConnectionImpl() {
+	protected GConnectionImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return GraphPackage.Literals.GCONNECTION;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public String getId() {
+	@Override
+	public String getId() {
 		return id;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public void setId(String newId) {
+	@Override
+	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GCONNECTION__ID, oldId, id));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public String getType() {
+	@Override
+	public String getType() {
 		return type;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public void setType(String newType) {
+	@Override
+	public void setType(String newType) {
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GCONNECTION__TYPE, oldType, type));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GConnector getSource() {
+	@Override
+	public GConnector getSource() {
 		if (source != null && source.eIsProxy()) {
 			InternalEObject oldSource = (InternalEObject)source;
 			source = (GConnector)eResolveProxy(oldSource);
@@ -189,35 +193,35 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		return source;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public GConnector basicGetSource() {
+	public GConnector basicGetSource() {
 		return source;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public void setSource(GConnector newSource) {
+	@Override
+	public void setSource(GConnector newSource) {
 		GConnector oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GCONNECTION__SOURCE, oldSource, source));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GConnector getTarget() {
+	@Override
+	public GConnector getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
 			target = (GConnector)eResolveProxy(oldTarget);
@@ -229,49 +233,49 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		return target;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public GConnector basicGetTarget() {
+	public GConnector basicGetTarget() {
 		return target;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public void setTarget(GConnector newTarget) {
+	@Override
+	public void setTarget(GConnector newTarget) {
 		GConnector oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GCONNECTION__TARGET, oldTarget, target));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EList<GJoint> getJoints() {
+	@Override
+	public EList<GJoint> getJoints() {
 		if (joints == null) {
 			joints = new EObjectContainmentWithInverseEList<GJoint>(GJoint.class, this, GraphPackage.GCONNECTION__JOINTS, GraphPackage.GJOINT__CONNECTION);
 		}
 		return joints;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraphPackage.GCONNECTION__JOINTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getJoints()).basicAdd(otherEnd, msgs);
@@ -279,13 +283,13 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraphPackage.GCONNECTION__JOINTS:
 				return ((InternalEList<?>)getJoints()).basicRemove(otherEnd, msgs);
@@ -293,13 +297,13 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GraphPackage.GCONNECTION__ID:
 				return getId();
@@ -317,14 +321,14 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GraphPackage.GCONNECTION__ID:
 				setId((String)newValue);
@@ -346,13 +350,13 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		super.eSet(featureID, newValue);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GraphPackage.GCONNECTION__ID:
 				setId(ID_EDEFAULT);
@@ -373,13 +377,13 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		super.eUnset(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraphPackage.GCONNECTION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
@@ -395,13 +399,13 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		return super.eIsSet(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public String toString() {
+	@Override
+	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());

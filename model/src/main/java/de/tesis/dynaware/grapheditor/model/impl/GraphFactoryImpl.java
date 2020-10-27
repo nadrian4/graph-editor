@@ -7,7 +7,9 @@ import de.tesis.dynaware.grapheditor.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -17,13 +19,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
-    /**
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static GraphFactory init() {
+	public static GraphFactory init() {
 		try {
 			GraphFactory theGraphFactory = (GraphFactory)EPackage.Registry.INSTANCE.getEFactory(GraphPackage.eNS_URI);
 			if (theGraphFactory != null) {
@@ -36,23 +38,23 @@ public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
 		return new GraphFactoryImpl();
 	}
 
-    /**
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public GraphFactoryImpl() {
+	public GraphFactoryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public EObject create(EClass eClass) {
+	@Override
+	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case GraphPackage.GMODEL: return createGModel();
 			case GraphPackage.GNODE: return createGNode();
@@ -64,79 +66,79 @@ public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
 		}
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GModel createGModel() {
+	@Override
+	public GModel createGModel() {
 		GModelImpl gModel = new GModelImpl();
 		return gModel;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GNode createGNode() {
+	@Override
+	public GNode createGNode() {
 		GNodeImpl gNode = new GNodeImpl();
 		return gNode;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GConnector createGConnector() {
-		GConnectorImpl gConnector = new GConnectorImpl();
-		return gConnector;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public GConnection createGConnection() {
+	@Override
+	public GConnection createGConnection() {
 		GConnectionImpl gConnection = new GConnectionImpl();
 		return gConnection;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GJoint createGJoint() {
+	@Override
+	public GConnector createGConnector() {
+		GConnectorImpl gConnector = new GConnectorImpl();
+		return gConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public GJoint createGJoint() {
 		GJointImpl gJoint = new GJointImpl();
 		return gJoint;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public GraphPackage getGraphPackage() {
+	@Override
+	public GraphPackage getGraphPackage() {
 		return (GraphPackage)getEPackage();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
-    @Deprecated
-    public static GraphPackage getPackage() {
+	@Deprecated
+	public static GraphPackage getPackage() {
 		return GraphPackage.eINSTANCE;
 	}
 

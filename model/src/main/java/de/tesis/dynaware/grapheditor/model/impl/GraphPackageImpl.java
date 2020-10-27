@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -24,91 +25,91 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass gModelEClass = null;
+	private EClass gModelEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass gNodeEClass = null;
+	private EClass gConnectableEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass gConnectorEClass = null;
+	private EClass gNodeEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass gConnectionEClass = null;
+	private EClass gConnectionEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass gJointEClass = null;
+	private EClass gConnectorEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass gConnectableEClass = null;
+	private EClass gJointEClass = null;
 
-    /**
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * {@link Registry EPackage.Registry} by the package
 	 * package URI value.
 	 * <p>Note: the correct way to create the package is via the static
 	 * factory method {@link #init init()}, which also performs
 	 * initialization of the package, or returns the registered package,
 	 * if one already exists.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#eNS_URI
+	 * <!-- end-user-doc -->
+	 * @see Registry
+	 * @see GraphPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-    private GraphPackageImpl() {
+	private GraphPackageImpl() {
 		super(eNS_URI, GraphFactory.eINSTANCE);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private static boolean isInited = false;
+	private static boolean isInited = false;
 
-    /**
+	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 *
 	 * <p>This method is used to initialize {@link GraphPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-    public static GraphPackage init() {
-		if (isInited) return (GraphPackage)EPackage.Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
+	public static GraphPackage init() {
+		if (isInited) return (GraphPackage) Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredGraphPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		Object registeredGraphPackage = Registry.INSTANCE.get(eNS_URI);
 		GraphPackageImpl theGraphPackage = registeredGraphPackage instanceof GraphPackageImpl ? (GraphPackageImpl)registeredGraphPackage : new GraphPackageImpl();
 
 		isInited = true;
@@ -123,71 +124,81 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		theGraphPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(GraphPackage.eNS_URI, theGraphPackage);
+		Registry.INSTANCE.put(GraphPackage.eNS_URI, theGraphPackage);
 		return theGraphPackage;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EClass getGModel() {
+	@Override
+	public EClass getGModel() {
 		return gModelEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGModel_Nodes() {
+	@Override
+	public EReference getGModel_Nodes() {
 		return (EReference)gModelEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGModel_Connections() {
+	@Override
+	public EReference getGModel_Connections() {
 		return (EReference)gModelEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGModel_Type() {
+	@Override
+	public EAttribute getGModel_Type() {
 		return (EAttribute)gModelEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGModel_ContentHeight() {
+	@Override
+	public EAttribute getGModel_ContentWidth() {
+		return (EAttribute)gModelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGModel_ContentHeight() {
 		return (EAttribute)gModelEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGModel_Supergraph() {
+	@Override
+	public EReference getGModel_Supergraph() {
 		return (EReference)gModelEClass.getEStructuralFeatures().get(5);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -197,97 +208,107 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		return (EAttribute)gModelEClass.getEStructuralFeatures().get(-1);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGModel_ContentWidth() {
-		return (EAttribute)gModelEClass.getEStructuralFeatures().get(3);
+	@Override
+	public EClass getGConnectable() {
+		return gConnectableEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EClass getGNode() {
+	@Override
+	public EReference getGConnectable_Connectors() {
+		return (EReference)gConnectableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getGNode() {
 		return gNodeEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGNode_Id() {
+	@Override
+	public EAttribute getGNode_Id() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGNode_Type() {
+	@Override
+	public EAttribute getGNode_Type() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGNode_X() {
+	@Override
+	public EAttribute getGNode_X() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGNode_Y() {
+	@Override
+	public EAttribute getGNode_Y() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(3);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGNode_Width() {
+	@Override
+	public EAttribute getGNode_Width() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGNode_Height() {
+	@Override
+	public EAttribute getGNode_Height() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(5);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGNode_Subgraph() {
+	@Override
+	public EReference getGNode_Subgraph() {
 		return (EReference)gNodeEClass.getEStructuralFeatures().get(6);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -297,7 +318,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(7);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -307,7 +328,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(8);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -317,7 +338,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(9);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -327,7 +348,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(10);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -337,251 +358,241 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(11);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EClass getGConnector() {
-		return gConnectorEClass;
+	@Override
+	public EAttribute getGNode_Uid() {
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(12);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGConnector_Id() {
-		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EAttribute getGConnector_Type() {
-		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(1);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EReference getGConnector_Parent() {
-		return (EReference)gConnectorEClass.getEStructuralFeatures().get(2);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EReference getGConnector_Connections() {
-		return (EReference)gConnectorEClass.getEStructuralFeatures().get(3);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EAttribute getGConnector_X() {
-		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(4);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EAttribute getGConnector_Y() {
-		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(5);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EAttribute getGConnector_ConnectionDetachedOnDrag() {
-		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(6);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EClass getGConnection() {
+	@Override
+	public EClass getGConnection() {
 		return gConnectionEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGConnection_Id() {
+	@Override
+	public EAttribute getGConnection_Id() {
 		return (EAttribute)gConnectionEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGConnection_Type() {
+	@Override
+	public EAttribute getGConnection_Type() {
 		return (EAttribute)gConnectionEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGConnection_Source() {
+	@Override
+	public EReference getGConnection_Source() {
 		return (EReference)gConnectionEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGConnection_Target() {
+	@Override
+	public EReference getGConnection_Target() {
 		return (EReference)gConnectionEClass.getEStructuralFeatures().get(3);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGConnection_Joints() {
+	@Override
+	public EReference getGConnection_Joints() {
 		return (EReference)gConnectionEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EClass getGJoint() {
+	@Override
+	public EClass getGConnector() {
+		return gConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGConnector_Id() {
+		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGConnector_Type() {
+		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGConnector_Parent() {
+		return (EReference)gConnectorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGConnector_Connections() {
+		return (EReference)gConnectorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGConnector_X() {
+		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGConnector_Y() {
+		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGConnector_ConnectionDetachedOnDrag() {
+		return (EAttribute)gConnectorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getGJoint() {
 		return gJointEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGJoint_Id() {
+	@Override
+	public EAttribute getGJoint_Id() {
 		return (EAttribute)gJointEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGJoint_Type() {
+	@Override
+	public EAttribute getGJoint_Type() {
 		return (EAttribute)gJointEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EReference getGJoint_Connection() {
+	@Override
+	public EReference getGJoint_Connection() {
 		return (EReference)gJointEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGJoint_X() {
+	@Override
+	public EAttribute getGJoint_X() {
 		return (EAttribute)gJointEClass.getEStructuralFeatures().get(3);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EAttribute getGJoint_Y() {
+	@Override
+	public EAttribute getGJoint_Y() {
 		return (EAttribute)gJointEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-				public EClass getGConnectable() {
-		return gConnectableEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public EReference getGConnectable_Connectors() {
-		return (EReference)gConnectableEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-				public GraphFactory getGraphFactory() {
+	@Override
+	public GraphFactory getGraphFactory() {
 		return (GraphFactory)getEFactoryInstance();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isCreated = false;
+	private boolean isCreated = false;
 
-    /**
+	/**
 	 * Creates the meta-model objects for the package.  This method is
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void createPackageContents() {
+	public void createPackageContents() {
 		if (isCreated) return;
 		isCreated = true;
 
@@ -611,6 +622,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gNodeEClass, GNODE__GROUPS);
 		createEAttribute(gNodeEClass, GNODE__TITLE);
 		createEAttribute(gNodeEClass, GNODE__DESCRIPTION);
+		createEAttribute(gNodeEClass, GNODE__UID);
 
 		gConnectionEClass = createEClass(GCONNECTION);
 		createEAttribute(gConnectionEClass, GCONNECTION__ID);
@@ -636,21 +648,21 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gJointEClass, GJOINT__Y);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isInitialized = false;
+	private boolean isInitialized = false;
 
-    /**
+	/**
 	 * Complete the initialization of the package and its meta-model.  This
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void initializePackageContents() {
+	public void initializePackageContents() {
 		if (isInitialized) return;
 		isInitialized = true;
 
@@ -693,6 +705,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGNode_Groups(), ecorePackage.getEString(), "groups", null, 0, -1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Description(), ecorePackage.getEString(), "description", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNode_Uid(), ecorePackage.getEString(), "uid", "", 0, 1, GNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gConnectionEClass, GConnection.class, "GConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGConnection_Id(), ecorePackage.getEString(), "id", null, 0, 1, GConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

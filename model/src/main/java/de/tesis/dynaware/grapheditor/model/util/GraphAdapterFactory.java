@@ -6,7 +6,9 @@ import de.tesis.dynaware.grapheditor.model.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,40 +16,40 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.tesis.dynaware.grapheditor.model.GraphPackage
+ * @see GraphPackage
  * @generated
  */
 public class GraphAdapterFactory extends AdapterFactoryImpl {
-    /**
+	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected static GraphPackage modelPackage;
+	protected static GraphPackage modelPackage;
 
-    /**
+	/**
 	 * Creates an instance of the adapter factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public GraphAdapterFactory() {
+	public GraphAdapterFactory() {
 		if (modelPackage == null) {
 			modelPackage = GraphPackage.eINSTANCE;
 		}
 	}
 
-    /**
+	/**
 	 * Returns whether this factory is applicable for the type of the object.
 	 * <!-- begin-user-doc -->
-     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-     * <!-- end-user-doc -->
+	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
+	 * <!-- end-user-doc -->
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-    @Override
-    public boolean isFactoryForType(Object object) {
+	@Override
+	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
 		}
@@ -57,14 +59,14 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 		return false;
 	}
 
-    /**
+	/**
 	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected GraphSwitch<Adapter> modelSwitch =
-        new GraphSwitch<Adapter>() {
+	protected GraphSwitch<Adapter> modelSwitch =
+		new GraphSwitch<Adapter>() {
 			@Override
 			public Adapter caseGModel(GModel object) {
 				return createGModelAdapter();
@@ -95,113 +97,113 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 			}
 		};
 
-    /**
+	/**
 	 * Creates an adapter for the <code>target</code>.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-    @Override
-    public Adapter createAdapter(Notifier target) {
+	@Override
+	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
-    /**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GModel <em>GModel</em>}'.
+	/**
+	 * Creates a new adapter for an object of class '{@link GModel <em>GModel</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel
+	 * @see GModel
 	 * @generated
 	 */
-    public Adapter createGModelAdapter() {
+	public Adapter createGModelAdapter() {
 		return null;
 	}
 
-    /**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GNode <em>GNode</em>}'.
+	/**
+	 * Creates a new adapter for an object of class '{@link GConnectable <em>GConnectable</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode
+	 * @see GConnectable
 	 * @generated
 	 */
-    public Adapter createGNodeAdapter() {
+	public Adapter createGConnectableAdapter() {
 		return null;
 	}
 
-    /**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GConnector <em>GConnector</em>}'.
+	/**
+	 * Creates a new adapter for an object of class '{@link GNode <em>GNode</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector
+	 * @see GNode
 	 * @generated
 	 */
-    public Adapter createGConnectorAdapter() {
+	public Adapter createGNodeAdapter() {
 		return null;
 	}
 
-    /**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GConnection <em>GConnection</em>}'.
+	/**
+	 * Creates a new adapter for an object of class '{@link GConnection <em>GConnection</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection
+	 * @see GConnection
 	 * @generated
 	 */
-    public Adapter createGConnectionAdapter() {
+	public Adapter createGConnectionAdapter() {
 		return null;
 	}
 
-    /**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GJoint <em>GJoint</em>}'.
+	/**
+	 * Creates a new adapter for an object of class '{@link GConnector <em>GConnector</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint
+	 * @see GConnector
 	 * @generated
 	 */
-    public Adapter createGJointAdapter() {
+	public Adapter createGConnectorAdapter() {
 		return null;
 	}
 
-    /**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GConnectable <em>GConnectable</em>}'.
+	/**
+	 * Creates a new adapter for an object of class '{@link GJoint <em>GJoint</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnectable
+	 * @see GJoint
 	 * @generated
 	 */
-    public Adapter createGConnectableAdapter() {
+	public Adapter createGJointAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @generated
 	 */
-    public Adapter createEObjectAdapter() {
+	public Adapter createEObjectAdapter() {
 		return null;
 	}
 
