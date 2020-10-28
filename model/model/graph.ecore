@@ -53,6 +53,8 @@
         eType="#//GConnector"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joints" upperBound="-1"
         eType="#//GJoint" containment="true" eOpposite="#//GJoint/connection"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        transient="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GConnector">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

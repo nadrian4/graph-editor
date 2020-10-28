@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link GConnectionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link GConnectionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link GConnectionImpl#getJoints <em>Joints</em>}</li>
+ *   <li>{@link GConnectionImpl#getUid <em>Uid</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,6 +110,26 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 	 * @ordered
 	 */
 	protected EList<GJoint> joints;
+
+	/**
+	 * The default value of the '{@link #getUid() <em>Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String UID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUid() <em>Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected String uid = UID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -273,6 +294,29 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getUid() {
+		return uid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setUid(String newUid) {
+		String oldUid = uid;
+		uid = newUid;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GCONNECTION__UID, oldUid, uid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -317,6 +361,8 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 				return basicGetTarget();
 			case GraphPackage.GCONNECTION__JOINTS:
 				return getJoints();
+			case GraphPackage.GCONNECTION__UID:
+				return getUid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -346,6 +392,9 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 				getJoints().clear();
 				getJoints().addAll((Collection<? extends GJoint>)newValue);
 				return;
+			case GraphPackage.GCONNECTION__UID:
+				setUid((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -373,6 +422,9 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 			case GraphPackage.GCONNECTION__JOINTS:
 				getJoints().clear();
 				return;
+			case GraphPackage.GCONNECTION__UID:
+				setUid(UID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -395,6 +447,8 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 				return target != null;
 			case GraphPackage.GCONNECTION__JOINTS:
 				return joints != null && !joints.isEmpty();
+			case GraphPackage.GCONNECTION__UID:
+				return UID_EDEFAULT == null ? uid != null : !UID_EDEFAULT.equals(uid);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -413,6 +467,8 @@ public class GConnectionImpl extends GConnectableImpl implements GConnection {
 		result.append(id);
 		result.append(", type: ");
 		result.append(type);
+		result.append(", uid: ");
+		result.append(uid);
 		result.append(')');
 		return result.toString();
 	}

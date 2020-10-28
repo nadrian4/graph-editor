@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link GConnection#getSource <em>Source</em>}</li>
  *   <li>{@link GConnection#getTarget <em>Target</em>}</li>
  *   <li>{@link GConnection#getJoints <em>Joints</em>}</li>
+ *   <li>{@link GConnection#getUid <em>Uid</em>}</li>
  * </ul>
  *
  * @see GraphPackage#getGConnection()
@@ -126,5 +127,27 @@ public interface GConnection extends GConnectable {
 	 * @generated
 	 */
 	EList<GJoint> getJoints();
+
+	/**
+	 * Returns the value of the '<em><b>Uid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Uid</em>' attribute.
+	 * @see #setUid(String)
+	 * @see GraphPackage#getGConnection_Uid()
+	 * @model transient="true"
+	 * @generated
+	 */
+	String getUid();
+
+	/**
+	 * Sets the value of the '{@link GConnection#getUid <em>Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Uid</em>' attribute.
+	 * @see #getUid()
+	 * @generated
+	 */
+	void setUid(String value);
 
 } // GConnection

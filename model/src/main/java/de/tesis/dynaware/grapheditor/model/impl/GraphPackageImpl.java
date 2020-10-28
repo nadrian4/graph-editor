@@ -434,6 +434,16 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getGConnection_Uid() {
+		return (EAttribute)gConnectionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getGConnector() {
 		return gConnectorEClass;
 	}
@@ -630,6 +640,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEReference(gConnectionEClass, GCONNECTION__SOURCE);
 		createEReference(gConnectionEClass, GCONNECTION__TARGET);
 		createEReference(gConnectionEClass, GCONNECTION__JOINTS);
+		createEAttribute(gConnectionEClass, GCONNECTION__UID);
 
 		gConnectorEClass = createEClass(GCONNECTOR);
 		createEAttribute(gConnectorEClass, GCONNECTOR__ID);
@@ -713,6 +724,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEReference(getGConnection_Source(), this.getGConnector(), null, "source", null, 1, 1, GConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGConnection_Target(), this.getGConnector(), null, "target", null, 1, 1, GConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGConnection_Joints(), this.getGJoint(), this.getGJoint_Connection(), "joints", null, 0, -1, GConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGConnection_Uid(), ecorePackage.getEString(), "uid", null, 0, 1, GConnection.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gConnectorEClass, GConnector.class, "GConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGConnector_Id(), ecorePackage.getEString(), "id", null, 0, 1, GConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

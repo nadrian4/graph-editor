@@ -403,13 +403,22 @@ public interface GraphPackage extends EPackage {
 	int GCONNECTION__JOINTS = GCONNECTABLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Uid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GCONNECTION__UID = GCONNECTABLE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>GConnection</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GCONNECTION_FEATURE_COUNT = GCONNECTABLE_FEATURE_COUNT + 5;
+	int GCONNECTION_FEATURE_COUNT = GCONNECTABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>GConnection</em>' class.
@@ -912,6 +921,17 @@ public interface GraphPackage extends EPackage {
 	EReference getGConnection_Joints();
 
 	/**
+	 * Returns the meta object for the attribute '{@link GConnection#getUid <em>Uid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uid</em>'.
+	 * @see GConnection#getUid()
+	 * @see #getGConnection()
+	 * @generated
+	 */
+	EAttribute getGConnection_Uid();
+
+	/**
 	 * Returns the meta object for class '{@link GConnector <em>GConnector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1333,6 +1353,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GCONNECTION__JOINTS = eINSTANCE.getGConnection_Joints();
+
+		/**
+		 * The meta object literal for the '<em><b>Uid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCONNECTION__UID = eINSTANCE.getGConnection_Uid();
 
 		/**
 		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl <em>GConnector</em>}' class.
