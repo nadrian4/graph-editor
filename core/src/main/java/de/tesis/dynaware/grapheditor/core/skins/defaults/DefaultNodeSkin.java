@@ -56,7 +56,7 @@ public class DefaultNodeSkin extends GNodeSkin {
     private static final double MIN_WIDTH = 41;
     private static final double MIN_HEIGHT = 41;
 
-    private final Rectangle selectionHalo = new Rectangle();
+    protected final Rectangle selectionHalo = new Rectangle();
 
     private final List<GConnectorSkin> topConnectorSkins = new ArrayList<>();
     private final List<GConnectorSkin> rightConnectorSkins = new ArrayList<>();
@@ -64,8 +64,8 @@ public class DefaultNodeSkin extends GNodeSkin {
     private final List<GConnectorSkin> leftConnectorSkins = new ArrayList<>();
 
     // Border and background are separated into 2 rectangles so they can have different effects applied to them.
-    private final Rectangle border = new Rectangle();
-    private final Rectangle background = new Rectangle();
+    protected final Rectangle border = new Rectangle();
+    protected final Rectangle background = new Rectangle();
 
     /**
      * Creates a new default node skin instance.
