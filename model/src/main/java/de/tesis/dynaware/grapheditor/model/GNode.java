@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link GNode#getTitle <em>Title</em>}</li>
  *   <li>{@link GNode#getDescription <em>Description</em>}</li>
  *   <li>{@link GNode#getUid <em>Uid</em>}</li>
+ *   <li>{@link GNode#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @see GraphPackage#getGNode()
@@ -316,5 +317,28 @@ public interface GNode extends GConnectable {
 	 * @generated
 	 */
 	void setUid(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Color</b></em>' attribute.
+	 * The default value is <code>"0xffffffff"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Color</em>' attribute.
+	 * @see #setColor(String)
+	 * @see GraphPackage#getGNode_Color()
+	 * @model default="0xffffffff"
+	 * @generated
+	 */
+	String getColor();
+
+	/**
+	 * Sets the value of the '{@link GNode#getColor <em>Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Color</em>' attribute.
+	 * @see #getColor()
+	 * @generated
+	 */
+	void setColor(String value);
 
 } // GNode

@@ -35,6 +35,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/uid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/color"/>
     </genClasses>
     <genClasses ecoreClass="graph.ecore#//GConnection">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GConnection/id"/>

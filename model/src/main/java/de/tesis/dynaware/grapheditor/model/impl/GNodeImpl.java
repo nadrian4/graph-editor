@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link GNodeImpl#getUid <em>Uid</em>}</li>
+ *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -285,6 +286,26 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @ordered
 	 */
 	protected String uid = UID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COLOR_EDEFAULT = "0xffffffff";
+
+	/**
+	 * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected String color = COLOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -622,6 +643,29 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
+	public String getColor() {
+		return color;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setColor(String newColor) {
+		String oldColor = color;
+		color = newColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__COLOR, oldColor, color));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraphPackage.GNODE__SUBGRAPH:
@@ -680,6 +724,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return getDescription();
 			case GraphPackage.GNODE__UID:
 				return getUid();
+			case GraphPackage.GNODE__COLOR:
+				return getColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -733,6 +779,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__UID:
 				setUid((String)newValue);
 				return;
+			case GraphPackage.GNODE__COLOR:
+				setColor((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -784,6 +833,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__UID:
 				setUid(UID_EDEFAULT);
 				return;
+			case GraphPackage.GNODE__COLOR:
+				setColor(COLOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -822,6 +874,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case GraphPackage.GNODE__UID:
 				return UID_EDEFAULT == null ? uid != null : !UID_EDEFAULT.equals(uid);
+			case GraphPackage.GNODE__COLOR:
+				return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -860,6 +914,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 		result.append(description);
 		result.append(", uid: ");
 		result.append(uid);
+		result.append(", color: ");
+		result.append(color);
 		result.append(')');
 		return result.toString();
 	}

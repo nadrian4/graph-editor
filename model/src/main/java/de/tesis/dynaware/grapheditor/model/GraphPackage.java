@@ -321,13 +321,22 @@ public interface GraphPackage extends EPackage {
 	int GNODE__UID = GCONNECTABLE_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNODE__COLOR = GCONNECTABLE_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>GNode</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE_FEATURE_COUNT = GCONNECTABLE_FEATURE_COUNT + 13;
+	int GNODE_FEATURE_COUNT = GCONNECTABLE_FEATURE_COUNT + 14;
 
 	/**
 	 * The number of operations of the '<em>GNode</em>' class.
@@ -856,6 +865,17 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGNode_Uid();
 
 	/**
+	 * Returns the meta object for the attribute '{@link GNode#getColor <em>Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Color</em>'.
+	 * @see GNode#getColor()
+	 * @see #getGNode()
+	 * @generated
+	 */
+	EAttribute getGNode_Color();
+
+	/**
 	 * Returns the meta object for class '{@link GConnection <em>GConnection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1303,6 +1323,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GNODE__UID = eINSTANCE.getGNode_Uid();
+
+		/**
+		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GNODE__COLOR = eINSTANCE.getGNode_Color();
 
 		/**
 		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl <em>GConnection</em>}' class.
