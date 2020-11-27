@@ -32,16 +32,16 @@ public class GraphEditorProperties {
     public static final double DEFAULT_MAX_WIDTH = Double.MAX_VALUE;
     public static final double DEFAULT_MAX_HEIGHT = Double.MAX_VALUE;
 
-    private static final double DEFAULT_BOUND_VALUE = 15;
+    private static final double DEFAULT_BOUND_VALUE = 0;
     private static final double DEFAULT_GRID_SPACING = 12;
 
     // Not currently configurable.
-    private final boolean northBoundActive = true;
-    private final boolean westBoundActive = true;
+    private final boolean northBoundActive = false;
+    private final boolean westBoundActive = false;
 
     // On by default.
-    private boolean southBoundActive = true;
-    private boolean eastBoundActive = true;
+    private boolean southBoundActive = false;
+    private boolean eastBoundActive = false;
 
     // The distance from the editor edge at which the objects should stop when dragged / resized.
     private double northBoundValue = DEFAULT_BOUND_VALUE;

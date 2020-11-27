@@ -11,6 +11,8 @@ import javafx.geometry.Point2D;
 import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 import org.slf4j.Logger;
@@ -73,7 +75,6 @@ public class DefaultNodeSkin extends GNodeSkin {
      * @param node the {@link GNode} the skin is being created for
      */
     public DefaultNodeSkin(final GNode node) {
-
         super(node);
 
         performChecks();
@@ -86,6 +87,7 @@ public class DefaultNodeSkin extends GNodeSkin {
 
         border.getStyleClass().setAll(STYLE_CLASS_BORDER);
         background.getStyleClass().setAll(STYLE_CLASS_BACKGROUND);
+
 
         getRoot().getChildren().addAll(border, background);
         getRoot().setMinSize(MIN_WIDTH, MIN_HEIGHT);

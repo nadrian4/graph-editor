@@ -67,6 +67,9 @@ public class GraphEditorView extends Region {
         setMaxWidth(GraphEditorProperties.DEFAULT_MAX_WIDTH);
         setMaxHeight(GraphEditorProperties.DEFAULT_MAX_HEIGHT);
 
+//        setWidth(2000);
+//        setHeight(2000);
+
         initializeLayers();
         initializeGrid();
 

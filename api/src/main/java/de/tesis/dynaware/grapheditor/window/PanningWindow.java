@@ -167,25 +167,25 @@ public class PanningWindow extends Region {
 
         if (content != null) {
 
-            if (windowXProperty.get() < 0) {
-                windowXProperty.set(0);
-            }
-
-            if (windowYProperty.get() < 0) {
-                windowYProperty.set(0);
-            }
+//            if (windowXProperty.get() < 0) {
+//                windowXProperty.set(0);
+//            }
+//
+//            if (windowYProperty.get() < 0) {
+//                windowYProperty.set(0);
+//            }
 
             final double zoomFactor = content.getLocalToSceneTransform().getMxx();
             final double maxX = zoomFactor * content.getWidth() - getWidth();
             final double maxY = zoomFactor * content.getHeight() - getHeight();
 
-            if (windowXProperty.get() > maxX) {
-                windowXProperty.set(maxX);
-            }
-
-            if (windowYProperty.get() > maxY) {
-                windowYProperty.set(maxY);
-            }
+//            if (windowXProperty.get() > maxX) {
+//                windowXProperty.set(maxX);
+//            }
+//
+//            if (windowYProperty.get() > maxY) {
+//                windowYProperty.set(maxY);
+//            }
 
             windowXProperty.set(Math.round(windowXProperty.get()));
             windowYProperty.set(Math.round(windowYProperty.get()));

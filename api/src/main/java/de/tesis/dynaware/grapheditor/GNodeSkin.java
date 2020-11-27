@@ -8,6 +8,7 @@ import java.util.List;
 import javafx.geometry.Point2D;
 import de.tesis.dynaware.grapheditor.model.GNode;
 import de.tesis.dynaware.grapheditor.utils.ResizableBox;
+import javafx.scene.paint.Color;
 
 /**
  * The skin class for a {@link GNode}. Responsible for visualizing nodes in the graph editor.
@@ -45,6 +46,10 @@ public abstract class GNodeSkin extends GSkin {
      */
     public GNodeSkin(final GNode node) {
         this.node = node;
+    }
+
+    public void setColor(Color color) {
+
     }
 
     /**

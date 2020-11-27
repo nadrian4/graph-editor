@@ -261,6 +261,7 @@ public class GraphEditorDemoController {
     @FXML
     public void toggleMinimap() {
         graphEditorContainer.getMinimap().visibleProperty().bind(minimapButton.selectedProperty());
+        graphEditorContainer.getNeighbourhoodContainer().visibleProperty().bind(minimapButton.selectedProperty());
     }
 
     /**

@@ -3,6 +3,7 @@
  */
 package de.tesis.dynaware.grapheditor;
 
+import de.tesis.dynaware.grapheditor.window.NeighbourhoodContainer;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -44,7 +45,12 @@ public class GraphEditorContainer extends AutoScrollingWindow {
     private static final double MINIMAP_RIGHT_INDENT = 10;
     private static final double MINIMAP_TOP_INDENT = 10;
 
+    private static final double NEIGHBOURHOOD_CONTAINER_WIDTH = 300;
+    private static final double NEIGHBOURHOOD_CONTAINER_RIGHT_INDENT = 400;
+    private static final double NEIGHBOURHOOD_CONTAINER_TOP_INDENT = 400;
+
     private final GraphEditorMinimap minimap = new GraphEditorMinimap(MINIMAP_WIDTH);
+    private final NeighbourhoodContainer neighbourhoodContainer = new NeighbourhoodContainer(NEIGHBOURHOOD_CONTAINER_WIDTH);
 
     private GraphEditor graphEditor;
     private ChangeListener<GModel> modelChangeListener;
@@ -88,12 +94,22 @@ public class GraphEditorContainer extends AutoScrollingWindow {
             minimap.setModel(model);
             minimap.setSkinLookup(skinLookup);
 
+            neighbourhoodContainer.setContent(view);
+            neighbourhoodContainer.setModel(model);
+            neighbourhoodContainer.setSkinLookup(skinLookup);
+
             view.toBack();
-            view.setOnScroll(event -> panBy(-event.getDeltaX(), -event.getDeltaY()));
+            view.setOnScroll(event -> {
+                if (!event.isControlDown()) {
+                    panBy(-event.getDeltaX(), -event.getDeltaY());
+                }
+            });
 
         } else {
             minimap.setContent(null);
             minimap.setModel(null);
+            neighbourhoodContainer.setContent(null);
+            neighbourhoodContainer.setModel(null);
         }
     }
 
@@ -110,6 +126,10 @@ public class GraphEditorContainer extends AutoScrollingWindow {
         return minimap;
     }
 
+    public Pane getNeighbourhoodContainer() {
+        return neighbourhoodContainer;
+    }
+
     /**
      * Initializes the minimap, adding it as a child of the container and setting its position.
      */
@@ -121,6 +141,13 @@ public class GraphEditorContainer extends AutoScrollingWindow {
         minimap.layoutXProperty().bind(widthProperty().subtract(MINIMAP_WIDTH + MINIMAP_RIGHT_INDENT));
         minimap.setLayoutY(MINIMAP_TOP_INDENT);
         minimap.setVisible(false);
+
+        getChildren().add(neighbourhoodContainer);
+
+        neighbourhoodContainer.setWindow(this);
+        neighbourhoodContainer.layoutXProperty().bind(widthProperty().subtract(NEIGHBOURHOOD_CONTAINER_WIDTH + NEIGHBOURHOOD_CONTAINER_RIGHT_INDENT));
+        neighbourhoodContainer.setLayoutY(NEIGHBOURHOOD_CONTAINER_TOP_INDENT);
+        neighbourhoodContainer.setVisible(false);
     }
 
     /**
@@ -133,6 +160,7 @@ public class GraphEditorContainer extends AutoScrollingWindow {
                 graphEditor.getView().resize(newValue.getContentWidth(), newValue.getContentHeight());
                 checkWindowBounds();
                 minimap.setModel(newValue);
+                neighbourhoodContainer.setModel(newValue);
             }
         };
     }

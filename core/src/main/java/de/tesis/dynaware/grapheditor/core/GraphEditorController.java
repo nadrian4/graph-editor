@@ -191,7 +191,7 @@ public class GraphEditorController {
      * </p>
      */
     private void reloadView() {
-
+        view.resize(model.getContentWidth(), model.getContentHeight());
         cleanUpView();
         updateSkinManager();
 
