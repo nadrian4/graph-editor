@@ -48,7 +48,11 @@ public abstract class GNodeSkin extends GSkin {
         this.node = node;
     }
 
-    public void setColor(Color color) {
+    public void setText() {
+
+    }
+
+    public void setColor() {
 
     }
 
