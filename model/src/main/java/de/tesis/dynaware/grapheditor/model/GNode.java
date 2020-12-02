@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link GNode#getGroups <em>Groups</em>}</li>
  *   <li>{@link GNode#getTitle <em>Title</em>}</li>
  *   <li>{@link GNode#getDescription <em>Description</em>}</li>
- *   <li>{@link GNode#getUid <em>Uid</em>}</li>
+ *   <li>{@link GNode#getUniqueId <em>Unique Id</em>}</li>
  *   <li>{@link GNode#getColor <em>Color</em>}</li>
  * </ul>
  *
@@ -296,27 +296,27 @@ public interface GNode extends GConnectable {
 	void setDescription(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Uid</b></em>' attribute.
+	 * Returns the value of the '<em><b>Unique Id</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uid</em>' attribute.
-	 * @see #setUid(String)
-	 * @see GraphPackage#getGNode_Uid()
+	 * @return the value of the '<em>Unique Id</em>' attribute.
+	 * @see #setUniqueId(String)
+	 * @see GraphPackage#getGNode_UniqueId()
 	 * @model default="" transient="true"
 	 * @generated
 	 */
-	String getUid();
+	String getUniqueId();
 
 	/**
-	 * Sets the value of the '{@link GNode#getUid <em>Uid</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getUniqueId <em>Unique Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Uid</em>' attribute.
-	 * @see #getUid()
+	 * @param value the new value of the '<em>Unique Id</em>' attribute.
+	 * @see #getUniqueId()
 	 * @generated
 	 */
-	void setUid(String value);
+	void setUniqueId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Color</b></em>' attribute.

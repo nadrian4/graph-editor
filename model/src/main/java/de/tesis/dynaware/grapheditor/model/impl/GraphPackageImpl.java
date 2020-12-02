@@ -205,7 +205,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGModel_Id() {
-		return (EAttribute)gModelEClass.getEStructuralFeatures().get(11);
+		return (EAttribute)gModelEClass.getEStructuralFeatures().get(-1);
 	}
 
 	/**
@@ -364,7 +364,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGNode_Uid() {
+	public EAttribute getGNode_UniqueId() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -642,7 +642,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gNodeEClass, GNODE__GROUPS);
 		createEAttribute(gNodeEClass, GNODE__TITLE);
 		createEAttribute(gNodeEClass, GNODE__DESCRIPTION);
-		createEAttribute(gNodeEClass, GNODE__UID);
+		createEAttribute(gNodeEClass, GNODE__UNIQUE_ID);
 		createEAttribute(gNodeEClass, GNODE__COLOR);
 
 		gConnectionEClass = createEClass(GCONNECTION);
@@ -727,7 +727,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGNode_Groups(), ecorePackage.getEString(), "groups", null, 0, -1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Description(), ecorePackage.getEString(), "description", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_Uid(), ecorePackage.getEString(), "uid", "", 0, 1, GNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNode_UniqueId(), ecorePackage.getEString(), "uniqueId", "", 0, 1, GNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Color(), ecorePackage.getEString(), "color", "0xffffffff", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gConnectionEClass, GConnection.class, "GConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

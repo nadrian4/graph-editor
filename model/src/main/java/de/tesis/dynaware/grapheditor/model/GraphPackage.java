@@ -312,13 +312,13 @@ public interface GraphPackage extends EPackage {
 	int GNODE__DESCRIPTION = GCONNECTABLE_FEATURE_COUNT + 11;
 
 	/**
-	 * The feature id for the '<em><b>Uid</b></em>' attribute.
+	 * The feature id for the '<em><b>Unique Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__UID = GCONNECTABLE_FEATURE_COUNT + 12;
+	int GNODE__UNIQUE_ID = GCONNECTABLE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -854,15 +854,15 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGNode_Description();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GNode#getUid <em>Uid</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getUniqueId <em>Unique Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uid</em>'.
-	 * @see GNode#getUid()
+	 * @return the meta object for the attribute '<em>Unique Id</em>'.
+	 * @see GNode#getUniqueId()
 	 * @see #getGNode()
 	 * @generated
 	 */
-	EAttribute getGNode_Uid();
+	EAttribute getGNode_UniqueId();
 
 	/**
 	 * Returns the meta object for the attribute '{@link GNode#getColor <em>Color</em>}'.
@@ -1317,12 +1317,12 @@ public interface GraphPackage extends EPackage {
 		EAttribute GNODE__DESCRIPTION = eINSTANCE.getGNode_Description();
 
 		/**
-		 * The meta object literal for the '<em><b>Uid</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Unique Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GNODE__UID = eINSTANCE.getGNode_Uid();
+		EAttribute GNODE__UNIQUE_ID = eINSTANCE.getGNode_UniqueId();
 
 		/**
 		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.

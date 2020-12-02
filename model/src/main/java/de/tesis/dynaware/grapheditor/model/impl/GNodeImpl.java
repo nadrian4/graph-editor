@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link GNodeImpl#getGroups <em>Groups</em>}</li>
  *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link GNodeImpl#getUid <em>Uid</em>}</li>
+ *   <li>{@link GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
  *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
  * </ul>
  *
@@ -268,24 +268,24 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUid() <em>Uid</em>}' attribute.
+	 * The default value of the '{@link #getUniqueId() <em>Unique Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUid()
+	 * @see #getUniqueId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String UID_EDEFAULT = "";
+	protected static final String UNIQUE_ID_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getUid() <em>Uid</em>}' attribute.
+	 * The cached value of the '{@link #getUniqueId() <em>Unique Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUid()
+	 * @see #getUniqueId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String uid = UID_EDEFAULT;
+	protected String uniqueId = UNIQUE_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -620,8 +620,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
-	public String getUid() {
-		return uid;
+	public String getUniqueId() {
+		return uniqueId;
 	}
 
 	/**
@@ -630,11 +630,11 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
-	public void setUid(String newUid) {
-		String oldUid = uid;
-		uid = newUid;
+	public void setUniqueId(String newUniqueId) {
+		String oldUniqueId = uniqueId;
+		uniqueId = newUniqueId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__UID, oldUid, uid));
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__UNIQUE_ID, oldUniqueId, uniqueId));
 	}
 
 	/**
@@ -722,8 +722,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return getTitle();
 			case GraphPackage.GNODE__DESCRIPTION:
 				return getDescription();
-			case GraphPackage.GNODE__UID:
-				return getUid();
+			case GraphPackage.GNODE__UNIQUE_ID:
+				return getUniqueId();
 			case GraphPackage.GNODE__COLOR:
 				return getColor();
 		}
@@ -776,8 +776,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case GraphPackage.GNODE__UID:
-				setUid((String)newValue);
+			case GraphPackage.GNODE__UNIQUE_ID:
+				setUniqueId((String)newValue);
 				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor((String)newValue);
@@ -830,8 +830,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case GraphPackage.GNODE__UID:
-				setUid(UID_EDEFAULT);
+			case GraphPackage.GNODE__UNIQUE_ID:
+				setUniqueId(UNIQUE_ID_EDEFAULT);
 				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor(COLOR_EDEFAULT);
@@ -872,8 +872,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case GraphPackage.GNODE__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case GraphPackage.GNODE__UID:
-				return UID_EDEFAULT == null ? uid != null : !UID_EDEFAULT.equals(uid);
+			case GraphPackage.GNODE__UNIQUE_ID:
+				return UNIQUE_ID_EDEFAULT == null ? uniqueId != null : !UNIQUE_ID_EDEFAULT.equals(uniqueId);
 			case GraphPackage.GNODE__COLOR:
 				return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
 		}
@@ -912,8 +912,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 		result.append(title);
 		result.append(", description: ");
 		result.append(description);
-		result.append(", uid: ");
-		result.append(uid);
+		result.append(", uniqueId: ");
+		result.append(uniqueId);
 		result.append(", color: ");
 		result.append(color);
 		result.append(')');
