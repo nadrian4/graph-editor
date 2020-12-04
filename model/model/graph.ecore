@@ -15,9 +15,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="supergraph" eType="#//GNode"
         changeable="false" eOpposite="#//GNode/subgraph"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
-        eType="#//GGroup"/>
+        eType="#//GGroup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
-        eType="#//GCategory"/>
+        eType="#//GCategory" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GConnectable" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"

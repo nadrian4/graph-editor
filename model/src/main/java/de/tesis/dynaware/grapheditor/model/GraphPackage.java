@@ -121,7 +121,7 @@ public interface GraphPackage extends EPackage {
 	int GMODEL__SUPERGRAPH = 5;
 
 	/**
-	 * The feature id for the '<em><b>Groups</b></em>' reference list.
+	 * The feature id for the '<em><b>Groups</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -130,7 +130,7 @@ public interface GraphPackage extends EPackage {
 	int GMODEL__GROUPS = 6;
 
 	/**
-	 * The feature id for the '<em><b>Categories</b></em>' reference list.
+	 * The feature id for the '<em><b>Categories</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -782,10 +782,10 @@ public interface GraphPackage extends EPackage {
 	EReference getGModel_Supergraph();
 
 	/**
-	 * Returns the meta object for the reference list '{@link GModel#getGroups <em>Groups</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getGroups <em>Groups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Groups</em>'.
+	 * @return the meta object for the containment reference list '<em>Groups</em>'.
 	 * @see GModel#getGroups()
 	 * @see #getGModel()
 	 * @generated
@@ -793,10 +793,10 @@ public interface GraphPackage extends EPackage {
 	EReference getGModel_Groups();
 
 	/**
-	 * Returns the meta object for the reference list '{@link GModel#getCategories <em>Categories</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Categories</em>'.
+	 * @return the meta object for the containment reference list '<em>Categories</em>'.
 	 * @see GModel#getCategories()
 	 * @see #getGModel()
 	 * @generated
@@ -1362,7 +1362,7 @@ public interface GraphPackage extends EPackage {
 		EReference GMODEL__SUPERGRAPH = eINSTANCE.getGModel_Supergraph();
 
 		/**
-		 * The meta object literal for the '<em><b>Groups</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Groups</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1370,7 +1370,7 @@ public interface GraphPackage extends EPackage {
 		EReference GMODEL__GROUPS = eINSTANCE.getGModel_Groups();
 
 		/**
-		 * The meta object literal for the '<em><b>Categories</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

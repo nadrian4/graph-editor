@@ -137,25 +137,25 @@ public interface GModel extends EObject {
 	GNode getSupergraph();
 
 	/**
-	 * Returns the value of the '<em><b>Groups</b></em>' reference list.
+	 * Returns the value of the '<em><b>Groups</b></em>' containment reference list.
 	 * The list contents are of type {@link GGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Groups</em>' reference list.
+	 * @return the value of the '<em>Groups</em>' containment reference list.
 	 * @see GraphPackage#getGModel_Groups()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<GGroup> getGroups();
 
 	/**
-	 * Returns the value of the '<em><b>Categories</b></em>' reference list.
+	 * Returns the value of the '<em><b>Categories</b></em>' containment reference list.
 	 * The list contents are of type {@link GCategory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Categories</em>' reference list.
+	 * @return the value of the '<em>Categories</em>' containment reference list.
 	 * @see GraphPackage#getGModel_Categories()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<GCategory> getCategories();

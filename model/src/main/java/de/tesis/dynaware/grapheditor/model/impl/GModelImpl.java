@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -129,7 +128,7 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	protected double contentHeight = CONTENT_HEIGHT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference list.
+	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGroups()
@@ -139,7 +138,7 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	protected EList<GGroup> groups;
 
 	/**
-	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
+	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCategories()
@@ -301,7 +300,7 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	@Override
 	public EList<GGroup> getGroups() {
 		if (groups == null) {
-			groups = new EObjectResolvingEList<GGroup>(GGroup.class, this, GraphPackage.GMODEL__GROUPS);
+			groups = new EObjectContainmentEList<GGroup>(GGroup.class, this, GraphPackage.GMODEL__GROUPS);
 		}
 		return groups;
 	}
@@ -314,7 +313,7 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	@Override
 	public EList<GCategory> getCategories() {
 		if (categories == null) {
-			categories = new EObjectResolvingEList<GCategory>(GCategory.class, this, GraphPackage.GMODEL__CATEGORIES);
+			categories = new EObjectContainmentEList<GCategory>(GCategory.class, this, GraphPackage.GMODEL__CATEGORIES);
 		}
 		return categories;
 	}
@@ -372,6 +371,10 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
 			case GraphPackage.GMODEL__SUPERGRAPH:
 				return eBasicSetContainer(null, GraphPackage.GMODEL__SUPERGRAPH, msgs);
+			case GraphPackage.GMODEL__GROUPS:
+				return ((InternalEList<?>)getGroups()).basicRemove(otherEnd, msgs);
+			case GraphPackage.GMODEL__CATEGORIES:
+				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
