@@ -21,12 +21,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link GNode#getHeight <em>Height</em>}</li>
  *   <li>{@link GNode#getSubgraph <em>Subgraph</em>}</li>
  *   <li>{@link GNode#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link GNode#getNodeCategory <em>Node Category</em>}</li>
- *   <li>{@link GNode#getGroups <em>Groups</em>}</li>
  *   <li>{@link GNode#getTitle <em>Title</em>}</li>
  *   <li>{@link GNode#getDescription <em>Description</em>}</li>
  *   <li>{@link GNode#getUniqueId <em>Unique Id</em>}</li>
  *   <li>{@link GNode#getColor <em>Color</em>}</li>
+ *   <li>{@link GNode#getCategory <em>Category</em>}</li>
+ *   <li>{@link GNode#getGroups <em>Groups</em>}</li>
  * </ul>
  *
  * @see GraphPackage#getGNode()
@@ -218,38 +218,16 @@ public interface GNode extends GConnectable {
 	void setNodeType(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Node Category</b></em>' attribute.
+	 * Returns the value of the '<em><b>Groups</b></em>' reference list.
+	 * The list contents are of type {@link GGroup}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Node Category</em>' attribute.
-	 * @see #setNodeCategory(String)
-	 * @see GraphPackage#getGNode_NodeCategory()
-	 * @model
-	 * @generated
-	 */
-	String getNodeCategory();
-
-	/**
-	 * Sets the value of the '{@link GNode#getNodeCategory <em>Node Category</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Node Category</em>' attribute.
-	 * @see #getNodeCategory()
-	 * @generated
-	 */
-	void setNodeCategory(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Groups</b></em>' attribute list.
-	 * The list contents are of type {@link String}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Groups</em>' attribute list.
+	 * @return the value of the '<em>Groups</em>' reference list.
 	 * @see GraphPackage#getGNode_Groups()
 	 * @model
 	 * @generated
 	 */
-	EList<String> getGroups();
+	EList<GGroup> getGroups();
 
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
@@ -340,5 +318,27 @@ public interface GNode extends GConnectable {
 	 * @generated
 	 */
 	void setColor(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Category</em>' reference.
+	 * @see #setCategory(GCategory)
+	 * @see GraphPackage#getGNode_Category()
+	 * @model required="true"
+	 * @generated
+	 */
+	GCategory getCategory();
+
+	/**
+	 * Sets the value of the '{@link GNode#getCategory <em>Category</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' reference.
+	 * @see #getCategory()
+	 * @generated
+	 */
+	void setCategory(GCategory value);
 
 } // GNode

@@ -104,6 +104,18 @@ public class GraphSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GraphPackage.GCATEGORY: {
+				GCategory gCategory = (GCategory)theEObject;
+				T result = caseGCategory(gCategory);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GraphPackage.GGROUP: {
+				GGroup gGroup = (GGroup)theEObject;
+				T result = caseGGroup(gGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -195,6 +207,36 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGJoint(GJoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GCategory</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GCategory</em>'.
+	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGCategory(GCategory object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GGroup</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GGroup</em>'.
+	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGGroup(GGroup object) {
 		return null;
 	}
 

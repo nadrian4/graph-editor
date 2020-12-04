@@ -2,9 +2,11 @@
  */
 package de.tesis.dynaware.grapheditor.model.impl;
 
+import de.tesis.dynaware.grapheditor.model.GCategory;
 import de.tesis.dynaware.grapheditor.model.GConnectable;
 import de.tesis.dynaware.grapheditor.model.GConnection;
 import de.tesis.dynaware.grapheditor.model.GConnector;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
@@ -66,6 +68,20 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	private EClass gJointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gCategoryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gGroupEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -207,7 +223,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	public EAttribute getGModel_Id() {
 		return (EAttribute)gModelEClass.getEStructuralFeatures().get(6);
 	}
-//
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,18 +340,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGNode_NodeCategory() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getGNode_Groups() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(9);
+	public EReference getGNode_Groups() {
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -345,7 +351,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_Title() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(10);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -355,7 +361,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_Description() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(11);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -365,7 +371,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_UniqueId() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(12);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -375,7 +381,17 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_Color() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(13);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGNode_Category() {
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -594,6 +610,56 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getGCategory() {
+		return gCategoryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGCategory_Name() {
+		return (EAttribute)gCategoryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGCategory_RemovalCost() {
+		return (EAttribute)gCategoryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getGGroup() {
+		return gGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGGroup_Name() {
+		return (EAttribute)gGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public GraphFactory getGraphFactory() {
 		return (GraphFactory)getEFactoryInstance();
 	}
@@ -638,12 +704,12 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gNodeEClass, GNODE__HEIGHT);
 		createEReference(gNodeEClass, GNODE__SUBGRAPH);
 		createEAttribute(gNodeEClass, GNODE__NODE_TYPE);
-		createEAttribute(gNodeEClass, GNODE__NODE_CATEGORY);
-		createEAttribute(gNodeEClass, GNODE__GROUPS);
 		createEAttribute(gNodeEClass, GNODE__TITLE);
 		createEAttribute(gNodeEClass, GNODE__DESCRIPTION);
 		createEAttribute(gNodeEClass, GNODE__UNIQUE_ID);
 		createEAttribute(gNodeEClass, GNODE__COLOR);
+		createEReference(gNodeEClass, GNODE__CATEGORY);
+		createEReference(gNodeEClass, GNODE__GROUPS);
 
 		gConnectionEClass = createEClass(GCONNECTION);
 		createEAttribute(gConnectionEClass, GCONNECTION__ID);
@@ -668,6 +734,13 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEReference(gJointEClass, GJOINT__CONNECTION);
 		createEAttribute(gJointEClass, GJOINT__X);
 		createEAttribute(gJointEClass, GJOINT__Y);
+
+		gCategoryEClass = createEClass(GCATEGORY);
+		createEAttribute(gCategoryEClass, GCATEGORY__NAME);
+		createEAttribute(gCategoryEClass, GCATEGORY__REMOVAL_COST);
+
+		gGroupEClass = createEClass(GGROUP);
+		createEAttribute(gGroupEClass, GGROUP__NAME);
 	}
 
 	/**
@@ -723,12 +796,12 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGNode_Height(), ecorePackage.getEDouble(), "height", "101", 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGNode_Subgraph(), this.getGModel(), this.getGModel_Supergraph(), "subgraph", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_NodeType(), ecorePackage.getEString(), "nodeType", "", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_NodeCategory(), ecorePackage.getEString(), "nodeCategory", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_Groups(), ecorePackage.getEString(), "groups", null, 0, -1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Description(), ecorePackage.getEString(), "description", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_UniqueId(), ecorePackage.getEString(), "uniqueId", "", 0, 1, GNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Color(), ecorePackage.getEString(), "color", "0xffffffff", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGNode_Category(), this.getGCategory(), null, "category", null, 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGNode_Groups(), this.getGGroup(), null, "groups", null, 0, -1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gConnectionEClass, GConnection.class, "GConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGConnection_Id(), ecorePackage.getEString(), "id", null, 0, 1, GConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -753,6 +826,13 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEReference(getGJoint_Connection(), this.getGConnection(), this.getGConnection_Joints(), "connection", null, 1, 1, GJoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGJoint_X(), ecorePackage.getEDouble(), "x", "0", 1, 1, GJoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGJoint_Y(), ecorePackage.getEDouble(), "y", "0", 1, 1, GJoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gCategoryEClass, GCategory.class, "GCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGCategory_Name(), ecorePackage.getEString(), "name", null, 0, 1, GCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGCategory_RemovalCost(), ecorePackage.getEDouble(), "removalCost", null, 0, 1, GCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gGroupEClass, GGroup.class, "GGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

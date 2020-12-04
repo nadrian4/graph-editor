@@ -276,31 +276,13 @@ public interface GraphPackage extends EPackage {
 	int GNODE__NODE_TYPE = GCONNECTABLE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Node Category</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GNODE__NODE_CATEGORY = GCONNECTABLE_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Groups</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GNODE__GROUPS = GCONNECTABLE_FEATURE_COUNT + 9;
-
-	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__TITLE = GCONNECTABLE_FEATURE_COUNT + 10;
+	int GNODE__TITLE = GCONNECTABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -309,7 +291,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__DESCRIPTION = GCONNECTABLE_FEATURE_COUNT + 11;
+	int GNODE__DESCRIPTION = GCONNECTABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Unique Id</b></em>' attribute.
@@ -318,7 +300,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__UNIQUE_ID = GCONNECTABLE_FEATURE_COUNT + 12;
+	int GNODE__UNIQUE_ID = GCONNECTABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -327,7 +309,25 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__COLOR = GCONNECTABLE_FEATURE_COUNT + 13;
+	int GNODE__COLOR = GCONNECTABLE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Category</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNODE__CATEGORY = GCONNECTABLE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNODE__GROUPS = GCONNECTABLE_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>GNode</em>' class.
@@ -604,6 +604,90 @@ public interface GraphPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.tesis.dynaware.grapheditor.model.impl.GCategoryImpl <em>GCategory</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GCategoryImpl
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGCategory()
+	 * @generated
+	 */
+	int GCATEGORY = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GCATEGORY__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Removal Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GCATEGORY__REMOVAL_COST = 1;
+
+	/**
+	 * The number of structural features of the '<em>GCategory</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GCATEGORY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>GCategory</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GCATEGORY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl <em>GGroup</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GGroupImpl
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGGroup()
+	 * @generated
+	 */
+	int GGROUP = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>GGroup</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>GGroup</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link GModel <em>GModel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -810,26 +894,15 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGNode_NodeType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GNode#getNodeCategory <em>Node Category</em>}'.
+	 * Returns the meta object for the reference list '{@link GNode#getGroups <em>Groups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Node Category</em>'.
-	 * @see GNode#getNodeCategory()
-	 * @see #getGNode()
-	 * @generated
-	 */
-	EAttribute getGNode_NodeCategory();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link GNode#getGroups <em>Groups</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Groups</em>'.
+	 * @return the meta object for the reference list '<em>Groups</em>'.
 	 * @see GNode#getGroups()
 	 * @see #getGNode()
 	 * @generated
 	 */
-	EAttribute getGNode_Groups();
+	EReference getGNode_Groups();
 
 	/**
 	 * Returns the meta object for the attribute '{@link GNode#getTitle <em>Title</em>}'.
@@ -874,6 +947,17 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGNode_Color();
+
+	/**
+	 * Returns the meta object for the reference '{@link GNode#getCategory <em>Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Category</em>'.
+	 * @see GNode#getCategory()
+	 * @see #getGNode()
+	 * @generated
+	 */
+	EReference getGNode_Category();
 
 	/**
 	 * Returns the meta object for class '{@link GConnection <em>GConnection</em>}'.
@@ -1104,6 +1188,59 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGJoint_Y();
 
 	/**
+	 * Returns the meta object for class '{@link GCategory <em>GCategory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GCategory</em>'.
+	 * @see GCategory
+	 * @generated
+	 */
+	EClass getGCategory();
+
+	/**
+	 * Returns the meta object for the attribute '{@link GCategory#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see GCategory#getName()
+	 * @see #getGCategory()
+	 * @generated
+	 */
+	EAttribute getGCategory_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link GCategory#getRemovalCost <em>Removal Cost</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Removal Cost</em>'.
+	 * @see GCategory#getRemovalCost()
+	 * @see #getGCategory()
+	 * @generated
+	 */
+	EAttribute getGCategory_RemovalCost();
+
+	/**
+	 * Returns the meta object for class '{@link GGroup <em>GGroup</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GGroup</em>'.
+	 * @see GGroup
+	 * @generated
+	 */
+	EClass getGGroup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link GGroup#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see GGroup#getName()
+	 * @see #getGGroup()
+	 * @generated
+	 */
+	EAttribute getGGroup_Name();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1285,20 +1422,12 @@ public interface GraphPackage extends EPackage {
 		EAttribute GNODE__NODE_TYPE = eINSTANCE.getGNode_NodeType();
 
 		/**
-		 * The meta object literal for the '<em><b>Node Category</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Groups</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GNODE__NODE_CATEGORY = eINSTANCE.getGNode_NodeCategory();
-
-		/**
-		 * The meta object literal for the '<em><b>Groups</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GNODE__GROUPS = eINSTANCE.getGNode_Groups();
+		EReference GNODE__GROUPS = eINSTANCE.getGNode_Groups();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
@@ -1331,6 +1460,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GNODE__COLOR = eINSTANCE.getGNode_Color();
+
+		/**
+		 * The meta object literal for the '<em><b>Category</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GNODE__CATEGORY = eINSTANCE.getGNode_Category();
 
 		/**
 		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl <em>GConnection</em>}' class.
@@ -1505,6 +1642,50 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GJOINT__Y = eINSTANCE.getGJoint_Y();
+
+		/**
+		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GCategoryImpl <em>GCategory</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GCategoryImpl
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGCategory()
+		 * @generated
+		 */
+		EClass GCATEGORY = eINSTANCE.getGCategory();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCATEGORY__NAME = eINSTANCE.getGCategory_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Removal Cost</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCATEGORY__REMOVAL_COST = eINSTANCE.getGCategory_RemovalCost();
+
+		/**
+		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl <em>GGroup</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GGroupImpl
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGGroup()
+		 * @generated
+		 */
+		EClass GGROUP = eINSTANCE.getGGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GGROUP__NAME = eINSTANCE.getGGroup_Name();
 
 	}
 

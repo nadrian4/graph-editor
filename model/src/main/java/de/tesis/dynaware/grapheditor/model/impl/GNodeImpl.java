@@ -2,6 +2,8 @@
  */
 package de.tesis.dynaware.grapheditor.model.impl;
 
+import de.tesis.dynaware.grapheditor.model.GCategory;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
@@ -17,8 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,12 +37,12 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link GNodeImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
  *   <li>{@link GNodeImpl#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link GNodeImpl#getNodeCategory <em>Node Category</em>}</li>
- *   <li>{@link GNodeImpl#getGroups <em>Groups</em>}</li>
  *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
  *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link GNodeImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link GNodeImpl#getGroups <em>Groups</em>}</li>
  * </ul>
  *
  * @generated
@@ -198,36 +199,6 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	protected String nodeType = NODE_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNodeCategory() <em>Node Category</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodeCategory()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NODE_CATEGORY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getNodeCategory() <em>Node Category</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNodeCategory()
-	 * @generated
-	 * @ordered
-	 */
-	protected String nodeCategory = NODE_CATEGORY_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<String> groups;
-
-	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,6 +277,26 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @ordered
 	 */
 	protected String color = COLOR_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCategory() <em>Category</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategory()
+	 * @generated
+	 * @ordered
+	 */
+	protected GCategory category;
+
+	/**
+	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GGroup> groups;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -538,32 +529,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
-	public String getNodeCategory() {
-		return nodeCategory;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setNodeCategory(String newNodeCategory) {
-		String oldNodeCategory = nodeCategory;
-		nodeCategory = newNodeCategory;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__NODE_CATEGORY, oldNodeCategory, nodeCategory));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<String> getGroups() {
+	public EList<GGroup> getGroups() {
 		if (groups == null) {
-			groups = new EDataTypeUniqueEList<String>(String.class, this, GraphPackage.GNODE__GROUPS);
+			groups = new EObjectResolvingEList<GGroup>(GGroup.class, this, GraphPackage.GNODE__GROUPS);
 		}
 		return groups;
 	}
@@ -666,6 +634,46 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
+	public GCategory getCategory() {
+		if (category != null && category.eIsProxy()) {
+			InternalEObject oldCategory = (InternalEObject)category;
+			category = (GCategory)eResolveProxy(oldCategory);
+			if (category != oldCategory) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraphPackage.GNODE__CATEGORY, oldCategory, category));
+			}
+		}
+		return category;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GCategory basicGetCategory() {
+		return category;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCategory(GCategory newCategory) {
+		GCategory oldCategory = category;
+		category = newCategory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__CATEGORY, oldCategory, category));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraphPackage.GNODE__SUBGRAPH:
@@ -714,10 +722,6 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return getSubgraph();
 			case GraphPackage.GNODE__NODE_TYPE:
 				return getNodeType();
-			case GraphPackage.GNODE__NODE_CATEGORY:
-				return getNodeCategory();
-			case GraphPackage.GNODE__GROUPS:
-				return getGroups();
 			case GraphPackage.GNODE__TITLE:
 				return getTitle();
 			case GraphPackage.GNODE__DESCRIPTION:
@@ -726,6 +730,11 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return getUniqueId();
 			case GraphPackage.GNODE__COLOR:
 				return getColor();
+			case GraphPackage.GNODE__CATEGORY:
+				if (resolve) return getCategory();
+				return basicGetCategory();
+			case GraphPackage.GNODE__GROUPS:
+				return getGroups();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -763,13 +772,6 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__NODE_TYPE:
 				setNodeType((String)newValue);
 				return;
-			case GraphPackage.GNODE__NODE_CATEGORY:
-				setNodeCategory((String)newValue);
-				return;
-			case GraphPackage.GNODE__GROUPS:
-				getGroups().clear();
-				getGroups().addAll((Collection<? extends String>)newValue);
-				return;
 			case GraphPackage.GNODE__TITLE:
 				setTitle((String)newValue);
 				return;
@@ -781,6 +783,13 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor((String)newValue);
+				return;
+			case GraphPackage.GNODE__CATEGORY:
+				setCategory((GCategory)newValue);
+				return;
+			case GraphPackage.GNODE__GROUPS:
+				getGroups().clear();
+				getGroups().addAll((Collection<? extends GGroup>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -818,12 +827,6 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__NODE_TYPE:
 				setNodeType(NODE_TYPE_EDEFAULT);
 				return;
-			case GraphPackage.GNODE__NODE_CATEGORY:
-				setNodeCategory(NODE_CATEGORY_EDEFAULT);
-				return;
-			case GraphPackage.GNODE__GROUPS:
-				getGroups().clear();
-				return;
 			case GraphPackage.GNODE__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
@@ -835,6 +838,12 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor(COLOR_EDEFAULT);
+				return;
+			case GraphPackage.GNODE__CATEGORY:
+				setCategory((GCategory)null);
+				return;
+			case GraphPackage.GNODE__GROUPS:
+				getGroups().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -864,10 +873,6 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return subgraph != null;
 			case GraphPackage.GNODE__NODE_TYPE:
 				return NODE_TYPE_EDEFAULT == null ? nodeType != null : !NODE_TYPE_EDEFAULT.equals(nodeType);
-			case GraphPackage.GNODE__NODE_CATEGORY:
-				return NODE_CATEGORY_EDEFAULT == null ? nodeCategory != null : !NODE_CATEGORY_EDEFAULT.equals(nodeCategory);
-			case GraphPackage.GNODE__GROUPS:
-				return groups != null && !groups.isEmpty();
 			case GraphPackage.GNODE__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case GraphPackage.GNODE__DESCRIPTION:
@@ -876,6 +881,10 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return UNIQUE_ID_EDEFAULT == null ? uniqueId != null : !UNIQUE_ID_EDEFAULT.equals(uniqueId);
 			case GraphPackage.GNODE__COLOR:
 				return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
+			case GraphPackage.GNODE__CATEGORY:
+				return category != null;
+			case GraphPackage.GNODE__GROUPS:
+				return groups != null && !groups.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -904,10 +913,6 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 		result.append(height);
 		result.append(", nodeType: ");
 		result.append(nodeType);
-		result.append(", nodeCategory: ");
-		result.append(nodeCategory);
-		result.append(", groups: ");
-		result.append(groups);
 		result.append(", title: ");
 		result.append(title);
 		result.append(", description: ");

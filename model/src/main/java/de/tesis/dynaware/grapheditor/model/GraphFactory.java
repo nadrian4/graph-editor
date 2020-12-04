@@ -67,6 +67,24 @@ public interface GraphFactory extends EFactory {
 	GJoint createGJoint();
 
 	/**
+	 * Returns a new object of class '<em>GCategory</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GCategory</em>'.
+	 * @generated
+	 */
+	GCategory createGCategory();
+
+	/**
+	 * Returns a new object of class '<em>GGroup</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GGroup</em>'.
+	 * @generated
+	 */
+	GGroup createGGroup();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
