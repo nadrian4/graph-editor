@@ -241,7 +241,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGModel_Id() {
-		return (EAttribute)gModelEClass.getEStructuralFeatures().get(-1);
+		return (EAttribute)gModelEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
