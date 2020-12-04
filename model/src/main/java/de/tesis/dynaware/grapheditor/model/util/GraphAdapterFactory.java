@@ -204,13 +204,13 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GCategory <em>GCategory</em>}'.
+	 * Creates a new adapter for an object of class '{@link GCategory <em>GCategory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GCategory
+	 * @see GCategory
 	 * @generated
 	 */
 	public Adapter createGCategoryAdapter() {
@@ -218,13 +218,13 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GGroup <em>GGroup</em>}'.
+	 * Creates a new adapter for an object of class '{@link GGroup <em>GGroup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup
+	 * @see GGroup
 	 * @generated
 	 */
 	public Adapter createGGroupAdapter() {

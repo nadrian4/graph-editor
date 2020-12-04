@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link GModel#getContentWidth <em>Content Width</em>}</li>
  *   <li>{@link GModel#getContentHeight <em>Content Height</em>}</li>
  *   <li>{@link GModel#getSupergraph <em>Supergraph</em>}</li>
+ *   <li>{@link GModel#getGroups <em>Groups</em>}</li>
+ *   <li>{@link GModel#getCategories <em>Categories</em>}</li>
  *   <li>{@link GModel#getId <em>Id</em>}</li>
  * </ul>
  *
@@ -133,6 +135,30 @@ public interface GModel extends EObject {
 	 * @generated
 	 */
 	GNode getSupergraph();
+
+	/**
+	 * Returns the value of the '<em><b>Groups</b></em>' reference list.
+	 * The list contents are of type {@link GGroup}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Groups</em>' reference list.
+	 * @see GraphPackage#getGModel_Groups()
+	 * @model
+	 * @generated
+	 */
+	EList<GGroup> getGroups();
+
+	/**
+	 * Returns the value of the '<em><b>Categories</b></em>' reference list.
+	 * The list contents are of type {@link GCategory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Categories</em>' reference list.
+	 * @see GraphPackage#getGModel_Categories()
+	 * @model
+	 * @generated
+	 */
+	EList<GCategory> getCategories();
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.

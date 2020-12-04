@@ -14,6 +14,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="2250"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="supergraph" eType="#//GNode"
         changeable="false" eOpposite="#//GNode/subgraph"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+        eType="#//GGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
+        eType="#//GCategory"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GConnectable" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"

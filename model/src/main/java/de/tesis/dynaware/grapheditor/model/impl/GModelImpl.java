@@ -2,7 +2,9 @@
  */
 package de.tesis.dynaware.grapheditor.model.impl;
 
+import de.tesis.dynaware.grapheditor.model.GCategory;
 import de.tesis.dynaware.grapheditor.model.GConnection;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -37,6 +40,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link GModelImpl#getContentWidth <em>Content Width</em>}</li>
  *   <li>{@link GModelImpl#getContentHeight <em>Content Height</em>}</li>
  *   <li>{@link GModelImpl#getSupergraph <em>Supergraph</em>}</li>
+ *   <li>{@link GModelImpl#getGroups <em>Groups</em>}</li>
+ *   <li>{@link GModelImpl#getCategories <em>Categories</em>}</li>
  *   <li>{@link GModelImpl#getId <em>Id</em>}</li>
  * </ul>
  *
@@ -122,6 +127,26 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	 * @ordered
 	 */
 	protected double contentHeight = CONTENT_HEIGHT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GGroup> groups;
+
+	/**
+	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCategories()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GCategory> categories;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -274,6 +299,32 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	 * @generated
 	 */
 	@Override
+	public EList<GGroup> getGroups() {
+		if (groups == null) {
+			groups = new EObjectResolvingEList<GGroup>(GGroup.class, this, GraphPackage.GMODEL__GROUPS);
+		}
+		return groups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<GCategory> getCategories() {
+		if (categories == null) {
+			categories = new EObjectResolvingEList<GCategory>(GCategory.class, this, GraphPackage.GMODEL__CATEGORIES);
+		}
+		return categories;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -359,6 +410,10 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				return getContentHeight();
 			case GraphPackage.GMODEL__SUPERGRAPH:
 				return getSupergraph();
+			case GraphPackage.GMODEL__GROUPS:
+				return getGroups();
+			case GraphPackage.GMODEL__CATEGORIES:
+				return getCategories();
 			case GraphPackage.GMODEL__ID:
 				return getId();
 		}
@@ -391,6 +446,14 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 			case GraphPackage.GMODEL__CONTENT_HEIGHT:
 				setContentHeight((Double)newValue);
 				return;
+			case GraphPackage.GMODEL__GROUPS:
+				getGroups().clear();
+				getGroups().addAll((Collection<? extends GGroup>)newValue);
+				return;
+			case GraphPackage.GMODEL__CATEGORIES:
+				getCategories().clear();
+				getCategories().addAll((Collection<? extends GCategory>)newValue);
+				return;
 			case GraphPackage.GMODEL__ID:
 				setId((String)newValue);
 				return;
@@ -421,6 +484,12 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 			case GraphPackage.GMODEL__CONTENT_HEIGHT:
 				setContentHeight(CONTENT_HEIGHT_EDEFAULT);
 				return;
+			case GraphPackage.GMODEL__GROUPS:
+				getGroups().clear();
+				return;
+			case GraphPackage.GMODEL__CATEGORIES:
+				getCategories().clear();
+				return;
 			case GraphPackage.GMODEL__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -448,6 +517,10 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				return contentHeight != CONTENT_HEIGHT_EDEFAULT;
 			case GraphPackage.GMODEL__SUPERGRAPH:
 				return getSupergraph() != null;
+			case GraphPackage.GMODEL__GROUPS:
+				return groups != null && !groups.isEmpty();
+			case GraphPackage.GMODEL__CATEGORIES:
+				return categories != null && !categories.isEmpty();
 			case GraphPackage.GMODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}

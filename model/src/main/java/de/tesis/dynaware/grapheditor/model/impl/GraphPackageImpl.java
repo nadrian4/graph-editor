@@ -220,8 +220,28 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getGModel_Groups() {
+		return (EReference)gModelEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGModel_Categories() {
+		return (EReference)gModelEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getGModel_Id() {
-		return (EAttribute)gModelEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)gModelEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -690,6 +710,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gModelEClass, GMODEL__CONTENT_WIDTH);
 		createEAttribute(gModelEClass, GMODEL__CONTENT_HEIGHT);
 		createEReference(gModelEClass, GMODEL__SUPERGRAPH);
+		createEReference(gModelEClass, GMODEL__GROUPS);
+		createEReference(gModelEClass, GMODEL__CATEGORIES);
 		createEAttribute(gModelEClass, GMODEL__ID);
 
 		gConnectableEClass = createEClass(GCONNECTABLE);
@@ -782,6 +804,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGModel_ContentWidth(), ecorePackage.getEDouble(), "contentWidth", "3000", 1, 1, GModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGModel_ContentHeight(), ecorePackage.getEDouble(), "contentHeight", "2250", 1, 1, GModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGModel_Supergraph(), this.getGNode(), this.getGNode_Subgraph(), "supergraph", null, 0, 1, GModel.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGModel_Groups(), this.getGGroup(), null, "groups", null, 0, -1, GModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGModel_Categories(), this.getGCategory(), null, "categories", null, 0, -1, GModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGModel_Id(), ecorePackage.getEString(), "id", null, 0, 1, GModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gConnectableEClass, GConnectable.class, "GConnectable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

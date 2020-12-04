@@ -121,13 +121,31 @@ public interface GraphPackage extends EPackage {
 	int GMODEL__SUPERGRAPH = 5;
 
 	/**
+	 * The feature id for the '<em><b>Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GMODEL__GROUPS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Categories</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GMODEL__CATEGORIES = 7;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GMODEL__ID = 6;
+	int GMODEL__ID = 8;
 
 	/**
 	 * The number of structural features of the '<em>GModel</em>' class.
@@ -136,7 +154,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GMODEL_FEATURE_COUNT = 7;
+	int GMODEL_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>GModel</em>' class.
@@ -764,6 +782,28 @@ public interface GraphPackage extends EPackage {
 	EReference getGModel_Supergraph();
 
 	/**
+	 * Returns the meta object for the reference list '{@link GModel#getGroups <em>Groups</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Groups</em>'.
+	 * @see GModel#getGroups()
+	 * @see #getGModel()
+	 * @generated
+	 */
+	EReference getGModel_Groups();
+
+	/**
+	 * Returns the meta object for the reference list '{@link GModel#getCategories <em>Categories</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Categories</em>'.
+	 * @see GModel#getCategories()
+	 * @see #getGModel()
+	 * @generated
+	 */
+	EReference getGModel_Categories();
+
+	/**
 	 * Returns the meta object for the attribute '{@link GModel#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1320,6 +1360,22 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GMODEL__SUPERGRAPH = eINSTANCE.getGModel_Supergraph();
+
+		/**
+		 * The meta object literal for the '<em><b>Groups</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GMODEL__GROUPS = eINSTANCE.getGModel_Groups();
+
+		/**
+		 * The meta object literal for the '<em><b>Categories</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GMODEL__CATEGORIES = eINSTANCE.getGModel_Categories();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
