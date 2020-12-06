@@ -3,11 +3,6 @@
  */
 package de.tesis.dynaware.grapheditor.core.skins;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import de.tesis.dynaware.grapheditor.GConnectionSkin;
 import de.tesis.dynaware.grapheditor.GConnectorSkin;
 import de.tesis.dynaware.grapheditor.GJointSkin;
@@ -21,6 +16,12 @@ import de.tesis.dynaware.grapheditor.model.GConnector;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Manages skins for all elements of a {@link GModel}.
@@ -229,7 +230,7 @@ public class SkinManager implements SkinLookup {
      * list of joints will be updated.
      * </p>
      *
-     * @param connection the {@link GConnection} to which joints should be added
+     * @param connection  the {@link GConnection} to which joints should be added
      * @param jointsToAdd a list of {@link GJoint} instances for which skin instances should be created and added
      */
     public void addJoints(final GConnection connection, final List<GJoint> jointsToAdd) {
@@ -282,6 +283,11 @@ public class SkinManager implements SkinLookup {
     }
 
     @Override
+    public List<GNodeSkin> lookupNodes(List<GNode> nodes) {
+        return nodeSkins.entrySet().stream().filter(entry -> nodes.contains(entry.getKey())).map(Map.Entry::getValue).collect(Collectors.toList());
+    }
+
+    @Override
     public GNodeSkin lookupNode(final GNode node) {
         return nodeSkins.get(node);
     }
@@ -289,6 +295,11 @@ public class SkinManager implements SkinLookup {
     @Override
     public GConnectorSkin lookupConnector(final GConnector connector) {
         return connectorSkins.get(connector);
+    }
+
+    @Override
+    public List<GConnectionSkin> lookupConnections(List<GConnection> connections) {
+        return connectionSkins.entrySet().stream().filter(entry -> connections.contains(entry.getKey())).map(Map.Entry::getValue).collect(Collectors.toList());
     }
 
     @Override

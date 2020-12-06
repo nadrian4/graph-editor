@@ -69,6 +69,10 @@ public class PanningWindow extends Region {
         initializeCacheWhenMouseOutside();
     }
 
+    public Region getContent() {
+        return this.content;
+    }
+
     /**
      * Pans the window to the specified x and y coordinates.
      *

@@ -8,10 +8,14 @@ import de.tesis.dynaware.grapheditor.model.GConnector;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GNode;
 
+import java.util.List;
+
 /**
  * Provides lookup methods to connect each model instance to its skin instance.
  */
 public interface SkinLookup {
+
+    List<GNodeSkin> lookupNodes(List<GNode> nodes);
 
     /**
      * Gets the skin for the given node.
@@ -30,6 +34,15 @@ public interface SkinLookup {
      * @return the associated {@link GConnectorSkin} instance
      */
     GConnectorSkin lookupConnector(final GConnector connector);
+
+    /**
+     * Gets the skin for the given connection.
+     *
+     * @param connection a {@link GConnection} instance
+     *
+     * @return the associated {@link GConnectionSkin} instance
+     */
+    List<GConnectionSkin> lookupConnections(final List<GConnection> connection);
 
     /**
      * Gets the skin for the given connection.
