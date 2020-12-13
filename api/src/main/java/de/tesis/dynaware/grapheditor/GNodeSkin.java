@@ -30,6 +30,8 @@ public abstract class GNodeSkin extends GSkin {
 
     private final GNode node;
 
+    private boolean visible = true;
+
     private final ResizableBox root = new ResizableBox() {
 
         @Override
@@ -46,6 +48,14 @@ public abstract class GNodeSkin extends GSkin {
      */
     public GNodeSkin(final GNode node) {
         this.node = node;
+    }
+
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public void setText() {

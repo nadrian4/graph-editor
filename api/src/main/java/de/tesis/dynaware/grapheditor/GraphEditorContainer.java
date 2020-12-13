@@ -99,13 +99,13 @@ public class GraphEditorContainer extends AutoScrollingWindow {
             neighbourhoodContainer.setSkinLookup(skinLookup);
 
             view.toBack();
-            sceneProperty().addListener((observable, oldValue, newValue) -> {
-                newValue.setOnScroll(event -> {
-                    if (!event.isControlDown()) {
-                        panBy(-event.getDeltaX(), -event.getDeltaY());
-                    }
-                });
-            });
+//            sceneProperty().addListener((observable, oldValue, newValue) -> {
+//                newValue.setOnScroll(event -> {
+//                    if (!event.isControlDown()) {
+//                        panBy(-event.getDeltaX(), -event.getDeltaY());
+//                    }
+//                });
+//            });
             view.setOnScroll(event -> {
                 if (!event.isControlDown()) {
                     panBy(-event.getDeltaX(), -event.getDeltaY());
