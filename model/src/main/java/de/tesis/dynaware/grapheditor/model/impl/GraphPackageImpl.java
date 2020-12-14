@@ -10,6 +10,7 @@ import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GText;
 import de.tesis.dynaware.grapheditor.model.GraphFactory;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
 
@@ -82,6 +83,13 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	private EClass gGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gTextEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -680,6 +688,76 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getGText() {
+		return gTextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGText_Id() {
+		return (EAttribute)gTextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGText_Text() {
+		return (EAttribute)gTextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGText_X() {
+		return (EAttribute)gTextEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGText_Y() {
+		return (EAttribute)gTextEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGText_Width() {
+		return (EAttribute)gTextEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGText_Height() {
+		return (EAttribute)gTextEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public GraphFactory getGraphFactory() {
 		return (GraphFactory)getEFactoryInstance();
 	}
@@ -763,6 +841,14 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 
 		gGroupEClass = createEClass(GGROUP);
 		createEAttribute(gGroupEClass, GGROUP__NAME);
+
+		gTextEClass = createEClass(GTEXT);
+		createEAttribute(gTextEClass, GTEXT__ID);
+		createEAttribute(gTextEClass, GTEXT__TEXT);
+		createEAttribute(gTextEClass, GTEXT__X);
+		createEAttribute(gTextEClass, GTEXT__Y);
+		createEAttribute(gTextEClass, GTEXT__WIDTH);
+		createEAttribute(gTextEClass, GTEXT__HEIGHT);
 	}
 
 	/**
@@ -857,6 +943,14 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 
 		initEClass(gGroupEClass, GGroup.class, "GGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gTextEClass, GText.class, "GText", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGText_Id(), ecorePackage.getEString(), "id", null, 0, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGText_Text(), ecorePackage.getEString(), "text", null, 0, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGText_X(), ecorePackage.getEDouble(), "x", "0", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGText_Y(), ecorePackage.getEDouble(), "y", "0", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGText_Width(), ecorePackage.getEDouble(), "width", "151", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGText_Height(), ecorePackage.getEDouble(), "height", "101", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

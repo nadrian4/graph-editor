@@ -85,6 +85,15 @@ public interface GraphFactory extends EFactory {
 	GGroup createGGroup();
 
 	/**
+	 * Returns a new object of class '<em>GText</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GText</em>'.
+	 * @generated
+	 */
+	GText createGText();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -116,6 +116,12 @@ public class GraphSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GraphPackage.GTEXT: {
+				GText gText = (GText)theEObject;
+				T result = caseGText(gText);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -237,6 +243,21 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGGroup(GGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GText</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GText</em>'.
+	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGText(GText object) {
 		return null;
 	}
 

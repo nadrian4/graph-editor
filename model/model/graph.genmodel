@@ -70,5 +70,13 @@
     <genClasses ecoreClass="graph.ecore#//GGroup">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GGroup/name"/>
     </genClasses>
+    <genClasses ecoreClass="graph.ecore#//GText">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/height"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

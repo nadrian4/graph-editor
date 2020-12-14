@@ -706,6 +706,89 @@ public interface GraphPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.tesis.dynaware.grapheditor.model.impl.GTextImpl <em>GText</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GTextImpl
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGText()
+	 * @generated
+	 */
+	int GTEXT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__TEXT = 1;
+
+	/**
+	 * The feature id for the '<em><b>X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__X = 2;
+
+	/**
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__Y = 3;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__WIDTH = 4;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__HEIGHT = 5;
+
+	/**
+	 * The number of structural features of the '<em>GText</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT_FEATURE_COUNT = 6;
+
+	/**
+	 * The number of operations of the '<em>GText</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link GModel <em>GModel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1281,6 +1364,82 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGGroup_Name();
 
 	/**
+	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GText <em>GText</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GText</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText
+	 * @generated
+	 */
+	EClass getGText();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText#getId()
+	 * @see #getGText()
+	 * @generated
+	 */
+	EAttribute getGText_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText#getText()
+	 * @see #getGText()
+	 * @generated
+	 */
+	EAttribute getGText_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getX <em>X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>X</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText#getX()
+	 * @see #getGText()
+	 * @generated
+	 */
+	EAttribute getGText_X();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getY <em>Y</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Y</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText#getY()
+	 * @see #getGText()
+	 * @generated
+	 */
+	EAttribute getGText_Y();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getWidth <em>Width</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Width</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText#getWidth()
+	 * @see #getGText()
+	 * @generated
+	 */
+	EAttribute getGText_Width();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getHeight <em>Height</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Height</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GText#getHeight()
+	 * @see #getGText()
+	 * @generated
+	 */
+	EAttribute getGText_Height();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1742,6 +1901,64 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GGROUP__NAME = eINSTANCE.getGGroup_Name();
+
+		/**
+		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GTextImpl <em>GText</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GTextImpl
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGText()
+		 * @generated
+		 */
+		EClass GTEXT = eINSTANCE.getGText();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GTEXT__ID = eINSTANCE.getGText_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GTEXT__TEXT = eINSTANCE.getGText_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GTEXT__X = eINSTANCE.getGText_X();
+
+		/**
+		 * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GTEXT__Y = eINSTANCE.getGText_Y();
+
+		/**
+		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GTEXT__WIDTH = eINSTANCE.getGText_Width();
+
+		/**
+		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GTEXT__HEIGHT = eINSTANCE.getGText_Height();
 
 	}
 

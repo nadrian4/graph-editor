@@ -63,6 +63,7 @@ public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
 			case GraphPackage.GJOINT: return createGJoint();
 			case GraphPackage.GCATEGORY: return createGCategory();
 			case GraphPackage.GGROUP: return createGGroup();
+			case GraphPackage.GTEXT: return createGText();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -143,6 +144,17 @@ public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
 	public GGroup createGGroup() {
 		GGroupImpl gGroup = new GGroupImpl();
 		return gGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public GText createGText() {
+		GTextImpl gText = new GTextImpl();
+		return gText;
 	}
 
 	/**
