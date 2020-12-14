@@ -3,13 +3,13 @@
  */
 package de.tesis.dynaware.grapheditor;
 
+import de.tesis.dynaware.grapheditor.model.GModel;
+import de.tesis.dynaware.grapheditor.window.AutoScrollingWindow;
+import de.tesis.dynaware.grapheditor.window.GraphEditorMinimap;
 import de.tesis.dynaware.grapheditor.window.NeighbourhoodContainer;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
-import de.tesis.dynaware.grapheditor.model.GModel;
-import de.tesis.dynaware.grapheditor.window.AutoScrollingWindow;
-import de.tesis.dynaware.grapheditor.window.GraphEditorMinimap;
 
 /**
  * A container for the graph editor.
@@ -25,11 +25,11 @@ import de.tesis.dynaware.grapheditor.window.GraphEditorMinimap;
  * <pre>
  * <code>GraphEditorContainer graphEditorContainer = new GraphEditorContainer();
  * GraphEditor graphEditor = new DefaultGraphEditor();
- * 
+ *
  * graphEditorContainer.setGraphEditor(graphEditor);
  * graphEditorContainer.getMinimap().setVisible(true);</code>
  * </pre>
- *
+ * <p>
  * The graph editor container is a {@link Region} and can be added to the JavaFX scene graph in the usual way.
  * </p>
  *
@@ -99,6 +99,13 @@ public class GraphEditorContainer extends AutoScrollingWindow {
             neighbourhoodContainer.setSkinLookup(skinLookup);
 
             view.toBack();
+//            sceneProperty().addListener((observable, oldValue, newValue) -> {
+//                newValue.setOnScroll(event -> {
+//                    if (!event.isControlDown()) {
+//                        panBy(-event.getDeltaX(), -event.getDeltaY());
+//                    }
+//                });
+//            });
             view.setOnScroll(event -> {
                 if (!event.isControlDown()) {
                     panBy(-event.getDeltaX(), -event.getDeltaY());
@@ -115,12 +122,12 @@ public class GraphEditorContainer extends AutoScrollingWindow {
 
     /**
      * Gets the {@link Pane} representing the graph editor minimap.
-     * 
+     *
      * <p>
      * <b>Note:</b> customisation of the minimap's content and layout has not been extensively tested.
      * </p>
-     *
-     * @param the graph editor minimap
+     * <p>
+     * the graph editor minimap
      */
     public Pane getMinimap() {
         return minimap;

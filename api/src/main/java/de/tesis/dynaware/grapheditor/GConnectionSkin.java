@@ -3,6 +3,7 @@
  */
 package de.tesis.dynaware.grapheditor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -100,5 +101,9 @@ public abstract class GConnectionSkin extends GSkin {
      */
     public void applyConstraints(final List<Point2D> points) {
         // No default implementation.
+    }
+
+    public List<Point2D> getPoints() {
+        return new ArrayList<>();
     }
 }

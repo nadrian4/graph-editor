@@ -139,6 +139,11 @@ public class SimpleConnectionSkin extends GConnectionSkin {
         this.intersections = intersections;
     }
 
+    @Override
+    public List<Point2D> getPoints() {
+        return new ArrayList<>(points);
+    }
+
     /**
      * Removes the old rectangular constraints on the connection's list of joint skins.
      */

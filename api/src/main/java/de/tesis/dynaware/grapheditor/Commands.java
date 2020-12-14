@@ -3,13 +3,16 @@
  */
 package de.tesis.dynaware.grapheditor;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import de.tesis.dynaware.grapheditor.model.GCategory;
+import de.tesis.dynaware.grapheditor.model.GConnection;
+import de.tesis.dynaware.grapheditor.model.GConnector;
+import de.tesis.dynaware.grapheditor.model.GGroup;
+import de.tesis.dynaware.grapheditor.model.GJoint;
+import de.tesis.dynaware.grapheditor.model.GModel;
+import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GraphPackage;
+import de.tesis.dynaware.grapheditor.utils.LogMessages;
 import javafx.scene.layout.Region;
-
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EAttribute;
@@ -22,13 +25,10 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.tesis.dynaware.grapheditor.model.GConnection;
-import de.tesis.dynaware.grapheditor.model.GConnector;
-import de.tesis.dynaware.grapheditor.model.GJoint;
-import de.tesis.dynaware.grapheditor.model.GModel;
-import de.tesis.dynaware.grapheditor.model.GNode;
-import de.tesis.dynaware.grapheditor.model.GraphPackage;
-import de.tesis.dynaware.grapheditor.utils.LogMessages;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Provides utility methods for editing a {@link GModel} via EMF commands.
@@ -39,12 +39,12 @@ import de.tesis.dynaware.grapheditor.utils.LogMessages;
  * <pre>
  * <code>GModel model = GraphFactory.eINSTANCE.createGModel();
  * GNode node = GraphFactory.eINSTANCE.createGNode();
- * 
+ *
  * node.setX(100);
  * node.setY(50);
  * node.setWidth(150);
  * node.setHeight(200);
- * 
+ *
  * Commands.addNode(model, node);
  * Commands.undo(model);
  * Commands.redo(model);</code>
@@ -56,6 +56,8 @@ public class Commands {
 
     private static final EReference NODES = GraphPackage.Literals.GMODEL__NODES;
     private static final EReference CONNECTIONS = GraphPackage.Literals.GMODEL__CONNECTIONS;
+    private static final EReference CATEGORIES = GraphPackage.Literals.GMODEL__CATEGORIES;
+    private static final EReference GROUPS = GraphPackage.Literals.GMODEL__GROUPS;
 
     private static final EAttribute NODE_X = GraphPackage.Literals.GNODE__X;
     private static final EAttribute NODE_Y = GraphPackage.Literals.GNODE__Y;
@@ -74,6 +76,32 @@ public class Commands {
     private Commands() {
     }
 
+    public static void addCategory(final GModel model, final GCategory category) {
+
+        final EditingDomain editingDomain = getEditingDomain(model);
+
+        if (editingDomain != null) {
+            final Command command = AddCommand.create(editingDomain, model, CATEGORIES, category);
+
+            if (command.canExecute()) {
+                editingDomain.getCommandStack().execute(command);
+            }
+        }
+    }
+
+    public static void addGroup(final GModel model, final GGroup group) {
+
+        final EditingDomain editingDomain = getEditingDomain(model);
+
+        if (editingDomain != null) {
+            final Command command = AddCommand.create(editingDomain, model, GROUPS, group);
+
+            if (command.canExecute()) {
+                editingDomain.getCommandStack().execute(command);
+            }
+        }
+    }
+
     /**
      * Adds a node to the model.
      *
@@ -82,7 +110,7 @@ public class Commands {
      * </p>
      *
      * @param model the {@link GModel} to which the node should be added
-     * @param node the {@link GNode} to add to the model
+     * @param node  the {@link GNode} to add to the model
      */
     public static void addNode(final GModel model, final GNode node) {
 
@@ -99,13 +127,13 @@ public class Commands {
 
     /**
      * Removes a node from the model.
-     * 
+     *
      * <p>
      * Also removes any connections that were attached to the node.
      * </p>
      *
      * @param model the {@link GModel} from which the node should be removed
-     * @param node the {@link GNode} to remove from the model
+     * @param node  the {@link GNode} to remove from the model
      */
     public static void removeNode(final GModel model, final GNode node) {
 
@@ -171,7 +199,7 @@ public class Commands {
 
     /**
      * Removes all connectors from the given nodes, and all connections attached to them.
-     * 
+     *
      * @param model the {@link GModel} being edited
      * @param nodes a list of {@link GNode} instances whose connectors should be removed
      */
@@ -225,8 +253,8 @@ public class Commands {
      * This method adds set operations to the given compound command but does <b>not</b> execute it.
      * </p>
      *
-     * @param command a {@link CompoundCommand} to which the set commands will be added
-     * @param model the {@link GModel} whose layout values should be updated
+     * @param command    a {@link CompoundCommand} to which the set commands will be added
+     * @param model      the {@link GModel} whose layout values should be updated
      * @param skinLookup the {@link SkinLookup} in use for this graph editor instance
      */
     public static void updateLayoutValues(final CompoundCommand command, final GModel model, final SkinLookup skinLookup) {
@@ -292,11 +320,11 @@ public class Commands {
 
     /**
      * Gets the editing domain associated to the model.
-     * 
+     *
      * <p>
      * Logs an error if none is found.
      * </p>
-     * 
+     *
      * @param model a {@link GModel} instance
      * @return the {@link EditingDomain} associated to this model instance
      */

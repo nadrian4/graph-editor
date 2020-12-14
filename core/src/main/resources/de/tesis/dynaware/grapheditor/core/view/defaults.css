@@ -2,8 +2,8 @@
 	-fx-stroke: darkslategrey;
 	-fx-stroke-type: inside;
 	-fx-stroke-width: 1;
-	-fx-arc-width: 6;
-	-fx-arc-height: 6;
+	-fx-arc-width: 10;
+	-fx-arc-height: 10;
 	-fx-fill: null;
 	-fx-effect: dropshadow(one-pass-box, rgba(180, 180, 180), 5, 0, 1, 1);
 }
@@ -14,8 +14,8 @@
 	-fx-stroke: null;
 	-fx-stroke-type: inside;
 	-fx-stroke-width: 1;
-	-fx-arc-width: 6;
-	-fx-arc-height: 6;
+	-fx-arc-width: 10;
+	-fx-arc-height: 10;
 }
 
 .default-node-background:selected {
