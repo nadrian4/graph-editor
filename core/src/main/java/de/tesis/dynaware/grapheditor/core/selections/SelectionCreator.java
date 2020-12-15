@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiPredicate;
 
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -64,6 +65,7 @@ public class SelectionCreator {
     private final List<GNode> selectedNodesBackup = new ArrayList<>();
     private final List<GJoint> selectedJointsBackup = new ArrayList<>();
     private final List<GConnection> selectedConnectionsBackup = new ArrayList<>();
+    private final List<GText> selectedTextsBackup = new ArrayList<>();
 
     private Rectangle2D selection;
 
@@ -149,6 +151,12 @@ public class SelectionCreator {
             model.getConnections().forEach(connection -> {
                 skinLookup.lookupConnection(connection).setSelected(selected);
             });
+        }
+    }
+
+    public void selectAllTexts(final boolean selected) {
+        if (model != null) {
+            model.getTexts().forEach(text -> skinLookup.lookupText(text).setSelected(selected));
         }
     }
 
@@ -479,20 +487,24 @@ public class SelectionCreator {
         final List<GNode> selectedNodes = getAllNodesInBox();
         final List<GJoint> selectedJoints = getAllJointsInBox();
         final List<GConnection> selectedConnections = getAllConnectionsInBox();
+        final List<GText> selectedTexts = getAllTextsInBox();
 
         if (isShortcutDown) {
             selectedNodes.addAll(selectedNodesBackup);
             selectedJoints.addAll(selectedJointsBackup);
             selectedConnections.addAll(selectedConnectionsBackup);
+            selectedTexts.addAll(selectedTextsBackup);
         }
 
         final List<GNode> deselectedNodes = new ArrayList<>(model.getNodes());
         final List<GJoint> deselectedJoints = new ArrayList<>(allJoints);
         final List<GConnection> deselectedConnections = new ArrayList<>(model.getConnections());
+        final List<GText> deselectedTexts = new ArrayList<>(model.getTexts());
 
         deselectedNodes.removeAll(selectedNodes);
         deselectedJoints.removeAll(selectedJoints);
         deselectedConnections.removeAll(selectedConnections);
+        deselectedTexts.removeAll(selectedTexts);
 
         selectedNodes.forEach(node -> skinLookup.lookupNode(node).setSelected(true));
         deselectedNodes.forEach(node -> skinLookup.lookupNode(node).setSelected(false));
@@ -500,6 +512,8 @@ public class SelectionCreator {
         deselectedJoints.forEach(joint -> skinLookup.lookupJoint(joint).setSelected(false));
         selectedConnections.forEach(connection -> skinLookup.lookupConnection(connection).setSelected(true));
         deselectedConnections.forEach(connection -> skinLookup.lookupConnection(connection).setSelected(false));
+        selectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(true));
+        deselectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(true));
     }
 
     /**
@@ -517,6 +531,20 @@ public class SelectionCreator {
         }
 
         return nodesToSelect;
+    }
+
+    private List<GText> getAllTextsInBox() {
+
+        final List<GText> textsToSelect = new ArrayList<>();
+
+        for (final GText text : model.getTexts()) {
+
+            if (selection.contains(text.getX(), text.getY(), text.getWidth(), text.getHeight())) {
+                textsToSelect.add(text);
+            }
+        }
+
+        return textsToSelect;
     }
 
     /**
@@ -569,6 +597,7 @@ public class SelectionCreator {
         selectedNodesBackup.clear();
         selectedJointsBackup.clear();
         selectedConnectionsBackup.clear();
+        selectedTextsBackup.clear();
 
         for (final GNode node : model.getNodes()) {
             if (skinLookup.lookupNode(node).isSelected()) {
@@ -586,6 +615,12 @@ public class SelectionCreator {
                 if (skinLookup.lookupJoint(joint).isSelected()) {
                     selectedJointsBackup.add(joint);
                 }
+            }
+        }
+
+        for (final GText text : model.getTexts()) {
+            if (skinLookup.lookupText(text).isSelected()) {
+                selectedTextsBackup.add(text);
             }
         }
     }

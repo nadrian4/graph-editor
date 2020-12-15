@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 
@@ -53,6 +54,8 @@ public interface SelectionManager {
      * @return the list of selected joints
      */
     ObservableList<GJoint> getSelectedJoints();
+
+    ObservableList<GText> getSelectedTexts();
 
     /**
      * Cuts the current selection. Saves cut nodes and the connections between them to memory to be pasted later.
@@ -115,6 +118,8 @@ public interface SelectionManager {
      * Selects all connections in the graph editor.
      */
     void selectAllConnections();
+
+    void selectAllTexts();
 
     /**
      * Clears the selection, i.e. de-selects all elements.

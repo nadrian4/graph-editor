@@ -139,13 +139,22 @@ public interface GraphPackage extends EPackage {
 	int GMODEL__CATEGORIES = 7;
 
 	/**
+	 * The feature id for the '<em><b>Texts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GMODEL__TEXTS = 8;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GMODEL__ID = 8;
+	int GMODEL__ID = 9;
 
 	/**
 	 * The number of structural features of the '<em>GModel</em>' class.
@@ -154,7 +163,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GMODEL_FEATURE_COUNT = 9;
+	int GMODEL_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>GModel</em>' class.
@@ -887,6 +896,17 @@ public interface GraphPackage extends EPackage {
 	EReference getGModel_Categories();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link GModel#getTexts <em>Texts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Texts</em>'.
+	 * @see GModel#getTexts()
+	 * @see #getGModel()
+	 * @generated
+	 */
+	EReference getGModel_Texts();
+
+	/**
 	 * Returns the meta object for the attribute '{@link GModel#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1364,76 +1384,76 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGGroup_Name();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GText <em>GText</em>}'.
+	 * Returns the meta object for class '{@link GText <em>GText</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GText</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText
+	 * @see GText
 	 * @generated
 	 */
 	EClass getGText();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getId()
+	 * @see GText#getId()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getText()
+	 * @see GText#getText()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_Text();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getX <em>X</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getX()
+	 * @see GText#getX()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getY()
+	 * @see GText#getY()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_Y();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getWidth <em>Width</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getWidth <em>Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getWidth()
+	 * @see GText#getWidth()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_Width();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getHeight()
+	 * @see GText#getHeight()
 	 * @see #getGText()
 	 * @generated
 	 */
@@ -1535,6 +1555,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GMODEL__CATEGORIES = eINSTANCE.getGModel_Categories();
+
+		/**
+		 * The meta object literal for the '<em><b>Texts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GMODEL__TEXTS = eINSTANCE.getGModel_Texts();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.

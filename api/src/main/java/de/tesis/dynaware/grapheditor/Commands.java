@@ -10,6 +10,7 @@ import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GText;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
 import de.tesis.dynaware.grapheditor.utils.LogMessages;
 import javafx.scene.layout.Region;
@@ -55,6 +56,7 @@ public class Commands {
     private static final Logger LOGGER = LoggerFactory.getLogger(Commands.class);
 
     private static final EReference NODES = GraphPackage.Literals.GMODEL__NODES;
+    private static final EReference TEXTS = GraphPackage.Literals.GMODEL__TEXTS;
     private static final EReference CONNECTIONS = GraphPackage.Literals.GMODEL__CONNECTIONS;
     private static final EReference CATEGORIES = GraphPackage.Literals.GMODEL__CATEGORIES;
     private static final EReference GROUPS = GraphPackage.Literals.GMODEL__GROUPS;
@@ -69,6 +71,11 @@ public class Commands {
 
     private static final EAttribute JOINT_X = GraphPackage.Literals.GJOINT__X;
     private static final EAttribute JOINT_Y = GraphPackage.Literals.GJOINT__Y;
+
+    private static final EAttribute TEXT_X = GraphPackage.Literals.GTEXT__X;
+    private static final EAttribute TEXT_Y = GraphPackage.Literals.GTEXT__Y;
+    private static final EAttribute TEXT_WIDTH = GraphPackage.Literals.GTEXT__WIDTH;
+    private static final EAttribute TEXT_HEIGHT = GraphPackage.Literals.GTEXT__HEIGHT;
 
     /**
      * Static class, not to be instantiated.
@@ -118,6 +125,19 @@ public class Commands {
 
         if (editingDomain != null) {
             final Command command = AddCommand.create(editingDomain, model, NODES, node);
+
+            if (command.canExecute()) {
+                editingDomain.getCommandStack().execute(command);
+            }
+        }
+    }
+
+    public static void addText(final GModel model, final GText text) {
+
+        final EditingDomain editingDomain = getEditingDomain(model);
+
+        if (editingDomain != null) {
+            final Command command = AddCommand.create(editingDomain, model, TEXTS, text);
 
             if (command.canExecute()) {
                 editingDomain.getCommandStack().execute(command);
@@ -176,6 +196,21 @@ public class Commands {
         }
     }
 
+    public static void removeText(final GModel model, final GText text) {
+
+        final EditingDomain editingDomain = getEditingDomain(model);
+
+        if (editingDomain != null) {
+
+            final CompoundCommand command = new CompoundCommand();
+            command.append(RemoveCommand.create(editingDomain, model, TEXTS, text));
+
+            if (command.canExecute()) {
+                editingDomain.getCommandStack().execute(command);
+            }
+        }
+    }
+
     /**
      * Clears everything in the given model.
      *
@@ -190,6 +225,7 @@ public class Commands {
 
             command.append(RemoveCommand.create(editingDomain, model, CONNECTIONS, model.getConnections()));
             command.append(RemoveCommand.create(editingDomain, model, NODES, model.getNodes()));
+            command.append(RemoveCommand.create(editingDomain, model, TEXTS, model.getNodes()));
 
             if (command.canExecute()) {
                 editingDomain.getCommandStack().execute(command);
@@ -286,6 +322,16 @@ public class Commands {
                     command.append(SetCommand.create(editingDomain, joint, JOINT_X, x));
                     command.append(SetCommand.create(editingDomain, joint, JOINT_Y, y));
                 }
+            }
+
+            for (final GText text : model.getTexts()) {
+
+                final Region textRegion = skinLookup.lookupText(text).getRoot();
+
+                command.append(SetCommand.create(editingDomain, text, TEXT_X, textRegion.getLayoutX()));
+                command.append(SetCommand.create(editingDomain, text, TEXT_Y, textRegion.getLayoutY()));
+                command.append(SetCommand.create(editingDomain, text, TEXT_WIDTH, textRegion.getWidth()));
+                command.append(SetCommand.create(editingDomain, text, TEXT_HEIGHT, textRegion.getHeight()));
             }
         }
     }

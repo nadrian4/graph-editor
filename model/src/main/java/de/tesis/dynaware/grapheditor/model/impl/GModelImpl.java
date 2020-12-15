@@ -7,6 +7,7 @@ import de.tesis.dynaware.grapheditor.model.GConnection;
 import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GText;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
 
 import java.util.Collection;
@@ -41,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link GModelImpl#getSupergraph <em>Supergraph</em>}</li>
  *   <li>{@link GModelImpl#getGroups <em>Groups</em>}</li>
  *   <li>{@link GModelImpl#getCategories <em>Categories</em>}</li>
+ *   <li>{@link GModelImpl#getTexts <em>Texts</em>}</li>
  *   <li>{@link GModelImpl#getId <em>Id</em>}</li>
  * </ul>
  *
@@ -146,6 +148,16 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	 * @ordered
 	 */
 	protected EList<GCategory> categories;
+
+	/**
+	 * The cached value of the '{@link #getTexts() <em>Texts</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GText> texts;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -324,6 +336,19 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 	 * @generated
 	 */
 	@Override
+	public EList<GText> getTexts() {
+		if (texts == null) {
+			texts = new EObjectContainmentEList<GText>(GText.class, this, GraphPackage.GMODEL__TEXTS);
+		}
+		return texts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -375,6 +400,8 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				return ((InternalEList<?>)getGroups()).basicRemove(otherEnd, msgs);
 			case GraphPackage.GMODEL__CATEGORIES:
 				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
+			case GraphPackage.GMODEL__TEXTS:
+				return ((InternalEList<?>)getTexts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -417,6 +444,8 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				return getGroups();
 			case GraphPackage.GMODEL__CATEGORIES:
 				return getCategories();
+			case GraphPackage.GMODEL__TEXTS:
+				return getTexts();
 			case GraphPackage.GMODEL__ID:
 				return getId();
 		}
@@ -457,6 +486,10 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				getCategories().clear();
 				getCategories().addAll((Collection<? extends GCategory>)newValue);
 				return;
+			case GraphPackage.GMODEL__TEXTS:
+				getTexts().clear();
+				getTexts().addAll((Collection<? extends GText>)newValue);
+				return;
 			case GraphPackage.GMODEL__ID:
 				setId((String)newValue);
 				return;
@@ -493,6 +526,9 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 			case GraphPackage.GMODEL__CATEGORIES:
 				getCategories().clear();
 				return;
+			case GraphPackage.GMODEL__TEXTS:
+				getTexts().clear();
+				return;
 			case GraphPackage.GMODEL__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -524,6 +560,8 @@ public class GModelImpl extends MinimalEObjectImpl.Container implements GModel {
 				return groups != null && !groups.isEmpty();
 			case GraphPackage.GMODEL__CATEGORIES:
 				return categories != null && !categories.isEmpty();
+			case GraphPackage.GMODEL__TEXTS:
+				return texts != null && !texts.isEmpty();
 			case GraphPackage.GMODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}

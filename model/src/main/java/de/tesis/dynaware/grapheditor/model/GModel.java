@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link GModel#getSupergraph <em>Supergraph</em>}</li>
  *   <li>{@link GModel#getGroups <em>Groups</em>}</li>
  *   <li>{@link GModel#getCategories <em>Categories</em>}</li>
+ *   <li>{@link GModel#getTexts <em>Texts</em>}</li>
  *   <li>{@link GModel#getId <em>Id</em>}</li>
  * </ul>
  *
@@ -159,6 +160,18 @@ public interface GModel extends EObject {
 	 * @generated
 	 */
 	EList<GCategory> getCategories();
+
+	/**
+	 * Returns the value of the '<em><b>Texts</b></em>' containment reference list.
+	 * The list contents are of type {@link GText}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Texts</em>' containment reference list.
+	 * @see GraphPackage#getGModel_Texts()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<GText> getTexts();
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.

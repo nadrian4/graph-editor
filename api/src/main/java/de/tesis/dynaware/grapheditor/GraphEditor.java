@@ -121,6 +121,8 @@ public interface GraphEditor {
      */
     void setTailSkin(final String type, final Class<? extends GTailSkin> skin);
 
+    void setTextSkin(String type, Class<? extends GTextSkin> skin);
+
     /**
      * Sets a custom connector validator.
      *

@@ -7,6 +7,7 @@ import de.tesis.dynaware.grapheditor.model.GConnection;
 import de.tesis.dynaware.grapheditor.model.GConnector;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GText;
 
 import java.util.List;
 
@@ -70,4 +71,6 @@ public interface SkinLookup {
      * @return the associated {@link GTailSkin} instance
      */
     GTailSkin lookupTail(final GConnector connector);
+
+    GTextSkin lookupText(GText text);
 }

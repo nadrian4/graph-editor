@@ -3,6 +3,7 @@
  */
 package de.tesis.dynaware.grapheditor.core.view;
 
+import de.tesis.dynaware.grapheditor.GTextSkin;
 import javafx.collections.ObservableList;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
@@ -127,6 +128,10 @@ public class GraphEditorView extends Region {
      */
     public void add(final GTailSkin tailSkin) {
         connectionLayer.getChildren().add(tailSkin.getRoot());
+    }
+
+    public void add(final GTextSkin textSkin) {
+        nodeLayer.getChildren().add(textSkin.getRoot());
     }
 
     /**

@@ -22,6 +22,8 @@ public interface SkinController {
      */
     void addConnector(Side position, boolean input);
 
+    void addText(double currentZoomFactor);
+
     /**
      * Clears all connectors from all selected nodes.
      */

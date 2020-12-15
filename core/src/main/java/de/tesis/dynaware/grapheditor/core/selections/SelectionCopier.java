@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
+import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -42,6 +44,7 @@ public class SelectionCopier {
 
     private static final EReference NODES = GraphPackage.Literals.GMODEL__NODES;
     private static final EReference CONNECTIONS = GraphPackage.Literals.GMODEL__CONNECTIONS;
+    private static final EReference TEXTS = GraphPackage.Literals.GMODEL__TEXTS;
 
     private static final double BASE_PASTE_OFFSET = 20;
 
@@ -52,6 +55,7 @@ public class SelectionCopier {
 
     private final List<GNode> copiedNodes = new ArrayList<>();
     private final List<GConnection> copiedConnections = new ArrayList<>();
+    private final List<GText> copiedTexts = new ArrayList<>();
 
     private Parent parentAtTimeOfCopy;
     private double parentSceneXAtTimeOfCopy;
@@ -92,7 +96,7 @@ public class SelectionCopier {
      */
     public void cut(final BiConsumer<List<GNode>, CompoundCommand> consumer) {
 
-        if (selectionTracker.getSelectedNodes().isEmpty()) {
+        if (selectionTracker.getSelectedNodes().isEmpty() && selectionTracker.getSelectedTexts().isEmpty()) {
             return;
         }
 
@@ -105,12 +109,13 @@ public class SelectionCopier {
      */
     public void copy() {
 
-        if (selectionTracker.getSelectedNodes().isEmpty()) {
+        if (selectionTracker.getSelectedNodes().isEmpty() && selectionTracker.getSelectedTexts().isEmpty()) {
             return;
         }
 
         copiedNodes.clear();
         copiedConnections.clear();
+        copiedTexts.clear();
 
         final Map<GNode, GNode> copyStorage = new HashMap<>();
 
@@ -121,6 +126,14 @@ public class SelectionCopier {
                 final GNode copiedNode = EcoreUtil.copy(node);
                 copiedNodes.add(copiedNode);
                 copyStorage.put(node, copiedNode);
+            }
+        }
+
+        for (final GText text : model.getTexts()) {
+            if (selectionTracker.getSelectedTexts().contains(text)) {
+
+                final GText copiedText = EcoreUtil.copy(text);
+                copiedTexts.add(copiedText);
             }
         }
 
@@ -144,11 +157,12 @@ public class SelectionCopier {
 
         final List<GNode> pastedNodes = new ArrayList<>();
         final List<GConnection> pastedConnections = new ArrayList<>();
+        final List<GText> pastedTexts = new ArrayList<>();
 
-        preparePastedElements(pastedNodes, pastedConnections);
-        addPasteOffset(pastedNodes, pastedConnections);
-        checkWithinBounds(pastedNodes, pastedConnections);
-        addPastedElements(pastedNodes, pastedConnections, consumer);
+        preparePastedElements(pastedNodes, pastedConnections, pastedTexts);
+        addPasteOffset(pastedNodes, pastedConnections, pastedTexts);
+        checkWithinBounds(pastedNodes, pastedConnections, pastedTexts);
+        addPastedElements(pastedNodes, pastedConnections, pastedTexts, consumer);
 
         for (final GNode pastedNode : pastedNodes) {
             skinLookup.lookupNode(pastedNode).setSelected(true);
@@ -160,6 +174,10 @@ public class SelectionCopier {
             }
         }
 
+        for (final GText pastedText : pastedTexts) {
+            skinLookup.lookupText(pastedText).setSelected(true);
+        }
+
         return pastedNodes;
     }
 
@@ -169,6 +187,7 @@ public class SelectionCopier {
     public void clearMemory() {
         copiedNodes.clear();
         copiedConnections.clear();
+        copiedTexts.clear();
     }
 
     /**
@@ -177,7 +196,7 @@ public class SelectionCopier {
      * @param pastedNodes an empty list to be filled with pasted nodes
      * @param pastedConnections an empty list to be filled with pasted connections
      */
-    private void preparePastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections) {
+    private void preparePastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts) {
 
         final Map<GNode, GNode> pasteStorage = new HashMap<>();
 
@@ -190,6 +209,12 @@ public class SelectionCopier {
         }
 
         pastedConnections.addAll(GModelUtils.copyConnections(pasteStorage));
+
+        for (final GText copiedText : copiedTexts) {
+
+            final GText pastedText = EcoreUtil.copy(copiedText);
+            pastedTexts.add(pastedText);
+        }
     }
 
     /**
@@ -198,7 +223,7 @@ public class SelectionCopier {
      * @param pastedNodes the nodes that are going to be pasted
      * @param pastedConnections the connections that are going to be pasted
      */
-    private void addPasteOffset(final List<GNode> pastedNodes, final List<GConnection> pastedConnections) {
+    private void addPasteOffset(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts) {
 
         final Point2D pasteOffset = determinePasteOffset();
 
@@ -213,6 +238,11 @@ public class SelectionCopier {
                 joint.setY(joint.getY() + pasteOffset.getY());
             }
         }
+
+        for (final GText text : pastedTexts) {
+            text.setX(text.getX() + pasteOffset.getX());
+            text.setY(text.getY() + pasteOffset.getY());
+        }
     }
 
     /**
@@ -225,14 +255,14 @@ public class SelectionCopier {
      * @param pastedNodes the nodes that are going to be pasted
      * @param pastedConnections the connections that are going to be pasted
      */
-    private void checkWithinBounds(final List<GNode> pastedNodes, final List<GConnection> pastedConnections) {
+    private void checkWithinBounds(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts) {
 
         if (parentAtTimeOfCopy instanceof Region) {
 
             final Region parentRegion = (Region) parentAtTimeOfCopy;
 
             final Bounds parentBounds = getBounds(parentRegion);
-            final Bounds contentBounds = getContentBounds(pastedNodes, pastedConnections);
+            final Bounds contentBounds = getContentBounds(pastedNodes, pastedConnections, pastedTexts);
 
             double xCorrection = 0;
             double yCorrection = 0;
@@ -262,6 +292,11 @@ public class SelectionCopier {
                         joint.setY(joint.getY() + yCorrection);
                     }
                 }
+
+                for (final GText text : pastedTexts) {
+                    text.setX(text.getX() + xCorrection);
+                    text.setY(text.getY() + yCorrection);
+                }
             }
         }
     }
@@ -273,7 +308,7 @@ public class SelectionCopier {
      * @param pastedConnections the pasted connections to be added
      * @param consumer a consumer to allow custom commands to be appended to the paste command
      */
-    private void addPastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections,
+    private void addPastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, List<GText> pastedTexts,
             final BiConsumer<List<GNode>, CompoundCommand> consumer) {
 
         final EditingDomain editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(model);
@@ -285,6 +320,10 @@ public class SelectionCopier {
 
         for (final GConnection pastedConnection : pastedConnections) {
             command.append(AddCommand.create(editingDomain, model, CONNECTIONS, pastedConnection));
+        }
+
+        for (final GText pastedText : pastedTexts) {
+            command.append(AddCommand.create(editingDomain, model, TEXTS, pastedText));
         }
 
         if (command.canExecute()) {
@@ -301,16 +340,24 @@ public class SelectionCopier {
      * Saves the position in the scene of the JavaFX {@link Parent} of the node skins.
      */
     private void saveParentPositionInScene() {
-
+        Parent parent = null;
         if (!selectionTracker.getSelectedNodes().isEmpty()) {
 
             final GNode firstSelectedNode = selectionTracker.getSelectedNodes().get(0);
             final GNodeSkin firstSelectedNodeSkin = skinLookup.lookupNode(firstSelectedNode);
 
             final Node root = firstSelectedNodeSkin.getRoot();
-            final Parent parent = root.getParent();
+            parent = root.getParent();
 
-            if (parent != null) {
+        } else if (!selectionTracker.getSelectedTexts().isEmpty()) {
+
+            final GText firstSelectedText = selectionTracker.getSelectedTexts().get(0);
+            final GTextSkin firstSelectedTextSkin = skinLookup.lookupText(firstSelectedText);
+
+            final Node root = firstSelectedTextSkin.getRoot();
+            parent = root.getParent();
+        }
+        if (parent != null) {
 
                 parentAtTimeOfCopy = parent;
 
@@ -319,7 +366,6 @@ public class SelectionCopier {
                 parentSceneXAtTimeOfCopy = localToScene.getX();
                 parentSceneYAtTimeOfCopy = localToScene.getY();
             }
-        }
     }
 
     /**
@@ -378,7 +424,7 @@ public class SelectionCopier {
      * @param connections a list of connections
      * @return the start and end x- and y-positions of the given nodes and joints.
      */
-    private Bounds getContentBounds(final List<GNode> nodes, final List<GConnection> connections) {
+    private Bounds getContentBounds(final List<GNode> nodes, final List<GConnection> connections, List<GText> texts) {
 
         final Bounds contentBounds = new Bounds();
 
@@ -419,6 +465,22 @@ public class SelectionCopier {
                 if (joint.getY() > contentBounds.endY) {
                     contentBounds.endY = joint.getY();
                 }
+            }
+        }
+
+        for (final GText text : texts) {
+
+            if (text.getX() < contentBounds.startX) {
+                contentBounds.startX = text.getX();
+            }
+            if (text.getY() < contentBounds.startY) {
+                contentBounds.startY = text.getY();
+            }
+            if (text.getX() + text.getWidth() > contentBounds.endX) {
+                contentBounds.endX = text.getX() + text.getWidth();
+            }
+            if (text.getY() + text.getHeight() > contentBounds.endY) {
+                contentBounds.endY = text.getY() + text.getHeight();
             }
         }
 

@@ -8,6 +8,7 @@ import de.tesis.dynaware.grapheditor.GConnectorSkin;
 import de.tesis.dynaware.grapheditor.GJointSkin;
 import de.tesis.dynaware.grapheditor.GNodeSkin;
 import de.tesis.dynaware.grapheditor.GTailSkin;
+import de.tesis.dynaware.grapheditor.GTextSkin;
 import de.tesis.dynaware.grapheditor.GraphEditor;
 import de.tesis.dynaware.grapheditor.SkinLookup;
 import de.tesis.dynaware.grapheditor.core.DefaultGraphEditor;
@@ -16,6 +17,7 @@ import de.tesis.dynaware.grapheditor.model.GConnector;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +42,7 @@ public class SkinManager implements SkinLookup {
     private final Map<GConnection, GConnectionSkin> connectionSkins = new HashMap<>();
     private final Map<GJoint, GJointSkin> jointSkins = new HashMap<>();
     private final Map<GConnector, GTailSkin> tailSkins = new HashMap<>();
+    private final Map<GText, GTextSkin> textSkins = new HashMap<>();
 
     /**
      * Creates a new skin manager instance. Only one instance should exist per {@link DefaultGraphEditor} instance.
@@ -108,6 +111,10 @@ public class SkinManager implements SkinLookup {
         skinFactory.setTailSkin(type, skin);
     }
 
+    public void setTextSkin(final String type, final Class<? extends GTextSkin> skin) {
+        skinFactory.setTextSkin(type, skin);
+    }
+
     /**
      * Adds a list of nodes.
      *
@@ -147,6 +154,26 @@ public class SkinManager implements SkinLookup {
         for (final GNode node : nodesToRemove) {
             nodeSkins.remove(node);
             removeConnectors(node.getConnectors());
+        }
+    }
+
+    public void addTexts(final List<GText> textsToAdd) {
+
+        for (final GText text : textsToAdd) {
+
+            final GTextSkin textSkin = skinFactory.createTextSkin(text, null);
+
+            textSkin.setGraphEditor(graphEditor);
+            textSkin.getRoot().setEditorProperties(graphEditor.getProperties());
+            textSkin.initialize();
+
+            textSkins.put(text, textSkin);
+        }
+    }
+
+    public void removeTexts(final List<GText> textsToRemove) {
+        for (final GText text : textsToRemove) {
+            textSkins.remove(text);
         }
     }
 
@@ -280,6 +307,10 @@ public class SkinManager implements SkinLookup {
         for (final GJointSkin jointSkin : jointSkins.values()) {
             jointSkin.initialize();
         }
+
+        for (final GTextSkin textSkin : textSkins.values()) {
+            textSkin.initialize();
+        }
     }
 
     @Override
@@ -315,6 +346,11 @@ public class SkinManager implements SkinLookup {
     @Override
     public GTailSkin lookupTail(final GConnector connector) {
         return tailSkins.get(connector);
+    }
+
+    @Override
+    public GTextSkin lookupText(final GText text) {
+        return textSkins.get(text);
     }
 
     /**

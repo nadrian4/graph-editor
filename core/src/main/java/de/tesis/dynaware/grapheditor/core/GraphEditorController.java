@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor.core;
 
 import java.util.List;
 
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.scene.layout.Region;
 
 import org.eclipse.emf.common.command.CommandStackListener;
@@ -208,6 +209,10 @@ public class GraphEditorController {
                 view.add(skinManager.lookupJoint(joint));
             }
         }
+
+        for (final GText text : modelMemory.getTextsToAdd()) {
+            view.add(skinManager.lookupText(text));
+        }
     }
 
     /**
@@ -261,6 +266,9 @@ public class GraphEditorController {
         for (final GConnection connection : modelMemory.getJointsToAdd().keySet()) {
             skinManager.addJoints(connection, modelMemory.getJointsToAdd().get(connection));
         }
+
+        skinManager.addTexts(modelMemory.getTextsToAdd());
+        skinManager.removeTexts(modelMemory.getTextsToRemove());
 
         skinManager.initializeAll();
     }

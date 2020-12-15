@@ -1,5 +1,8 @@
 package de.tesis.dynaware.grapheditor.core.selections;
 
+import com.sun.org.apache.xpath.internal.operations.Gte;
+import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import de.tesis.dynaware.grapheditor.GConnectionSkin;
@@ -19,6 +22,7 @@ public class SelectionTracker {
     ObservableList<GNode> selectedNodes = FXCollections.observableArrayList();
     ObservableList<GConnection> selectedConnections = FXCollections.observableArrayList();
     ObservableList<GJoint> selectedJoints = FXCollections.observableArrayList();
+    ObservableList<GText> selectedTexts = FXCollections.observableArrayList();
 
     private final SkinLookup skinLookup;
 
@@ -39,6 +43,7 @@ public class SelectionTracker {
     public void initialize(final GModel model) {
         trackNodes(model);
         trackConnectionsAndJoints(model);
+        trackTexts(model);
     }
 
     /**
@@ -48,6 +53,10 @@ public class SelectionTracker {
      */
     public ObservableList<GNode> getSelectedNodes() {
         return selectedNodes;
+    }
+
+    public ObservableList<GText> getSelectedTexts() {
+        return selectedTexts;
     }
 
     /**
@@ -90,6 +99,28 @@ public class SelectionTracker {
                     selectedNodes.add(node);
                 } else if (!newValue && selectedNodes.contains(node)) {
                     selectedNodes.remove(node);
+                }
+            });
+        }
+    }
+
+    private void trackTexts(final GModel model) {
+
+        selectedTexts.clear();
+
+        for (final GText text : model.getTexts()) {
+
+            final GTextSkin textSkin = skinLookup.lookupText(text);
+
+            if (textSkin.isSelected()) {
+                selectedTexts.add(text);
+            }
+
+            textSkin.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue && !selectedTexts.contains(text)) {
+                    selectedTexts.add(text);
+                } else if (!newValue && selectedTexts.contains(text)) {
+                    selectedTexts.remove(text);
                 }
             });
         }

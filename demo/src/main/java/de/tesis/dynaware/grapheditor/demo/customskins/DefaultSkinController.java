@@ -1,5 +1,6 @@
 package de.tesis.dynaware.grapheditor.demo.customskins;
 
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.geometry.Side;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -103,6 +104,21 @@ public class DefaultSkinController implements SkinController {
     }
 
     @Override
+    public void addText(final double currentZoomFactor) {
+
+        final double windowXOffset = graphEditorContainer.windowXProperty().get() / currentZoomFactor;
+        final double windowYOffset = graphEditorContainer.windowYProperty().get() / currentZoomFactor;
+
+        final GText text = GraphFactory.eINSTANCE.createGText();
+        text.setY(NODE_INITIAL_Y + windowYOffset);
+
+        text.setX(NODE_INITIAL_X + windowXOffset);
+
+
+        Commands.addText(graphEditor.getModel(), text);
+    }
+
+    @Override
     public void clearConnectors() {
         Commands.clearConnectors(graphEditor.getModel(), graphEditor.getSelectionManager().getSelectedNodes());
     }
@@ -116,6 +132,7 @@ public class DefaultSkinController implements SkinController {
     public void handleSelectAll() {
         graphEditor.getSelectionManager().selectAllNodes();
         graphEditor.getSelectionManager().selectAllJoints();
+        graphEditor.getSelectionManager().selectAllTexts();
     }
 
     /**

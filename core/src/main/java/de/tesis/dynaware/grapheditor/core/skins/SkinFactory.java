@@ -7,6 +7,9 @@ import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.core.skins.defaults.DefaultTextSkin;
+import de.tesis.dynaware.grapheditor.model.GText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,6 +46,7 @@ public class SkinFactory {
     private final Map<String, Class<? extends GConnectionSkin>> connectionSkins = new HashMap<>();
     private final Map<String, Class<? extends GJointSkin>> jointSkins = new HashMap<>();
     private final Map<String, Class<? extends GTailSkin>> tailSkins = new HashMap<>();
+    private final Map<String, Class<? extends GTextSkin>> textSkins = new HashMap<>();
 
     /**
      * Sets the custom node skin class for the given type.
@@ -92,6 +96,10 @@ public class SkinFactory {
      */
     public void setTailSkin(final String type, final Class<? extends GTailSkin> skin) {
         tailSkins.put(type, skin);
+    }
+
+    public void setTextSkin(final String type, final Class<? extends GTextSkin> skin) {
+        textSkins.put(type, skin);
     }
 
     /**
@@ -240,6 +248,29 @@ public class SkinFactory {
             } catch (final ReflectiveOperationException e) {
                 LOGGER.error(LogMessages.CANNOT_INSTANTIATE_SKIN, skinClass.getName());
                 return new DefaultTailSkin(connector);
+            }
+        }
+    }
+
+    public GTextSkin createTextSkin(final GText text, String type) {
+
+        if (text == null) {
+            return null;
+        } else if (type == null) {
+            return new DefaultTextSkin(text);
+        }
+
+        final Class<? extends GTextSkin> skinClass = textSkins.get(type);
+
+        if (skinClass == null) {
+            return new DefaultTextSkin(text);
+        } else {
+            try {
+                final Constructor<? extends GTextSkin> constructor = skinClass.getConstructor(GNode.class);
+                return constructor.newInstance(text);
+            } catch (final ReflectiveOperationException e) {
+                LOGGER.error(LogMessages.CANNOT_INSTANTIATE_SKIN, skinClass.getName());
+                return new DefaultTextSkin(text);
             }
         }
     }
