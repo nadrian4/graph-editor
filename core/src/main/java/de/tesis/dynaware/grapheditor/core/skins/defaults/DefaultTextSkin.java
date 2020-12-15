@@ -54,7 +54,8 @@ public class DefaultTextSkin extends GTextSkin {
 //        border.getStyleClass().setAll(STYLE_CLASS_BORDER);
 //        background.getStyleClass().setAll(STYLE_CLASS_BACKGROUND);
 
-        border.setStroke(Color.rgb(0, 0, 0, 0.2));
+//        border.setStroke(Color.rgb(0, 0, 0, 0.2));
+        border.setStroke(Color.TRANSPARENT);
         border.setStyle("-fx-background-radius: 4");
         border.setFill(Color.TRANSPARENT);
         background.setFill(Color.TRANSPARENT);

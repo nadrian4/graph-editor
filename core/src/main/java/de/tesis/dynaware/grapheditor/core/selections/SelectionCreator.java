@@ -594,7 +594,7 @@ public class SelectionCreator {
         selectedConnections.forEach(connection -> skinLookup.lookupConnection(connection).setSelected(true));
         deselectedConnections.forEach(connection -> skinLookup.lookupConnection(connection).setSelected(false));
         selectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(true));
-        deselectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(true));
+        deselectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(false));
     }
 
     /**

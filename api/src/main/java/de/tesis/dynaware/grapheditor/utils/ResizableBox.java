@@ -22,7 +22,7 @@ public class ResizableBox extends DraggableBox {
 
     private static final int DEFAULT_RESIZE_BORDER_TOLERANCE = 8;
 
-    private final BooleanProperty resizeEnabledNorthProperty = new SimpleBooleanProperty(true);
+        private final BooleanProperty resizeEnabledNorthProperty = new SimpleBooleanProperty(true);
     private final BooleanProperty resizeEnabledSouthProperty = new SimpleBooleanProperty(true);
     private final BooleanProperty resizeEnabledEastProperty = new SimpleBooleanProperty(true);
     private final BooleanProperty resizeEnabledWestProperty = new SimpleBooleanProperty(true);
