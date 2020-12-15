@@ -1,6 +1,5 @@
 package de.tesis.dynaware.grapheditor;
 
-import de.tesis.dynaware.grapheditor.core.skins.defaults.DefaultNodeSkin;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.css.PseudoClass;
@@ -17,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Optional;
 
 public class DefaultTextSkin extends GTextSkin {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultNodeSkin.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultTextSkin.class);
 
     private static final String STYLE_CLASS_BORDER = "default-node-border";
     private static final String STYLE_CLASS_BACKGROUND = "default-node-background";
