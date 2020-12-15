@@ -9,7 +9,13 @@ public abstract class GTextSkin extends GSkin {
 
     private boolean visible = true;
 
-    private final ResizableBox root = new ResizableBox();
+    private final ResizableBox root = new ResizableBox() {
+        @Override
+        protected void layoutChildren() {
+            super.layoutChildren();
+            layoutElements();
+        }
+    };
 
     @Override
     public ResizableBox getRoot() {
@@ -45,4 +51,6 @@ public abstract class GTextSkin extends GSkin {
 
         getRoot().resize(getText().getWidth(), getText().getHeight());
     }
+
+    public abstract void layoutElements();
 }

@@ -63,6 +63,10 @@ public class SelectionDragManager {
         bindPositions(skinLookup.lookupNode(node).getRoot(), model);
     }
 
+    public void bindPositions(final GText text, final GModel model) {
+        bindPositions(skinLookup.lookupText(text).getRoot(), model);
+    }
+
     /**
      * Binds the positions of all selected objects to have a fixed position relative to a given joint.
      *
@@ -81,6 +85,12 @@ public class SelectionDragManager {
     public void unbindPositions(final GNode node) {
         if (skinLookup.lookupNode(node) != null) {
             unbindPositions(skinLookup.lookupNode(node).getRoot());
+        }
+    }
+
+    public void unbindPositions(final GText text) {
+        if (skinLookup.lookupText(text) != null) {
+            unbindPositions(skinLookup.lookupText(text).getRoot());
         }
     }
 

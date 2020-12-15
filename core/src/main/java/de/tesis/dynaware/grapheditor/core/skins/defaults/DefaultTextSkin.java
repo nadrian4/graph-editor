@@ -8,7 +8,9 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import org.slf4j.Logger;
@@ -19,8 +21,8 @@ import java.util.Optional;
 public class DefaultTextSkin extends GTextSkin {
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultNodeSkin.class);
 
-    private static final String STYLE_CLASS_BORDER = "default-node-border";
-    private static final String STYLE_CLASS_BACKGROUND = "default-node-background";
+    //    private static final String STYLE_CLASS_BORDER = "default-node-border";
+//    private static final String STYLE_CLASS_BACKGROUND = "default-node-background";
     private static final String STYLE_CLASS_SELECTION_HALO = "default-node-selection-halo";
 
     private static final PseudoClass PSEUDO_CLASS_SELECTED = PseudoClass.getPseudoClass("selected");
@@ -28,8 +30,8 @@ public class DefaultTextSkin extends GTextSkin {
     private static final double HALO_OFFSET = 5;
     private static final double HALO_CORNER_SIZE = 10;
 
-    private static final double MIN_WIDTH = 41;
-    private static final double MIN_HEIGHT = 41;
+    private static final double MIN_WIDTH = 20;
+    private static final double MIN_HEIGHT = 20;
 
     private final Rectangle selectionHalo = new Rectangle();
 
@@ -49,11 +51,15 @@ public class DefaultTextSkin extends GTextSkin {
         border.widthProperty().bind(getRoot().widthProperty());
         border.heightProperty().bind(getRoot().heightProperty());
 
-        border.getStyleClass().setAll(STYLE_CLASS_BORDER);
-        background.getStyleClass().setAll(STYLE_CLASS_BACKGROUND);
+//        border.getStyleClass().setAll(STYLE_CLASS_BORDER);
+//        background.getStyleClass().setAll(STYLE_CLASS_BACKGROUND);
 
+        border.setStroke(Color.rgb(0, 0, 0, 0.2));
+        border.setStyle("-fx-background-radius: 4");
+        border.setFill(Color.TRANSPARENT);
+        background.setFill(Color.TRANSPARENT);
 
-        getRoot().getChildren().addAll(border, background);
+        getRoot().getChildren().addAll(border, background, label);
         getRoot().setMinSize(MIN_WIDTH, MIN_HEIGHT);
 
         background.addEventFilter(MouseEvent.MOUSE_DRAGGED, this::filterMouseDragged);
@@ -65,7 +71,9 @@ public class DefaultTextSkin extends GTextSkin {
 
     @Override
     public void setText() {
+        Font font = new Font("Times New Roman", 10);
         final Text text = new Text(Optional.ofNullable(getText().getText()).orElse(""));
+        text.setFont(font);
         new Scene(new Group(text));
         text.applyCss();
         final double width = text.getLayoutBounds().getWidth();
@@ -75,6 +83,7 @@ public class DefaultTextSkin extends GTextSkin {
         label.setMaxWidth(width);
         label.setMinHeight(height);
         label.setMaxHeight(height);
+        label.setFont(font);
         label.setTextAlignment(TextAlignment.CENTER);
         label.textProperty().bind(new SimpleStringProperty(Optional.ofNullable(getText().getText()).orElse("")));
 
@@ -99,9 +108,16 @@ public class DefaultTextSkin extends GTextSkin {
         selectionHalo.getStyleClass().add(STYLE_CLASS_SELECTION_HALO);
     }
 
+    @Override
+    public void layoutElements() {
+        layoutSelectionHalo();
+    }
+
     /**
      * Lays out the selection halo based on the current width and height of the node skin region.
      */
+
+
     private void layoutSelectionHalo() {
 
         if (selectionHalo.isVisible()) {

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiPredicate;
 
+import de.tesis.dynaware.grapheditor.GTextSkin;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
@@ -55,6 +56,9 @@ public class SelectionCreator {
 
     private final Map<GJoint, EventHandler<MouseEvent>> jointPressedHandlers = new HashMap<>();
     private final Map<GJoint, EventHandler<MouseEvent>> jointReleasedHandlers = new HashMap<>();
+
+    private final Map<GText, EventHandler<MouseEvent>> textPressedHandlers = new HashMap<>();
+    private final Map<GText, EventHandler<MouseEvent>> textReleasedHandlers = new HashMap<>();
 
     private EventHandler<MouseEvent> viewPressedHandler;
     private EventHandler<MouseEvent> viewDraggedHandler;
@@ -167,6 +171,7 @@ public class SelectionCreator {
         selectAllNodes(false);
         selectAllJoints(false);
         selectAllConnections(false);
+        selectAllTexts(false);
     }
 
     /**
@@ -179,6 +184,7 @@ public class SelectionCreator {
     private void addClickSelectionMechanism() {
         addClickSelectionForNodes();
         addClickSelectionForJoints();
+        addClickSelectionForTexts();
     }
 
     /**
@@ -227,7 +233,6 @@ public class SelectionCreator {
             }
         }
     }
-
     /**
      * Adds a click selection mechanism for joints.
      */
@@ -259,6 +264,36 @@ public class SelectionCreator {
                 jointPressedHandlers.put(joint, newJointPressedHandler);
                 jointReleasedHandlers.put(joint, newJointReleasedHandler);
             }
+        }
+    }
+
+    /**
+     * Adds a click selection mechanism for texts.
+     */
+    private void addClickSelectionForTexts() {
+        for (final GText text : model.getTexts()) {
+
+            final Region nodeRegion = skinLookup.lookupText(text).getRoot();
+
+            final EventHandler<MouseEvent> oldTextPressedHandler = textPressedHandlers.get(text);
+            final EventHandler<MouseEvent> oldTextReleasedHandler = textReleasedHandlers.get(text);
+
+            if (oldTextPressedHandler != null) {
+                nodeRegion.removeEventHandler(MouseEvent.MOUSE_PRESSED, oldTextPressedHandler);
+            }
+
+            if (oldTextReleasedHandler != null) {
+                nodeRegion.removeEventHandler(MouseEvent.MOUSE_RELEASED, oldTextReleasedHandler);
+            }
+
+            final EventHandler<MouseEvent> newTextPressedHandler = event -> handleTextPressed(event, text);
+            final EventHandler<MouseEvent> newTextReleasedHandler = event -> handleTextReleased(event, text);
+
+            nodeRegion.addEventHandler(MouseEvent.MOUSE_PRESSED, newTextPressedHandler);
+            nodeRegion.addEventHandler(MouseEvent.MOUSE_RELEASED, newTextReleasedHandler);
+
+            textPressedHandlers.put(text, newTextPressedHandler);
+            textReleasedHandlers.put(text, newTextReleasedHandler);
         }
     }
 
@@ -311,6 +346,52 @@ public class SelectionCreator {
         }
 
         selectionDragManager.unbindPositions(node);
+        event.consume();
+    }
+
+    private void handleTextPressed(final MouseEvent event, final GText text) {
+
+        if (!event.getButton().equals(MouseButton.PRIMARY)) {
+            return;
+        }
+
+        final GTextSkin textSkin = skinLookup.lookupText(text);
+
+        if (!textSkin.isSelected()) {
+            if (!event.isShortcutDown()) {
+                deselectAll();
+            } else {
+                backupSelections();
+            }
+            textSkin.setSelected(true);
+        } else {
+            if (event.isShortcutDown()) {
+                textSkin.setSelected(false);
+            }
+        }
+
+        // Do not bind the positions of other selected nodes if this text is about to be resized.
+        if (!textSkin.getRoot().isMouseInPositionForResize()) {
+            selectionDragManager.bindPositions(text, model);
+        }
+
+        // Consume this event so it's not passed up to the parent (i.e. the view).
+        event.consume();
+    }
+
+    /**
+     * Handles mouse-released events on the given text.
+     *
+     * @param event a mouse-released event
+     * @param text the {@link GNode} on which this event occured
+     */
+    private void handleTextReleased(final MouseEvent event, final GText text) {
+
+        if (!event.getButton().equals(MouseButton.PRIMARY)) {
+            return;
+        }
+
+        selectionDragManager.unbindPositions(text);
         event.consume();
     }
 

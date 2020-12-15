@@ -152,6 +152,10 @@ public class GraphEditorView extends Region {
         connectionLayer.getChildren().remove(connectionSkin.getRoot());
     }
 
+    public void remove(final GTextSkin textSkin) {
+        nodeLayer.getChildren().remove(textSkin.getRoot());
+    }
+
     /**
      * Removes a joint skin from the view. Does nothing if the skin is not present.
      *

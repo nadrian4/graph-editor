@@ -6,6 +6,8 @@ package de.tesis.dynaware.grapheditor.core.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -28,6 +30,7 @@ public class ModelLayoutUpdater {
 
     private final Map<GNode, EventHandler<MouseEvent>> nodeReleasedHandlers = new HashMap<>();
     private final Map<GJoint, EventHandler<MouseEvent>> jointReleasedHandlers = new HashMap<>();
+    private final Map<GText, EventHandler<MouseEvent>> textReleasedHandlers = new HashMap<>();
 
     /**
      * Creates a new model layout updater. Only one instance should exist per {@link DefaultGraphEditor} instance.
@@ -61,6 +64,7 @@ public class ModelLayoutUpdater {
 
         final Map<GNode, EventHandler<MouseEvent>> oldNodeReleasedHandlers = new HashMap<>(nodeReleasedHandlers);
         final Map<GJoint, EventHandler<MouseEvent>> oldJointReleasedHandlers = new HashMap<>(jointReleasedHandlers);
+        final Map<GText, EventHandler<MouseEvent>> oldTextReleasedHandlers = new HashMap<>(textReleasedHandlers);
 
         for (final GNode node : model.getNodes()) {
 
@@ -78,6 +82,14 @@ public class ModelLayoutUpdater {
                 }
                 addHandler(joint);
             }
+        }
+
+        for (final GText text : model.getTexts()) {
+
+            if (oldTextReleasedHandlers.get(text) != null) {
+                removeHandler(text, oldTextReleasedHandlers.get(text));
+            }
+            addHandler(text);
         }
     }
 
@@ -109,6 +121,15 @@ public class ModelLayoutUpdater {
         });
     }
 
+    private void addHandler(final GText text) {
+
+        skinLookup.lookupText(text).getRoot().setOnMouseReleased(event -> {
+            if (checkTextChanged(text)) {
+                modelEditingManager.updateLayoutValues(skinLookup);
+            }
+        });
+    }
+
     /**
      * Removes a mouse-released handler from a node skin's root JavaFX node.
      *
@@ -127,6 +148,10 @@ public class ModelLayoutUpdater {
      */
     private void removeHandler(final GJoint joint, final EventHandler<MouseEvent> handler) {
         skinLookup.lookupJoint(joint).getRoot().removeEventHandler(MouseEvent.MOUSE_RELEASED, handler);
+    }
+
+    private void removeHandler(final GText text, final EventHandler<MouseEvent> handler) {
+        skinLookup.lookupText(text).getRoot().removeEventHandler(MouseEvent.MOUSE_RELEASED, handler);
     }
 
     /**
@@ -181,6 +206,28 @@ public class ModelLayoutUpdater {
         if (jointRegionX != joint.getX()) {
             return true;
         } else if (jointRegionY != joint.getY()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkTextChanged(final GText text) {
+
+        final GTextSkin textSkin = skinLookup.lookupText(text);
+
+        if (textSkin == null) {
+            return false;
+        }
+
+        final Region nodeRegion = textSkin.getRoot();
+
+        if (nodeRegion.getLayoutX() != text.getX()) {
+            return true;
+        } else if (nodeRegion.getLayoutY() != text.getY()) {
+            return true;
+        } else if (nodeRegion.getWidth() != text.getWidth()) {
+            return true;
+        } else if (nodeRegion.getHeight() != text.getHeight()) {
             return true;
         }
         return false;

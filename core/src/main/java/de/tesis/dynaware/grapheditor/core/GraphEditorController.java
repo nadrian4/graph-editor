@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor.core;
 
 import java.util.List;
 
+import de.tesis.dynaware.grapheditor.GTextSkin;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.scene.layout.Region;
 
@@ -243,6 +244,13 @@ public class GraphEditorController {
                 view.remove(jointSkin);
                 jointSkin.dispose();
             }
+        }
+
+        for (final GText text : modelMemory.getTextsToRemove()) {
+
+            final GTextSkin textSkin = skinManager.lookupText(text);
+            view.remove(textSkin);
+            textSkin.dispose();
         }
     }
 
