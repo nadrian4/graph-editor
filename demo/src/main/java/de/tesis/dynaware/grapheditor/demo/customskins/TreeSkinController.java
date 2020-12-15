@@ -74,6 +74,11 @@ public class TreeSkinController implements SkinController {
     }
 
     @Override
+    public void addText(double currentZoomFactor) {
+
+    }
+
+    @Override
     public void clearConnectors() {
         // Not implemented for tree nodes.
     }
