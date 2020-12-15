@@ -118,13 +118,13 @@ public interface GText extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Width</b></em>' attribute.
-	 * The default value is <code>"151"</code>.
+	 * The default value is <code>"95"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width</em>' attribute.
 	 * @see #setWidth(double)
 	 * @see GraphPackage#getGText_Width()
-	 * @model default="151" required="true"
+	 * @model default="95" required="true"
 	 * @generated
 	 */
 	double getWidth();
@@ -141,13 +141,13 @@ public interface GText extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.
-	 * The default value is <code>"101"</code>.
+	 * The default value is <code>"35"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(double)
 	 * @see GraphPackage#getGText_Height()
-	 * @model default="101" required="true"
+	 * @model default="35" required="true"
 	 * @generated
 	 */
 	double getHeight();

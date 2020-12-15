@@ -119,7 +119,7 @@ public class GTextImpl extends MinimalEObjectImpl.Container implements GText {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double WIDTH_EDEFAULT = 151.0;
+	protected static final double WIDTH_EDEFAULT = 95.0;
 
 	/**
 	 * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -139,7 +139,7 @@ public class GTextImpl extends MinimalEObjectImpl.Container implements GText {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double HEIGHT_EDEFAULT = 101.0;
+	protected static final double HEIGHT_EDEFAULT = 35.0;
 
 	/**
 	 * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
