@@ -353,6 +353,11 @@ public class SkinManager implements SkinLookup {
         return textSkins.get(text);
     }
 
+    @Override
+    public List<GTextSkin> lookupTexts(List<GText> texts) {
+        return textSkins.entrySet().stream().filter(entry -> texts.contains(entry.getKey())).map(Map.Entry::getValue).collect(Collectors.toList());
+    }
+
     /**
      * Adds a list of connector skins for the given node.
      *

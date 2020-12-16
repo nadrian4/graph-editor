@@ -73,4 +73,6 @@ public interface SkinLookup {
     GTailSkin lookupTail(final GConnector connector);
 
     GTextSkin lookupText(GText text);
+
+    List<GTextSkin> lookupTexts(List<GText> texts);
 }
