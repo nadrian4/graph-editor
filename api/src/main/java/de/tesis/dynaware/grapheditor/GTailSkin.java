@@ -7,6 +7,7 @@ import java.util.List;
 
 import javafx.geometry.Point2D;
 import de.tesis.dynaware.grapheditor.model.GConnector;
+import javafx.scene.shape.Polyline;
 
 /**
  * The tail-skin class for a {@link GConnector}. Responsible for visualizing the tails that extend temporarily from
@@ -42,6 +43,10 @@ public abstract class GTailSkin extends GSkin {
     public GConnector getConnector() {
         return connector;
     }
+
+    public abstract Polyline getLine();
+
+    public abstract void addOffset(double xOffset, double yOffset);
 
     /**
      * Updates the position of the tail according to the specified start and end points.

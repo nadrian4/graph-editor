@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import org.eclipse.emf.common.command.CompoundCommand;
 
@@ -48,6 +49,7 @@ public class SelectionDeleter {
         final List<GNode> nodesToDelete = new ArrayList<>();
         final List<GConnection> connectionsToDelete = new ArrayList<>();
         final List<GText> textsToDelete = new ArrayList<>();
+        final List<GGroup> groupsToDelete = new ArrayList<>();
 
         for (final GNode node : model.getNodes()) {
             if (skinLookup.lookupNode(node).isSelected()) {
@@ -78,9 +80,16 @@ public class SelectionDeleter {
             }
         }
 
+        for (final GGroup group : model.getGroups()) {
+            if (skinLookup.lookupGroup(group).isSelected()) {
+
+                groupsToDelete.add(group);
+            }
+        }
+
         if (!nodesToDelete.isEmpty() || !connectionsToDelete.isEmpty() || !textsToDelete.isEmpty()) {
 
-            final CompoundCommand command = modelEditingManager.remove(nodesToDelete, connectionsToDelete, textsToDelete);
+            final CompoundCommand command = modelEditingManager.remove(nodesToDelete, connectionsToDelete, textsToDelete, groupsToDelete);
 
             if (consumer != null) {
                 consumer.accept(nodesToDelete, command);

@@ -10,6 +10,7 @@ import java.util.Map;
 
 import de.tesis.dynaware.grapheditor.model.GConnection;
 import de.tesis.dynaware.grapheditor.model.GConnector;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
@@ -37,6 +38,7 @@ public class ModelMemory {
     private final List<GConnection> oldConnections = new ArrayList<>();
     private final Map<GConnection, List<GJoint>> oldJoints = new HashMap<>();
     private final List<GText> oldTexts = new ArrayList<>();
+    private final List<GGroup> oldGroups = new ArrayList<>();
 
     private final List<GNode> nodesToAdd = new ArrayList<>();
     private final List<GNode> nodesToRemove = new ArrayList<>();
@@ -52,6 +54,9 @@ public class ModelMemory {
 
     private final List<GText> textsToAdd = new ArrayList<>();
     private final List<GText> textsToRemove = new ArrayList<>();
+
+    private final List<GGroup> groupsToAdd = new ArrayList<>();
+    private final List<GGroup> groupsToRemove = new ArrayList<>();
 
     /**
      * Sets the new model state.
@@ -72,6 +77,7 @@ public class ModelMemory {
         findConnections(model);
         findJoints(model);
         findTexts(model);
+        findGroups(model);
         rememberOldElements(model);
     }
 
@@ -90,6 +96,7 @@ public class ModelMemory {
         oldConnectors.clear();
         oldJoints.clear();
         oldTexts.clear();
+        oldGroups.clear();
 
         clearAll();
     }
@@ -126,6 +133,14 @@ public class ModelMemory {
 
     public List<GText> getTextsToRemove() {
         return textsToRemove;
+    }
+
+    public List<GGroup> getGroupsToAdd() {
+        return groupsToAdd;
+    }
+
+    public List<GGroup> getGroupsToRemove() {
+        return groupsToRemove;
     }
 
     /**
@@ -220,6 +235,8 @@ public class ModelMemory {
         jointsToRemove.clear();
         textsToAdd.clear();
         textsToRemove.clear();
+        groupsToAdd.clear();
+        groupsToRemove.clear();
     }
 
     /**
@@ -243,6 +260,15 @@ public class ModelMemory {
 
         textsToRemove.addAll(oldTexts);
         textsToRemove.removeAll(model.getTexts());
+    }
+
+    private void findGroups(final GModel model) {
+
+        groupsToAdd.addAll(model.getGroups());
+        groupsToAdd.removeAll(oldGroups);
+
+        groupsToRemove.addAll(oldGroups);
+        groupsToRemove.removeAll(model.getGroups());
     }
 
     /**
@@ -331,6 +357,7 @@ public class ModelMemory {
         oldConnectors.clear();
         oldJoints.clear();
         oldTexts.clear();
+        oldGroups.clear();
 
         oldNodes.addAll(model.getNodes());
         for (final GNode node : model.getNodes()) {
@@ -345,5 +372,6 @@ public class ModelMemory {
         }
 
         oldTexts.addAll(model.getTexts());
+        oldGroups.addAll(model.getGroups());
     }
 }

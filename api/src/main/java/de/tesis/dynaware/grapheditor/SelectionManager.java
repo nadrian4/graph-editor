@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
@@ -99,6 +100,8 @@ public interface SelectionManager {
      */
     void clearMemory();
 
+    ObservableList<GGroup> getSelectedGroups();
+
     /**
      * Selects all selectable elements (nodes, joints, and connections) in the graph editor.
      */
@@ -120,6 +123,8 @@ public interface SelectionManager {
     void selectAllConnections();
 
     void selectAllTexts();
+
+    void selectAllGroups();
 
     /**
      * Clears the selection, i.e. de-selects all elements.

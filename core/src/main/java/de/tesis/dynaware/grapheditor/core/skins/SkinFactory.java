@@ -7,8 +7,10 @@ import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
 import de.tesis.dynaware.grapheditor.core.skins.defaults.DefaultTextSkin;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,12 +43,15 @@ public class SkinFactory {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SkinFactory.class);
 
+    public static final String DEFAULT_GROUP_SKIN_ID = "default-group-skin";
+
     private final Map<String, Class<? extends GNodeSkin>> nodeSkins = new HashMap<>();
     private final Map<String, Class<? extends GConnectorSkin>> connectorSkins = new HashMap<>();
     private final Map<String, Class<? extends GConnectionSkin>> connectionSkins = new HashMap<>();
     private final Map<String, Class<? extends GJointSkin>> jointSkins = new HashMap<>();
     private final Map<String, Class<? extends GTailSkin>> tailSkins = new HashMap<>();
     private final Map<String, Class<? extends GTextSkin>> textSkins = new HashMap<>();
+    private final Map<String, Class<? extends GGroupSkin>> groupSkins = new HashMap<>();
 
     /**
      * Sets the custom node skin class for the given type.
@@ -100,6 +105,10 @@ public class SkinFactory {
 
     public void setTextSkin(final String type, final Class<? extends GTextSkin> skin) {
         textSkins.put(type, skin);
+    }
+
+    public void setGroupSkin(final String type, final Class<? extends GGroupSkin> skin) {
+        groupSkins.put(type, skin);
     }
 
     /**
@@ -266,11 +275,31 @@ public class SkinFactory {
             return new DefaultTextSkin(text);
         } else {
             try {
-                final Constructor<? extends GTextSkin> constructor = skinClass.getConstructor(GNode.class);
+                final Constructor<? extends GTextSkin> constructor = skinClass.getConstructor(GText.class);
                 return constructor.newInstance(text);
             } catch (final ReflectiveOperationException e) {
                 LOGGER.error(LogMessages.CANNOT_INSTANTIATE_SKIN, skinClass.getName());
                 return new DefaultTextSkin(text);
+            }
+        }
+    }
+
+    public GGroupSkin createGroupSkin(GGroup group) {
+        if (group == null) {
+            return null;
+        }
+
+        final Class<? extends GGroupSkin> skinClass = groupSkins.get(DEFAULT_GROUP_SKIN_ID);
+
+        if (skinClass == null) {
+            return null;
+        } else {
+            try {
+                final Constructor<? extends GGroupSkin> constructor = skinClass.getConstructor(GGroup.class);
+                return constructor.newInstance(group);
+            } catch (final ReflectiveOperationException e) {
+                LOGGER.error(LogMessages.CANNOT_INSTANTIATE_SKIN, skinClass.getName());
+                return null;
             }
         }
     }

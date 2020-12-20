@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor.core;
 
 import java.util.function.BiConsumer;
 
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -84,6 +85,11 @@ public class DefaultGraphEditor implements GraphEditor {
     @Override
     public void setTextSkin(final String type, final Class<? extends GTextSkin> skin) {
         skinManager.setTextSkin(type, skin);
+    }
+
+    @Override
+    public void setGroupSkin(final String type, final Class<? extends GGroupSkin> skin) {
+        skinManager.setGroupSkin(type, skin);
     }
 
     @Override

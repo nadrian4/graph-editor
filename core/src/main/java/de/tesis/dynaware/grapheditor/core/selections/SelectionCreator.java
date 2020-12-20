@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiPredicate;
 
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
@@ -60,6 +62,9 @@ public class SelectionCreator {
     private final Map<GText, EventHandler<MouseEvent>> textPressedHandlers = new HashMap<>();
     private final Map<GText, EventHandler<MouseEvent>> textReleasedHandlers = new HashMap<>();
 
+    private final Map<GGroup, EventHandler<MouseEvent>> groupPressedHandlers = new HashMap<>();
+    private final Map<GGroup, EventHandler<MouseEvent>> groupReleasedHandlers = new HashMap<>();
+
     private EventHandler<MouseEvent> viewPressedHandler;
     private EventHandler<MouseEvent> viewDraggedHandler;
     private EventHandler<MouseEvent> viewReleasedHandler;
@@ -70,6 +75,7 @@ public class SelectionCreator {
     private final List<GJoint> selectedJointsBackup = new ArrayList<>();
     private final List<GConnection> selectedConnectionsBackup = new ArrayList<>();
     private final List<GText> selectedTextsBackup = new ArrayList<>();
+    private final List<GGroup> selectedGroupsBackup = new ArrayList<>();
 
     private Rectangle2D selection;
 
@@ -164,6 +170,12 @@ public class SelectionCreator {
         }
     }
 
+    public void selectAllGroups(final boolean selected) {
+        if (model != null) {
+            model.getGroups().forEach(group -> skinLookup.lookupGroup(group).setSelected(selected));
+        }
+    }
+
     /**
      * Deselects all selectable elements.
      */
@@ -172,6 +184,7 @@ public class SelectionCreator {
         selectAllJoints(false);
         selectAllConnections(false);
         selectAllTexts(false);
+        selectAllGroups(false);
     }
 
     /**
@@ -185,6 +198,7 @@ public class SelectionCreator {
         addClickSelectionForNodes();
         addClickSelectionForJoints();
         addClickSelectionForTexts();
+        addClickSelectionForGroups();
     }
 
     /**
@@ -297,6 +311,37 @@ public class SelectionCreator {
         }
     }
 
+
+    /**
+     * Adds a click selection mechanism for groups.
+     */
+    private void addClickSelectionForGroups() {
+        for (final GGroup group : model.getGroups()) {
+
+            final Region nodeRegion = skinLookup.lookupGroup(group).getRoot();
+
+            final EventHandler<MouseEvent> oldGroupPressedHandler = groupPressedHandlers.get(group);
+            final EventHandler<MouseEvent> oldGroupReleasedHandler = groupReleasedHandlers.get(group);
+
+            if (oldGroupPressedHandler != null) {
+                nodeRegion.removeEventHandler(MouseEvent.MOUSE_PRESSED, oldGroupPressedHandler);
+            }
+
+            if (oldGroupReleasedHandler != null) {
+                nodeRegion.removeEventHandler(MouseEvent.MOUSE_RELEASED, oldGroupReleasedHandler);
+            }
+
+            final EventHandler<MouseEvent> newGroupPressedHandler = event -> handleGroupPressed(event, group);
+            final EventHandler<MouseEvent> newGroupReleasedHandler = event -> handleGroupReleased(event, group);
+
+            nodeRegion.addEventHandler(MouseEvent.MOUSE_PRESSED, newGroupPressedHandler);
+            nodeRegion.addEventHandler(MouseEvent.MOUSE_RELEASED, newGroupReleasedHandler);
+
+            groupPressedHandlers.put(group, newGroupPressedHandler);
+            groupReleasedHandlers.put(group, newGroupReleasedHandler);
+        }
+    }
+
     /**
      * Handles mouse-pressed events on the given node.
      *
@@ -392,6 +437,43 @@ public class SelectionCreator {
         }
 
         selectionDragManager.unbindPositions(text);
+        event.consume();
+    }
+
+    private void handleGroupPressed(final MouseEvent event, final GGroup group) {
+
+        if (!event.getButton().equals(MouseButton.PRIMARY)) {
+            return;
+        }
+
+        final GGroupSkin groupSkin = skinLookup.lookupGroup(group);
+
+        if (!groupSkin.isSelected()) {
+            if (!event.isShortcutDown()) {
+                deselectAll();
+            } else {
+                backupSelections();
+            }
+            groupSkin.setSelected(true);
+        } else {
+            if (event.isShortcutDown()) {
+                groupSkin.setSelected(false);
+            }
+        }
+        if (!groupSkin.getRoot().isMouseInPositionForResize()) {
+            selectionDragManager.bindPositions(group, model);
+        }
+
+        event.consume();
+    }
+
+    private void handleGroupReleased(final MouseEvent event, final GGroup group) {
+
+        if (!event.getButton().equals(MouseButton.PRIMARY)) {
+            return;
+        }
+
+        selectionDragManager.unbindPositions(group);
         event.consume();
     }
 
@@ -569,23 +651,27 @@ public class SelectionCreator {
         final List<GJoint> selectedJoints = getAllJointsInBox();
         final List<GConnection> selectedConnections = getAllConnectionsInBox();
         final List<GText> selectedTexts = getAllTextsInBox();
+        final List<GGroup> selectedGroups = getAllGroupsInBox();
 
         if (isShortcutDown) {
             selectedNodes.addAll(selectedNodesBackup);
             selectedJoints.addAll(selectedJointsBackup);
             selectedConnections.addAll(selectedConnectionsBackup);
             selectedTexts.addAll(selectedTextsBackup);
+            selectedGroups.addAll(selectedGroupsBackup);
         }
 
         final List<GNode> deselectedNodes = new ArrayList<>(model.getNodes());
         final List<GJoint> deselectedJoints = new ArrayList<>(allJoints);
         final List<GConnection> deselectedConnections = new ArrayList<>(model.getConnections());
         final List<GText> deselectedTexts = new ArrayList<>(model.getTexts());
+        final List<GGroup> deselectedGroups = new ArrayList<>(model.getGroups());
 
         deselectedNodes.removeAll(selectedNodes);
         deselectedJoints.removeAll(selectedJoints);
         deselectedConnections.removeAll(selectedConnections);
         deselectedTexts.removeAll(selectedTexts);
+        deselectedGroups.removeAll(selectedGroups);
 
         selectedNodes.forEach(node -> skinLookup.lookupNode(node).setSelected(true));
         deselectedNodes.forEach(node -> skinLookup.lookupNode(node).setSelected(false));
@@ -595,6 +681,8 @@ public class SelectionCreator {
         deselectedConnections.forEach(connection -> skinLookup.lookupConnection(connection).setSelected(false));
         selectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(true));
         deselectedTexts.forEach(text -> skinLookup.lookupText(text).setSelected(false));
+        selectedGroups.forEach(group -> skinLookup.lookupGroup(group).setSelected(true));
+        deselectedGroups.forEach(group -> skinLookup.lookupGroup(group).setSelected(false));
     }
 
     /**
@@ -626,6 +714,20 @@ public class SelectionCreator {
         }
 
         return textsToSelect;
+    }
+
+    private List<GGroup> getAllGroupsInBox() {
+
+        final List<GGroup> groupsToSelect = new ArrayList<>();
+
+        for (final GGroup group : model.getGroups()) {
+
+            if (selection.contains(group.getX(), group.getY(), group.getWidth(), group.getHeight())) {
+                groupsToSelect.add(group);
+            }
+        }
+
+        return groupsToSelect;
     }
 
     /**
@@ -679,6 +781,7 @@ public class SelectionCreator {
         selectedJointsBackup.clear();
         selectedConnectionsBackup.clear();
         selectedTextsBackup.clear();
+        selectedGroupsBackup.clear();
 
         for (final GNode node : model.getNodes()) {
             if (skinLookup.lookupNode(node).isSelected()) {
@@ -702,6 +805,12 @@ public class SelectionCreator {
         for (final GText text : model.getTexts()) {
             if (skinLookup.lookupText(text).isSelected()) {
                 selectedTextsBackup.add(text);
+            }
+        }
+
+        for (final GGroup group : model.getGroups()) {
+            if (skinLookup.lookupGroup(group).isSelected()) {
+                selectedGroupsBackup.add(group);
             }
         }
     }

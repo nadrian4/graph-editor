@@ -231,31 +231,13 @@ public interface GraphPackage extends EPackage {
 	int GNODE__CONNECTORS = GCONNECTABLE__CONNECTORS;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GNODE__ID = GCONNECTABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GNODE__TYPE = GCONNECTABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>X</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__X = GCONNECTABLE_FEATURE_COUNT + 2;
+	int GNODE__X = GCONNECTABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Y</b></em>' attribute.
@@ -264,7 +246,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__Y = GCONNECTABLE_FEATURE_COUNT + 3;
+	int GNODE__Y = GCONNECTABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -273,7 +255,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__WIDTH = GCONNECTABLE_FEATURE_COUNT + 4;
+	int GNODE__WIDTH = GCONNECTABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -282,7 +264,25 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__HEIGHT = GCONNECTABLE_FEATURE_COUNT + 5;
+	int GNODE__HEIGHT = GCONNECTABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNODE__ID = GCONNECTABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNODE__TYPE = GCONNECTABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Subgraph</b></em>' containment reference.
@@ -348,13 +348,13 @@ public interface GraphPackage extends EPackage {
 	int GNODE__CATEGORY = GCONNECTABLE_FEATURE_COUNT + 12;
 
 	/**
-	 * The feature id for the '<em><b>Groups</b></em>' reference list.
+	 * The feature id for the '<em><b>Group</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GNODE__GROUPS = GCONNECTABLE_FEATURE_COUNT + 13;
+	int GNODE__GROUP = GCONNECTABLE_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>GNode</em>' class.
@@ -677,6 +677,70 @@ public interface GraphPackage extends EPackage {
 	int GCATEGORY_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.tesis.dynaware.grapheditor.model.impl.GResizableImpl <em>GResizable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GResizableImpl
+	 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGResizable()
+	 * @generated
+	 */
+	int GRESIZABLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRESIZABLE__X = 0;
+
+	/**
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRESIZABLE__Y = 1;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRESIZABLE__WIDTH = 2;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRESIZABLE__HEIGHT = 3;
+
+	/**
+	 * The number of structural features of the '<em>GResizable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRESIZABLE_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>GResizable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRESIZABLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl <em>GGroup</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -687,13 +751,67 @@ public interface GraphPackage extends EPackage {
 	int GGROUP = 7;
 
 	/**
+	 * The feature id for the '<em><b>X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__X = GRESIZABLE__X;
+
+	/**
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__Y = GRESIZABLE__Y;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__WIDTH = GRESIZABLE__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__HEIGHT = GRESIZABLE__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__ID = GRESIZABLE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GGROUP__NAME = 0;
+	int GGROUP__NAME = GRESIZABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__NODES = GRESIZABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>GGroup</em>' class.
@@ -702,7 +820,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GGROUP_FEATURE_COUNT = 1;
+	int GGROUP_FEATURE_COUNT = GRESIZABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>GGroup</em>' class.
@@ -711,7 +829,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GGROUP_OPERATION_COUNT = 0;
+	int GGROUP_OPERATION_COUNT = GRESIZABLE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -725,31 +843,13 @@ public interface GraphPackage extends EPackage {
 	int GTEXT = 8;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GTEXT__ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GTEXT__TEXT = 1;
-
-	/**
 	 * The feature id for the '<em><b>X</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GTEXT__X = 2;
+	int GTEXT__X = GRESIZABLE__X;
 
 	/**
 	 * The feature id for the '<em><b>Y</b></em>' attribute.
@@ -758,7 +858,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTEXT__Y = 3;
+	int GTEXT__Y = GRESIZABLE__Y;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -767,7 +867,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTEXT__WIDTH = 4;
+	int GTEXT__WIDTH = GRESIZABLE__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -776,7 +876,25 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTEXT__HEIGHT = 5;
+	int GTEXT__HEIGHT = GRESIZABLE__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__ID = GRESIZABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GTEXT__TEXT = GRESIZABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>GText</em>' class.
@@ -785,7 +903,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTEXT_FEATURE_COUNT = 6;
+	int GTEXT_FEATURE_COUNT = GRESIZABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>GText</em>' class.
@@ -794,7 +912,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GTEXT_OPERATION_COUNT = 0;
+	int GTEXT_OPERATION_COUNT = GRESIZABLE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -971,50 +1089,6 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGNode_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GNode#getX <em>X</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see GNode#getX()
-	 * @see #getGNode()
-	 * @generated
-	 */
-	EAttribute getGNode_X();
-
-	/**
-	 * Returns the meta object for the attribute '{@link GNode#getY <em>Y</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see GNode#getY()
-	 * @see #getGNode()
-	 * @generated
-	 */
-	EAttribute getGNode_Y();
-
-	/**
-	 * Returns the meta object for the attribute '{@link GNode#getWidth <em>Width</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see GNode#getWidth()
-	 * @see #getGNode()
-	 * @generated
-	 */
-	EAttribute getGNode_Width();
-
-	/**
-	 * Returns the meta object for the attribute '{@link GNode#getHeight <em>Height</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see GNode#getHeight()
-	 * @see #getGNode()
-	 * @generated
-	 */
-	EAttribute getGNode_Height();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link GNode#getSubgraph <em>Subgraph</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1035,17 +1109,6 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGNode_NodeType();
-
-	/**
-	 * Returns the meta object for the reference list '{@link GNode#getGroups <em>Groups</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Groups</em>'.
-	 * @see GNode#getGroups()
-	 * @see #getGNode()
-	 * @generated
-	 */
-	EReference getGNode_Groups();
 
 	/**
 	 * Returns the meta object for the attribute '{@link GNode#getTitle <em>Title</em>}'.
@@ -1101,6 +1164,17 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getGNode_Category();
+
+	/**
+	 * Returns the meta object for the reference '{@link GNode#getGroup <em>Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Group</em>'.
+	 * @see GNode#getGroup()
+	 * @see #getGNode()
+	 * @generated
+	 */
+	EReference getGNode_Group();
 
 	/**
 	 * Returns the meta object for class '{@link GConnection <em>GConnection</em>}'.
@@ -1373,6 +1447,17 @@ public interface GraphPackage extends EPackage {
 	EClass getGGroup();
 
 	/**
+	 * Returns the meta object for the attribute '{@link GGroup#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see GGroup#getId()
+	 * @see #getGGroup()
+	 * @generated
+	 */
+	EAttribute getGGroup_Id();
+
+	/**
 	 * Returns the meta object for the attribute '{@link GGroup#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1382,6 +1467,17 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGGroup_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link GGroup#getNodes <em>Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Nodes</em>'.
+	 * @see GGroup#getNodes()
+	 * @see #getGGroup()
+	 * @generated
+	 */
+	EReference getGGroup_Nodes();
 
 	/**
 	 * Returns the meta object for class '{@link GText <em>GText</em>}'.
@@ -1416,48 +1512,58 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGText_Text();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GText#getX <em>X</em>}'.
+	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GResizable <em>GResizable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GResizable</em>'.
+	 * @see de.tesis.dynaware.grapheditor.model.GResizable
+	 * @generated
+	 */
+	EClass getGResizable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see GText#getX()
-	 * @see #getGText()
+	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getX()
+	 * @see #getGResizable()
 	 * @generated
 	 */
-	EAttribute getGText_X();
+	EAttribute getGResizable_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GText#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see GText#getY()
-	 * @see #getGText()
+	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getY()
+	 * @see #getGResizable()
 	 * @generated
 	 */
-	EAttribute getGText_Y();
+	EAttribute getGResizable_Y();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GText#getWidth <em>Width</em>}'.
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getWidth <em>Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see GText#getWidth()
-	 * @see #getGText()
+	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getWidth()
+	 * @see #getGResizable()
 	 * @generated
 	 */
-	EAttribute getGText_Width();
+	EAttribute getGResizable_Width();
 
 	/**
-	 * Returns the meta object for the attribute '{@link GText#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see GText#getHeight()
-	 * @see #getGText()
+	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getHeight()
+	 * @see #getGResizable()
 	 * @generated
 	 */
-	EAttribute getGText_Height();
+	EAttribute getGResizable_Height();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1617,38 +1723,6 @@ public interface GraphPackage extends EPackage {
 		EAttribute GNODE__TYPE = eINSTANCE.getGNode_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>X</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GNODE__X = eINSTANCE.getGNode_X();
-
-		/**
-		 * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GNODE__Y = eINSTANCE.getGNode_Y();
-
-		/**
-		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GNODE__WIDTH = eINSTANCE.getGNode_Width();
-
-		/**
-		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GNODE__HEIGHT = eINSTANCE.getGNode_Height();
-
-		/**
 		 * The meta object literal for the '<em><b>Subgraph</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1663,14 +1737,6 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GNODE__NODE_TYPE = eINSTANCE.getGNode_NodeType();
-
-		/**
-		 * The meta object literal for the '<em><b>Groups</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GNODE__GROUPS = eINSTANCE.getGNode_Groups();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
@@ -1711,6 +1777,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GNODE__CATEGORY = eINSTANCE.getGNode_Category();
+
+		/**
+		 * The meta object literal for the '<em><b>Group</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GNODE__GROUP = eINSTANCE.getGNode_Group();
 
 		/**
 		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl <em>GConnection</em>}' class.
@@ -1923,12 +1997,28 @@ public interface GraphPackage extends EPackage {
 		EClass GGROUP = eINSTANCE.getGGroup();
 
 		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GGROUP__ID = eINSTANCE.getGGroup_Id();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute GGROUP__NAME = eINSTANCE.getGGroup_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GGROUP__NODES = eINSTANCE.getGGroup_Nodes();
 
 		/**
 		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GTextImpl <em>GText</em>}' class.
@@ -1957,12 +2047,22 @@ public interface GraphPackage extends EPackage {
 		EAttribute GTEXT__TEXT = eINSTANCE.getGText_Text();
 
 		/**
+		 * The meta object literal for the '{@link de.tesis.dynaware.grapheditor.model.impl.GResizableImpl <em>GResizable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GResizableImpl
+		 * @see de.tesis.dynaware.grapheditor.model.impl.GraphPackageImpl#getGResizable()
+		 * @generated
+		 */
+		EClass GRESIZABLE = eINSTANCE.getGResizable();
+
+		/**
 		 * The meta object literal for the '<em><b>X</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GTEXT__X = eINSTANCE.getGText_X();
+		EAttribute GRESIZABLE__X = eINSTANCE.getGResizable_X();
 
 		/**
 		 * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
@@ -1970,7 +2070,7 @@ public interface GraphPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GTEXT__Y = eINSTANCE.getGText_Y();
+		EAttribute GRESIZABLE__Y = eINSTANCE.getGResizable_Y();
 
 		/**
 		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
@@ -1978,7 +2078,7 @@ public interface GraphPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GTEXT__WIDTH = eINSTANCE.getGText_Width();
+		EAttribute GRESIZABLE__WIDTH = eINSTANCE.getGResizable_Width();
 
 		/**
 		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
@@ -1986,7 +2086,7 @@ public interface GraphPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GTEXT__HEIGHT = eINSTANCE.getGText_Height();
+		EAttribute GRESIZABLE__HEIGHT = eINSTANCE.getGResizable_Height();
 
 	}
 

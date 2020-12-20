@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor.core.model;
 
 import java.util.List;
 
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
@@ -38,6 +39,7 @@ public class ModelEditingManager {
     private static final EReference CONNECTIONS = GraphPackage.Literals.GMODEL__CONNECTIONS;
     private static final EReference CONNECTOR_CONNECTIONS = GraphPackage.Literals.GCONNECTOR__CONNECTIONS;
     private static final EReference TEXTS = GraphPackage.Literals.GMODEL__TEXTS;
+    private static final EReference GROUPS = GraphPackage.Literals.GMODEL__GROUPS;
 
     private static final URI DEFAULT_URI = URI.createFileURI("");
 
@@ -99,7 +101,7 @@ public class ModelEditingManager {
      * @param nodesToRemove the nodes to be removed
      * @param connectionsToRemove the connections to be removed
      */
-    public CompoundCommand remove(final List<GNode> nodesToRemove, final List<GConnection> connectionsToRemove, List<GText> textsToRemove) {
+    public CompoundCommand remove(final List<GNode> nodesToRemove, final List<GConnection> connectionsToRemove, List<GText> textsToRemove, List<GGroup> groupsToRemove) {
 
         final CompoundCommand command = new CompoundCommand();
 
@@ -125,6 +127,10 @@ public class ModelEditingManager {
 
         for (final GText text : textsToRemove) {
             command.append(RemoveCommand.create(editingDomain, model, TEXTS, text));
+        }
+
+        for (final GGroup group : groupsToRemove) {
+            command.append(RemoveCommand.create(editingDomain, model, GROUPS, group));
         }
 
         if (command.canExecute()) {

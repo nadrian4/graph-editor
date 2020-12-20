@@ -304,7 +304,6 @@ public class DraggableBox extends StackPane {
      * @param event {@link MouseEvent}
      */
     protected void handleMouseDragged(final MouseEvent event) {
-
         if (!event.getButton().equals(MouseButton.PRIMARY)) {
             return;
         }

@@ -41,7 +41,7 @@ public class DefaultConnectorSkin extends GConnectorSkin {
     private static final String ALLOWED = "-animated-color-allowed";
     private static final String FORBIDDEN = "-animated-color-forbidden";
 
-    private static final double SIZE = 25;
+    private static final double SIZE = 14;
 
     private final Pane root = new Pane();
     private final Polygon polygon = new Polygon();

@@ -61,10 +61,10 @@ public class Commands {
     private static final EReference CATEGORIES = GraphPackage.Literals.GMODEL__CATEGORIES;
     private static final EReference GROUPS = GraphPackage.Literals.GMODEL__GROUPS;
 
-    private static final EAttribute NODE_X = GraphPackage.Literals.GNODE__X;
-    private static final EAttribute NODE_Y = GraphPackage.Literals.GNODE__Y;
-    private static final EAttribute NODE_WIDTH = GraphPackage.Literals.GNODE__WIDTH;
-    private static final EAttribute NODE_HEIGHT = GraphPackage.Literals.GNODE__HEIGHT;
+    private static final EAttribute RESIZABLE_X = GraphPackage.Literals.GRESIZABLE__X;
+    private static final EAttribute RESIZABLE_Y = GraphPackage.Literals.GRESIZABLE__Y;
+    private static final EAttribute RESIZABLE_WIDTH = GraphPackage.Literals.GRESIZABLE__WIDTH;
+    private static final EAttribute RESIZABLE_HEIGHT = GraphPackage.Literals.GRESIZABLE__HEIGHT;
     private static final EReference NODE_CONNECTORS = GraphPackage.Literals.GCONNECTABLE__CONNECTORS;
 
     private static final EReference CONNECTOR_CONNECTIONS = GraphPackage.Literals.GCONNECTOR__CONNECTIONS;
@@ -72,10 +72,6 @@ public class Commands {
     private static final EAttribute JOINT_X = GraphPackage.Literals.GJOINT__X;
     private static final EAttribute JOINT_Y = GraphPackage.Literals.GJOINT__Y;
 
-    private static final EAttribute TEXT_X = GraphPackage.Literals.GTEXT__X;
-    private static final EAttribute TEXT_Y = GraphPackage.Literals.GTEXT__Y;
-    private static final EAttribute TEXT_WIDTH = GraphPackage.Literals.GTEXT__WIDTH;
-    private static final EAttribute TEXT_HEIGHT = GraphPackage.Literals.GTEXT__HEIGHT;
 
     /**
      * Static class, not to be instantiated.
@@ -144,7 +140,6 @@ public class Commands {
             }
         }
     }
-
     /**
      * Removes a node from the model.
      *
@@ -303,10 +298,10 @@ public class Commands {
 
                 final Region nodeRegion = skinLookup.lookupNode(node).getRoot();
 
-                command.append(SetCommand.create(editingDomain, node, NODE_X, nodeRegion.getLayoutX()));
-                command.append(SetCommand.create(editingDomain, node, NODE_Y, nodeRegion.getLayoutY()));
-                command.append(SetCommand.create(editingDomain, node, NODE_WIDTH, nodeRegion.getWidth()));
-                command.append(SetCommand.create(editingDomain, node, NODE_HEIGHT, nodeRegion.getHeight()));
+                command.append(SetCommand.create(editingDomain, node, RESIZABLE_X, nodeRegion.getLayoutX()));
+                command.append(SetCommand.create(editingDomain, node, RESIZABLE_Y, nodeRegion.getLayoutY()));
+                command.append(SetCommand.create(editingDomain, node, RESIZABLE_WIDTH, nodeRegion.getWidth()));
+                command.append(SetCommand.create(editingDomain, node, RESIZABLE_HEIGHT, nodeRegion.getHeight()));
             }
 
             for (final GConnection connection : model.getConnections()) {
@@ -328,10 +323,20 @@ public class Commands {
 
                 final Region textRegion = skinLookup.lookupText(text).getRoot();
 
-                command.append(SetCommand.create(editingDomain, text, TEXT_X, textRegion.getLayoutX()));
-                command.append(SetCommand.create(editingDomain, text, TEXT_Y, textRegion.getLayoutY()));
-                command.append(SetCommand.create(editingDomain, text, TEXT_WIDTH, textRegion.getWidth()));
-                command.append(SetCommand.create(editingDomain, text, TEXT_HEIGHT, textRegion.getHeight()));
+                command.append(SetCommand.create(editingDomain, text, RESIZABLE_X, textRegion.getLayoutX()));
+                command.append(SetCommand.create(editingDomain, text, RESIZABLE_Y, textRegion.getLayoutY()));
+                command.append(SetCommand.create(editingDomain, text, RESIZABLE_WIDTH, textRegion.getWidth()));
+                command.append(SetCommand.create(editingDomain, text, RESIZABLE_HEIGHT, textRegion.getHeight()));
+            }
+
+            for (final GGroup group : model.getGroups()) {
+
+                final Region textRegion = skinLookup.lookupGroup(group).getRoot();
+
+                command.append(SetCommand.create(editingDomain, group, RESIZABLE_X, textRegion.getLayoutX()));
+                command.append(SetCommand.create(editingDomain, group, RESIZABLE_Y, textRegion.getLayoutY()));
+                command.append(SetCommand.create(editingDomain, group, RESIZABLE_WIDTH, textRegion.getWidth()));
+                command.append(SetCommand.create(editingDomain, group, RESIZABLE_HEIGHT, textRegion.getHeight()));
             }
         }
     }

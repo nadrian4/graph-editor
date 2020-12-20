@@ -5,7 +5,9 @@ package de.tesis.dynaware.grapheditor.core;
 
 import java.util.List;
 
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.scene.layout.Region;
 
@@ -214,6 +216,10 @@ public class GraphEditorController {
         for (final GText text : modelMemory.getTextsToAdd()) {
             view.add(skinManager.lookupText(text));
         }
+
+        for (final GGroup group : modelMemory.getGroupsToAdd()) {
+            view.add(skinManager.lookupGroup(group));
+        }
     }
 
     /**
@@ -252,6 +258,14 @@ public class GraphEditorController {
             view.remove(textSkin);
             textSkin.dispose();
         }
+
+        for (final GGroup group : modelMemory.getGroupsToRemove()) {
+
+            final GGroupSkin groupSkin = skinManager.lookupGroup(group);
+            view.remove(groupSkin);
+            groupSkin.dispose();
+        }
+
     }
 
     /**
@@ -277,6 +291,9 @@ public class GraphEditorController {
 
         skinManager.addTexts(modelMemory.getTextsToAdd());
         skinManager.removeTexts(modelMemory.getTextsToRemove());
+
+        skinManager.addGroups(modelMemory.getGroupsToAdd());
+        skinManager.removeGroups(modelMemory.getGroupsToRemove());
 
         skinManager.initializeAll();
     }

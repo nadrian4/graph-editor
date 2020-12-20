@@ -6,7 +6,9 @@ package de.tesis.dynaware.grapheditor.core.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +33,7 @@ public class ModelLayoutUpdater {
     private final Map<GNode, EventHandler<MouseEvent>> nodeReleasedHandlers = new HashMap<>();
     private final Map<GJoint, EventHandler<MouseEvent>> jointReleasedHandlers = new HashMap<>();
     private final Map<GText, EventHandler<MouseEvent>> textReleasedHandlers = new HashMap<>();
+    private final Map<GGroup, EventHandler<MouseEvent>> groupReleasedHandlers = new HashMap<>();
 
     /**
      * Creates a new model layout updater. Only one instance should exist per {@link DefaultGraphEditor} instance.
@@ -65,6 +68,7 @@ public class ModelLayoutUpdater {
         final Map<GNode, EventHandler<MouseEvent>> oldNodeReleasedHandlers = new HashMap<>(nodeReleasedHandlers);
         final Map<GJoint, EventHandler<MouseEvent>> oldJointReleasedHandlers = new HashMap<>(jointReleasedHandlers);
         final Map<GText, EventHandler<MouseEvent>> oldTextReleasedHandlers = new HashMap<>(textReleasedHandlers);
+        final Map<GGroup, EventHandler<MouseEvent>> oldGroupReleasedHandlers = new HashMap<>(groupReleasedHandlers);
 
         for (final GNode node : model.getNodes()) {
 
@@ -90,6 +94,15 @@ public class ModelLayoutUpdater {
                 removeHandler(text, oldTextReleasedHandlers.get(text));
             }
             addHandler(text);
+        }
+
+
+        for (final GGroup group : model.getGroups()) {
+
+            if (oldGroupReleasedHandlers.get(group) != null) {
+                removeHandler(group, oldGroupReleasedHandlers.get(group));
+            }
+            addHandler(group);
         }
     }
 
@@ -130,6 +143,15 @@ public class ModelLayoutUpdater {
         });
     }
 
+    private void addHandler(final GGroup group) {
+
+        skinLookup.lookupGroup(group).getRoot().setOnMouseReleased(event -> {
+            if (checkGroupChanged(group)) {
+                modelEditingManager.updateLayoutValues(skinLookup);
+            }
+        });
+    }
+
     /**
      * Removes a mouse-released handler from a node skin's root JavaFX node.
      *
@@ -152,6 +174,10 @@ public class ModelLayoutUpdater {
 
     private void removeHandler(final GText text, final EventHandler<MouseEvent> handler) {
         skinLookup.lookupText(text).getRoot().removeEventHandler(MouseEvent.MOUSE_RELEASED, handler);
+    }
+
+    private void removeHandler(final GGroup group, final EventHandler<MouseEvent> handler) {
+        skinLookup.lookupGroup(group).getRoot().removeEventHandler(MouseEvent.MOUSE_RELEASED, handler);
     }
 
     /**
@@ -228,6 +254,29 @@ public class ModelLayoutUpdater {
         } else if (nodeRegion.getWidth() != text.getWidth()) {
             return true;
         } else if (nodeRegion.getHeight() != text.getHeight()) {
+            return true;
+        }
+        return false;
+    }
+
+
+    private boolean checkGroupChanged(final GGroup group) {
+
+        final GGroupSkin groupSkin = skinLookup.lookupGroup(group);
+
+        if (groupSkin == null) {
+            return false;
+        }
+
+        final Region nodeRegion = groupSkin.getRoot();
+
+        if (nodeRegion.getLayoutX() != group.getX()) {
+            return true;
+        } else if (nodeRegion.getLayoutY() != group.getY()) {
+            return true;
+        } else if (nodeRegion.getWidth() != group.getWidth()) {
+            return true;
+        } else if (nodeRegion.getHeight() != group.getHeight()) {
             return true;
         }
         return false;

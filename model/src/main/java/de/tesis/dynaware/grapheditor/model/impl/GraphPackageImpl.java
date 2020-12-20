@@ -10,6 +10,7 @@ import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GResizable;
 import de.tesis.dynaware.grapheditor.model.GText;
 import de.tesis.dynaware.grapheditor.model.GraphFactory;
 import de.tesis.dynaware.grapheditor.model.GraphPackage;
@@ -90,6 +91,13 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	private EClass gTextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gResizableEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -318,48 +326,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGNode_X() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getGNode_Y() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getGNode_Width() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getGNode_Height() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getGNode_Subgraph() {
-		return (EReference)gNodeEClass.getEStructuralFeatures().get(6);
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -369,17 +337,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_NodeType() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getGNode_Groups() {
-		return (EReference)gNodeEClass.getEStructuralFeatures().get(13);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -389,7 +347,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_Title() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -399,7 +357,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_Description() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(9);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -409,7 +367,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_UniqueId() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(10);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -419,7 +377,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGNode_Color() {
-		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(11);
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -429,7 +387,17 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EReference getGNode_Category() {
-		return (EReference)gNodeEClass.getEStructuralFeatures().get(12);
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGNode_Group() {
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -688,8 +656,28 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGGroup_Name() {
+	public EAttribute getGGroup_Id() {
 		return (EAttribute)gGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGGroup_Name() {
+		return (EAttribute)gGroupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGGroup_Nodes() {
+		return (EReference)gGroupEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -728,8 +716,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGText_X() {
-		return (EAttribute)gTextEClass.getEStructuralFeatures().get(2);
+	public EClass getGResizable() {
+		return gResizableEClass;
 	}
 
 	/**
@@ -738,8 +726,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGText_Y() {
-		return (EAttribute)gTextEClass.getEStructuralFeatures().get(3);
+	public EAttribute getGResizable_X() {
+		return (EAttribute)gResizableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -748,8 +736,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGText_Width() {
-		return (EAttribute)gTextEClass.getEStructuralFeatures().get(4);
+	public EAttribute getGResizable_Y() {
+		return (EAttribute)gResizableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -758,8 +746,18 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGText_Height() {
-		return (EAttribute)gTextEClass.getEStructuralFeatures().get(5);
+	public EAttribute getGResizable_Width() {
+		return (EAttribute)gResizableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGResizable_Height() {
+		return (EAttribute)gResizableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -809,10 +807,6 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		gNodeEClass = createEClass(GNODE);
 		createEAttribute(gNodeEClass, GNODE__ID);
 		createEAttribute(gNodeEClass, GNODE__TYPE);
-		createEAttribute(gNodeEClass, GNODE__X);
-		createEAttribute(gNodeEClass, GNODE__Y);
-		createEAttribute(gNodeEClass, GNODE__WIDTH);
-		createEAttribute(gNodeEClass, GNODE__HEIGHT);
 		createEReference(gNodeEClass, GNODE__SUBGRAPH);
 		createEAttribute(gNodeEClass, GNODE__NODE_TYPE);
 		createEAttribute(gNodeEClass, GNODE__TITLE);
@@ -820,7 +814,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gNodeEClass, GNODE__UNIQUE_ID);
 		createEAttribute(gNodeEClass, GNODE__COLOR);
 		createEReference(gNodeEClass, GNODE__CATEGORY);
-		createEReference(gNodeEClass, GNODE__GROUPS);
+		createEReference(gNodeEClass, GNODE__GROUP);
 
 		gConnectionEClass = createEClass(GCONNECTION);
 		createEAttribute(gConnectionEClass, GCONNECTION__ID);
@@ -851,15 +845,19 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gCategoryEClass, GCATEGORY__REMOVAL_COST);
 
 		gGroupEClass = createEClass(GGROUP);
+		createEAttribute(gGroupEClass, GGROUP__ID);
 		createEAttribute(gGroupEClass, GGROUP__NAME);
+		createEReference(gGroupEClass, GGROUP__NODES);
 
 		gTextEClass = createEClass(GTEXT);
 		createEAttribute(gTextEClass, GTEXT__ID);
 		createEAttribute(gTextEClass, GTEXT__TEXT);
-		createEAttribute(gTextEClass, GTEXT__X);
-		createEAttribute(gTextEClass, GTEXT__Y);
-		createEAttribute(gTextEClass, GTEXT__WIDTH);
-		createEAttribute(gTextEClass, GTEXT__HEIGHT);
+
+		gResizableEClass = createEClass(GRESIZABLE);
+		createEAttribute(gResizableEClass, GRESIZABLE__X);
+		createEAttribute(gResizableEClass, GRESIZABLE__Y);
+		createEAttribute(gResizableEClass, GRESIZABLE__WIDTH);
+		createEAttribute(gResizableEClass, GRESIZABLE__HEIGHT);
 	}
 
 	/**
@@ -891,7 +889,10 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 
 		// Add supertypes to classes
 		gNodeEClass.getESuperTypes().add(this.getGConnectable());
+		gNodeEClass.getESuperTypes().add(this.getGResizable());
 		gConnectionEClass.getESuperTypes().add(this.getGConnectable());
+		gGroupEClass.getESuperTypes().add(this.getGResizable());
+		gTextEClass.getESuperTypes().add(this.getGResizable());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(gModelEClass, GModel.class, "GModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -912,10 +913,6 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEClass(gNodeEClass, GNode.class, "GNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGNode_Id(), ecorePackage.getEString(), "id", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Type(), ecorePackage.getEString(), "type", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_X(), ecorePackage.getEDouble(), "x", "0", 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_Y(), ecorePackage.getEDouble(), "y", "0", 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_Width(), ecorePackage.getEDouble(), "width", "151", 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGNode_Height(), ecorePackage.getEDouble(), "height", "101", 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGNode_Subgraph(), this.getGModel(), this.getGModel_Supergraph(), "subgraph", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_NodeType(), ecorePackage.getEString(), "nodeType", "", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -923,7 +920,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGNode_UniqueId(), ecorePackage.getEString(), "uniqueId", "", 0, 1, GNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Color(), ecorePackage.getEString(), "color", "0xffffffff", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGNode_Category(), this.getGCategory(), null, "category", null, 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGNode_Groups(), this.getGGroup(), null, "groups", null, 0, -1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGNode_Group(), this.getGGroup(), null, "group", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gConnectionEClass, GConnection.class, "GConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGConnection_Id(), ecorePackage.getEString(), "id", null, 0, 1, GConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -954,15 +951,19 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGCategory_RemovalCost(), ecorePackage.getEDouble(), "removalCost", null, 0, 1, GCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gGroupEClass, GGroup.class, "GGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGGroup_Id(), ecorePackage.getEString(), "id", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGGroup_Nodes(), this.getGNode(), null, "nodes", null, 0, -1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gTextEClass, GText.class, "GText", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGText_Id(), ecorePackage.getEString(), "id", null, 0, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGText_Text(), ecorePackage.getEString(), "text", null, 0, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGText_X(), ecorePackage.getEDouble(), "x", "0", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGText_Y(), ecorePackage.getEDouble(), "y", "0", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGText_Width(), ecorePackage.getEDouble(), "width", "95", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGText_Height(), ecorePackage.getEDouble(), "height", "35", 1, 1, GText.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gResizableEClass, GResizable.class, "GResizable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGResizable_X(), ecorePackage.getEDouble(), "x", "0", 1, 1, GResizable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGResizable_Y(), ecorePackage.getEDouble(), "y", "0", 1, 1, GResizable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGResizable_Width(), ecorePackage.getEDouble(), "width", "151", 1, 1, GResizable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGResizable_Height(), ecorePackage.getEDouble(), "height", "101", 1, 1, GResizable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

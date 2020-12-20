@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor.core.skins;
 
 import de.tesis.dynaware.grapheditor.GConnectionSkin;
 import de.tesis.dynaware.grapheditor.GConnectorSkin;
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GJointSkin;
 import de.tesis.dynaware.grapheditor.GNodeSkin;
 import de.tesis.dynaware.grapheditor.GTailSkin;
@@ -14,6 +15,7 @@ import de.tesis.dynaware.grapheditor.SkinLookup;
 import de.tesis.dynaware.grapheditor.core.DefaultGraphEditor;
 import de.tesis.dynaware.grapheditor.model.GConnection;
 import de.tesis.dynaware.grapheditor.model.GConnector;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
@@ -43,6 +45,7 @@ public class SkinManager implements SkinLookup {
     private final Map<GJoint, GJointSkin> jointSkins = new HashMap<>();
     private final Map<GConnector, GTailSkin> tailSkins = new HashMap<>();
     private final Map<GText, GTextSkin> textSkins = new HashMap<>();
+    private final Map<GGroup, GGroupSkin> groupSkins = new HashMap<>();
 
     /**
      * Creates a new skin manager instance. Only one instance should exist per {@link DefaultGraphEditor} instance.
@@ -115,6 +118,10 @@ public class SkinManager implements SkinLookup {
         skinFactory.setTextSkin(type, skin);
     }
 
+    public void setGroupSkin(final String type, final Class<? extends GGroupSkin> skin) {
+        skinFactory.setGroupSkin(type, skin);
+    }
+
     /**
      * Adds a list of nodes.
      *
@@ -174,6 +181,26 @@ public class SkinManager implements SkinLookup {
     public void removeTexts(final List<GText> textsToRemove) {
         for (final GText text : textsToRemove) {
             textSkins.remove(text);
+        }
+    }
+
+    public void addGroups(final List<GGroup> groupsToAdd) {
+
+        for (final GGroup group : groupsToAdd) {
+
+            final GGroupSkin groupSkin = skinFactory.createGroupSkin(group);
+
+            groupSkin.setGraphEditor(graphEditor);
+            groupSkin.getRoot().setEditorProperties(graphEditor.getProperties());
+            groupSkin.initialize();
+
+            groupSkins.put(group, groupSkin);
+        }
+    }
+
+    public void removeGroups(final List<GGroup> groupsToRemove) {
+        for (final GGroup group : groupsToRemove) {
+            groupSkins.remove(group);
         }
     }
 
@@ -300,6 +327,11 @@ public class SkinManager implements SkinLookup {
      */
     public void initializeAll() {
 
+        for (final GGroupSkin groupSkin : groupSkins.values()) {
+            groupSkin.initialize();
+        }
+
+
         for (final GNodeSkin nodeSkin : nodeSkins.values()) {
             nodeSkin.initialize();
         }
@@ -311,6 +343,7 @@ public class SkinManager implements SkinLookup {
         for (final GTextSkin textSkin : textSkins.values()) {
             textSkin.initialize();
         }
+
     }
 
     @Override
@@ -351,6 +384,21 @@ public class SkinManager implements SkinLookup {
     @Override
     public GTextSkin lookupText(final GText text) {
         return textSkins.get(text);
+    }
+
+    @Override
+    public List<GTextSkin> lookupTexts(List<GText> texts) {
+        return textSkins.entrySet().stream().filter(entry -> texts.contains(entry.getKey())).map(Map.Entry::getValue).collect(Collectors.toList());
+    }
+
+    @Override
+    public GGroupSkin lookupGroup(final GGroup group) {
+        return groupSkins.get(group);
+    }
+
+    @Override
+    public List<GGroupSkin> lookupGroups(List<GGroup> groups) {
+        return groupSkins.entrySet().stream().filter(entry -> groups.contains(entry.getKey())).map(Map.Entry::getValue).collect(Collectors.toList());
     }
 
     /**
