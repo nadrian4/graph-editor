@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import de.tesis.dynaware.grapheditor.GTailSkin;
 import de.tesis.dynaware.grapheditor.model.GConnector;
 import de.tesis.dynaware.grapheditor.utils.Arrow;
+import javafx.scene.shape.Polyline;
 
 /**
  * Tail skin for the 'tree-like' graph. Pretty much just an arrow.
@@ -27,6 +28,16 @@ public class TreeTailSkin extends GTailSkin {
         super(connector);
 
         arrow.getStyleClass().add(STYLE_CLASS);
+    }
+
+    @Override
+    public Polyline getLine() {
+        return null;
+    }
+
+    @Override
+    public void addOffset(double xOffset, double yOffset) {
+
     }
 
     @Override

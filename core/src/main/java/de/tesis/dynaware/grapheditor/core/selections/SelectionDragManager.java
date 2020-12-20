@@ -3,6 +3,7 @@
  */
 package de.tesis.dynaware.grapheditor.core.selections;
 
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GJointSkin;
 import de.tesis.dynaware.grapheditor.GNodeSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
@@ -10,6 +11,7 @@ import de.tesis.dynaware.grapheditor.SkinLookup;
 import de.tesis.dynaware.grapheditor.core.DefaultGraphEditor;
 import de.tesis.dynaware.grapheditor.core.view.GraphEditorView;
 import de.tesis.dynaware.grapheditor.model.GConnection;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
@@ -39,6 +41,9 @@ public class SelectionDragManager {
     private final Map<GText, Double> textLayoutXOffsets = new HashMap<>();
     private final Map<GText, Double> textLayoutYOffsets = new HashMap<>();
 
+    private final Map<GGroup, Double> groupLayoutXOffsets = new HashMap<>();
+    private final Map<GGroup, Double> groupLayoutYOffsets = new HashMap<>();
+
     private ChangeListener<Number> currentLayoutXListener;
     private ChangeListener<Number> currentLayoutYListener;
 
@@ -67,6 +72,10 @@ public class SelectionDragManager {
         bindPositions(skinLookup.lookupText(text).getRoot(), model);
     }
 
+    public void bindPositions(final GGroup group, final GModel model) {
+        bindPositions(skinLookup.lookupGroup(group).getRoot(), model);
+    }
+
     /**
      * Binds the positions of all selected objects to have a fixed position relative to a given joint.
      *
@@ -91,6 +100,12 @@ public class SelectionDragManager {
     public void unbindPositions(final GText text) {
         if (skinLookup.lookupText(text) != null) {
             unbindPositions(skinLookup.lookupText(text).getRoot());
+        }
+    }
+
+    public void unbindPositions(final GGroup group) {
+        if (skinLookup.lookupGroup(group) != null) {
+            unbindPositions(skinLookup.lookupGroup(group).getRoot());
         }
     }
 
@@ -143,6 +158,9 @@ public class SelectionDragManager {
         textLayoutXOffsets.clear();
         textLayoutYOffsets.clear();
 
+        groupLayoutXOffsets.clear();
+        groupLayoutYOffsets.clear();
+
         for (final GNode node : model.getNodes()) {
 
             final GNodeSkin nodeSkin = skinLookup.lookupNode(node);
@@ -187,6 +205,19 @@ public class SelectionDragManager {
                 textLayoutYOffsets.put(text, slave.getLayoutY() - master.getLayoutY());
             }
         }
+
+        for (final GGroup group : model.getGroups()) {
+
+            final GGroupSkin groupSkin = skinLookup.lookupGroup(group);
+
+            if (groupSkin.isSelected() && !groupSkin.getRoot().equals(master)) {
+
+                final Region slave = groupSkin.getRoot();
+
+                groupLayoutXOffsets.put(group, slave.getLayoutX() - master.getLayoutX());
+                groupLayoutYOffsets.put(group, slave.getLayoutY() - master.getLayoutY());
+            }
+        }
     }
 
     /**
@@ -224,6 +255,24 @@ public class SelectionDragManager {
                     final DraggableBox slave = skinLookup.lookupJoint(joint).getRoot();
                     addOffsets(master, slave, maxOffsets);
                 }
+            }
+        }
+
+        for (final GText text : model.getTexts()) {
+
+            if (skinLookup.lookupText(text).isSelected()) {
+
+                final DraggableBox slave = skinLookup.lookupText(text).getRoot();
+                addOffsets(master, slave, maxOffsets);
+            }
+        }
+
+        for (final GGroup group : model.getGroups()) {
+
+            if (skinLookup.lookupGroup(group).isSelected()) {
+
+                final DraggableBox slave = skinLookup.lookupGroup(group).getRoot();
+                addOffsets(master, slave, maxOffsets);
             }
         }
 
@@ -333,6 +382,17 @@ public class SelectionDragManager {
                     slave1.setLayoutX((Double) n + textLayoutXOffsets.get(text));
                 }
             }
+
+            for (final GGroup group : model.getGroups()) {
+
+                final GGroupSkin groupSkin = skinLookup.lookupGroup(group);
+
+                if (groupSkin.isSelected() && !groupSkin.getRoot().equals(master)) {
+
+                    final Region slave1 = groupSkin.getRoot();
+                    slave1.setLayoutX((Double) n + groupLayoutXOffsets.get(group));
+                }
+            }
         };
 
         currentLayoutYListener = (v, o, n) -> {
@@ -370,6 +430,17 @@ public class SelectionDragManager {
 
                     final Region slave1 = textSkin.getRoot();
                     slave1.setLayoutY((Double) n + textLayoutYOffsets.get(text));
+                }
+            }
+
+            for (final GGroup group : model.getGroups()) {
+
+                final GGroupSkin groupSkin = skinLookup.lookupGroup(group);
+
+                if (groupSkin.isSelected() && !groupSkin.getRoot().equals(master)) {
+
+                    final Region slave1 = groupSkin.getRoot();
+                    slave1.setLayoutY((Double) n + groupLayoutYOffsets.get(group));
                 }
             }
         };

@@ -133,6 +133,7 @@ public class DefaultSkinController implements SkinController {
         graphEditor.getSelectionManager().selectAllNodes();
         graphEditor.getSelectionManager().selectAllJoints();
         graphEditor.getSelectionManager().selectAllTexts();
+        graphEditor.getSelectionManager().selectAllGroups();
     }
 
     /**

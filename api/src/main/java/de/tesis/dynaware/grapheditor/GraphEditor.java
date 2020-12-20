@@ -123,6 +123,8 @@ public interface GraphEditor {
 
     void setTextSkin(String type, Class<? extends GTextSkin> skin);
 
+    void setGroupSkin(String type, Class<? extends GGroupSkin> skin);
+
     /**
      * Sets a custom connector validator.
      *

@@ -82,6 +82,7 @@ public class GraphSwitch<T> extends Switch<T> {
 				GNode gNode = (GNode)theEObject;
 				T result = caseGNode(gNode);
 				if (result == null) result = caseGConnectable(gNode);
+				if (result == null) result = caseGResizable(gNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -113,12 +114,20 @@ public class GraphSwitch<T> extends Switch<T> {
 			case GraphPackage.GGROUP: {
 				GGroup gGroup = (GGroup)theEObject;
 				T result = caseGGroup(gGroup);
+				if (result == null) result = caseGResizable(gGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case GraphPackage.GTEXT: {
 				GText gText = (GText)theEObject;
 				T result = caseGText(gText);
+				if (result == null) result = caseGResizable(gText);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GraphPackage.GRESIZABLE: {
+				GResizable gResizable = (GResizable)theEObject;
+				T result = caseGResizable(gResizable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -258,6 +267,21 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGText(GText object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GResizable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GResizable</em>'.
+	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGResizable(GResizable object) {
 		return null;
 	}
 

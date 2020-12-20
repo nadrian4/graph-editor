@@ -1,18 +1,21 @@
 package de.tesis.dynaware.grapheditor.core.selections;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
-
+import de.tesis.dynaware.grapheditor.GGroupSkin;
+import de.tesis.dynaware.grapheditor.GNodeSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.SkinLookup;
+import de.tesis.dynaware.grapheditor.core.utils.GModelUtils;
+import de.tesis.dynaware.grapheditor.model.GConnection;
+import de.tesis.dynaware.grapheditor.model.GGroup;
+import de.tesis.dynaware.grapheditor.model.GJoint;
+import de.tesis.dynaware.grapheditor.model.GModel;
+import de.tesis.dynaware.grapheditor.model.GNode;
 import de.tesis.dynaware.grapheditor.model.GText;
+import de.tesis.dynaware.grapheditor.model.GraphPackage;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.Region;
-
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -20,14 +23,11 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-import de.tesis.dynaware.grapheditor.GNodeSkin;
-import de.tesis.dynaware.grapheditor.SkinLookup;
-import de.tesis.dynaware.grapheditor.core.utils.GModelUtils;
-import de.tesis.dynaware.grapheditor.model.GConnection;
-import de.tesis.dynaware.grapheditor.model.GJoint;
-import de.tesis.dynaware.grapheditor.model.GModel;
-import de.tesis.dynaware.grapheditor.model.GNode;
-import de.tesis.dynaware.grapheditor.model.GraphPackage;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
 
 /**
  * Manages cut, copy, & paste actions on the current selection.
@@ -45,6 +45,7 @@ public class SelectionCopier {
     private static final EReference NODES = GraphPackage.Literals.GMODEL__NODES;
     private static final EReference CONNECTIONS = GraphPackage.Literals.GMODEL__CONNECTIONS;
     private static final EReference TEXTS = GraphPackage.Literals.GMODEL__TEXTS;
+    private static final EReference GROUPS = GraphPackage.Literals.GMODEL__GROUPS;
 
     private static final double BASE_PASTE_OFFSET = 20;
 
@@ -56,6 +57,7 @@ public class SelectionCopier {
     private final List<GNode> copiedNodes = new ArrayList<>();
     private final List<GConnection> copiedConnections = new ArrayList<>();
     private final List<GText> copiedTexts = new ArrayList<>();
+    private final List<GGroup> copiedGroups = new ArrayList<>();
 
     private Parent parentAtTimeOfCopy;
     private double parentSceneXAtTimeOfCopy;
@@ -66,13 +68,13 @@ public class SelectionCopier {
     /**
      * Creates a new {@link SelectionCopier} instance.
      *
-     * @param skinLookup the {@link SkinLookup} instance for the graph editor
+     * @param skinLookup       the {@link SkinLookup} instance for the graph editor
      * @param selectionTracker the {@link SelectionTracker} instance for the graph editor
      * @param selectionCreator the {@link SelectionCreator} instance for the graph editor
      * @param selectionDeleter the {@link SelectionDeleter} instance for the graph editor
      */
     public SelectionCopier(final SkinLookup skinLookup, final SelectionTracker selectionTracker,
-            final SelectionCreator selectionCreator, final SelectionDeleter selectionDeleter) {
+                           final SelectionCreator selectionCreator, final SelectionDeleter selectionDeleter) {
 
         this.skinLookup = skinLookup;
         this.selectionTracker = selectionTracker;
@@ -91,7 +93,7 @@ public class SelectionCopier {
 
     /**
      * Cuts the current selection and stores it in memory.
-     * 
+     *
      * @param handler a {@link CommandAppender} to allow custom commands to be appended to the cut command
      */
     public void cut(final BiConsumer<List<GNode>, CompoundCommand> consumer) {
@@ -137,6 +139,14 @@ public class SelectionCopier {
             }
         }
 
+        for (final GGroup group : model.getGroups()) {
+            if (selectionTracker.getSelectedGroups().contains(group)) {
+
+                final GGroup copiedGroup = EcoreUtil.copy(group);
+                copiedGroups.add(copiedGroup);
+            }
+        }
+
         copiedConnections.addAll(GModelUtils.copyConnections(copyStorage));
         saveParentPositionInScene();
     }
@@ -158,11 +168,12 @@ public class SelectionCopier {
         final List<GNode> pastedNodes = new ArrayList<>();
         final List<GConnection> pastedConnections = new ArrayList<>();
         final List<GText> pastedTexts = new ArrayList<>();
+        final List<GGroup> pastedGroups = new ArrayList<>();
 
-        preparePastedElements(pastedNodes, pastedConnections, pastedTexts);
-        addPasteOffset(pastedNodes, pastedConnections, pastedTexts);
-        checkWithinBounds(pastedNodes, pastedConnections, pastedTexts);
-        addPastedElements(pastedNodes, pastedConnections, pastedTexts, consumer);
+        preparePastedElements(pastedNodes, pastedConnections, pastedTexts, pastedGroups);
+        addPasteOffset(pastedNodes, pastedConnections, pastedTexts, pastedGroups);
+        checkWithinBounds(pastedNodes, pastedConnections, pastedTexts, pastedGroups);
+        addPastedElements(pastedNodes, pastedConnections, pastedTexts, pastedGroups, consumer);
 
         for (final GNode pastedNode : pastedNodes) {
             skinLookup.lookupNode(pastedNode).setSelected(true);
@@ -178,6 +189,10 @@ public class SelectionCopier {
             skinLookup.lookupText(pastedText).setSelected(true);
         }
 
+        for (final GGroup pastedGroup : pastedGroups) {
+            skinLookup.lookupGroup(pastedGroup).setSelected(true);
+        }
+
         return pastedNodes;
     }
 
@@ -188,15 +203,16 @@ public class SelectionCopier {
         copiedNodes.clear();
         copiedConnections.clear();
         copiedTexts.clear();
+        copiedGroups.clear();
     }
 
     /**
      * Prepares the lists of pasted nodes and connections.
      *
-     * @param pastedNodes an empty list to be filled with pasted nodes
+     * @param pastedNodes       an empty list to be filled with pasted nodes
      * @param pastedConnections an empty list to be filled with pasted connections
      */
-    private void preparePastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts) {
+    private void preparePastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts, final List<GGroup> pastedGroups) {
 
         final Map<GNode, GNode> pasteStorage = new HashMap<>();
 
@@ -215,15 +231,22 @@ public class SelectionCopier {
             final GText pastedText = EcoreUtil.copy(copiedText);
             pastedTexts.add(pastedText);
         }
+
+        for (final GGroup copiedGroup : copiedGroups) {
+
+            final GGroup pastedGroup = EcoreUtil.copy(copiedGroup);
+            pastedGroups.add(pastedGroup);
+        }
     }
 
     /**
      * Adds an x and y offset to all nodes and connections that are about to be pasted.
      *
-     * @param pastedNodes the nodes that are going to be pasted
+     * @param pastedNodes       the nodes that are going to be pasted
      * @param pastedConnections the connections that are going to be pasted
+     * @param pastedGroups
      */
-    private void addPasteOffset(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts) {
+    private void addPasteOffset(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts, List<GGroup> pastedGroups) {
 
         final Point2D pasteOffset = determinePasteOffset();
 
@@ -243,6 +266,11 @@ public class SelectionCopier {
             text.setX(text.getX() + pasteOffset.getX());
             text.setY(text.getY() + pasteOffset.getY());
         }
+
+        for (final GGroup group : pastedGroups) {
+            group.setX(group.getX() + pasteOffset.getX());
+            group.setY(group.getY() + pasteOffset.getY());
+        }
     }
 
     /**
@@ -252,17 +280,18 @@ public class SelectionCopier {
      * Corrects the x and y positions accordingly if they will be outside the bounds.
      * </p>
      *
-     * @param pastedNodes the nodes that are going to be pasted
+     * @param pastedNodes       the nodes that are going to be pasted
      * @param pastedConnections the connections that are going to be pasted
+     * @param pastedGroups
      */
-    private void checkWithinBounds(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts) {
+    private void checkWithinBounds(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, final List<GText> pastedTexts, List<GGroup> pastedGroups) {
 
         if (parentAtTimeOfCopy instanceof Region) {
 
             final Region parentRegion = (Region) parentAtTimeOfCopy;
 
             final Bounds parentBounds = getBounds(parentRegion);
-            final Bounds contentBounds = getContentBounds(pastedNodes, pastedConnections, pastedTexts);
+            final Bounds contentBounds = getContentBounds(pastedNodes, pastedConnections, pastedTexts, pastedGroups);
 
             double xCorrection = 0;
             double yCorrection = 0;
@@ -297,6 +326,11 @@ public class SelectionCopier {
                     text.setX(text.getX() + xCorrection);
                     text.setY(text.getY() + yCorrection);
                 }
+
+                for (final GGroup group : pastedGroups) {
+                    group.setX(group.getX() + xCorrection);
+                    group.setY(group.getY() + yCorrection);
+                }
             }
         }
     }
@@ -304,12 +338,12 @@ public class SelectionCopier {
     /**
      * Adds the pasted elements to the graph editor via a single EMF command.
      *
-     * @param pastedNodes the pasted nodes to be added
+     * @param pastedNodes       the pasted nodes to be added
      * @param pastedConnections the pasted connections to be added
-     * @param consumer a consumer to allow custom commands to be appended to the paste command
+     * @param consumer          a consumer to allow custom commands to be appended to the paste command
      */
-    private void addPastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, List<GText> pastedTexts,
-            final BiConsumer<List<GNode>, CompoundCommand> consumer) {
+    private void addPastedElements(final List<GNode> pastedNodes, final List<GConnection> pastedConnections, List<GText> pastedTexts, List<GGroup> pastedGroups,
+                                   final BiConsumer<List<GNode>, CompoundCommand> consumer) {
 
         final EditingDomain editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(model);
         final CompoundCommand command = new CompoundCommand();
@@ -324,6 +358,10 @@ public class SelectionCopier {
 
         for (final GText pastedText : pastedTexts) {
             command.append(AddCommand.create(editingDomain, model, TEXTS, pastedText));
+        }
+
+        for (final GGroup pastedGroup : pastedGroups) {
+            command.append(AddCommand.create(editingDomain, model, GROUPS, pastedGroup));
         }
 
         if (command.canExecute()) {
@@ -356,16 +394,23 @@ public class SelectionCopier {
 
             final Node root = firstSelectedTextSkin.getRoot();
             parent = root.getParent();
+        } else if (!selectionTracker.getSelectedGroups().isEmpty()) {
+
+            final GGroup firstSelectedGroup = selectionTracker.getSelectedGroups().get(0);
+            final GGroupSkin firstSelectedGroupSkin = skinLookup.lookupGroup(firstSelectedGroup);
+
+            final Node root = firstSelectedGroupSkin.getRoot();
+            parent = root.getParent();
         }
         if (parent != null) {
 
-                parentAtTimeOfCopy = parent;
+            parentAtTimeOfCopy = parent;
 
-                final Point2D localToScene = parent.localToScene(0, 0);
+            final Point2D localToScene = parent.localToScene(0, 0);
 
-                parentSceneXAtTimeOfCopy = localToScene.getX();
-                parentSceneYAtTimeOfCopy = localToScene.getY();
-            }
+            parentSceneXAtTimeOfCopy = localToScene.getX();
+            parentSceneYAtTimeOfCopy = localToScene.getY();
+        }
     }
 
     /**
@@ -420,11 +465,11 @@ public class SelectionCopier {
     /**
      * Gets the start and end x- and y-positions of the given group of nodes and joints.
      *
-     * @param nodes a list of nodes
+     * @param nodes       a list of nodes
      * @param connections a list of connections
      * @return the start and end x- and y-positions of the given nodes and joints.
      */
-    private Bounds getContentBounds(final List<GNode> nodes, final List<GConnection> connections, List<GText> texts) {
+    private Bounds getContentBounds(final List<GNode> nodes, final List<GConnection> connections, List<GText> texts, List<GGroup> groups) {
 
         final Bounds contentBounds = new Bounds();
 
@@ -481,6 +526,22 @@ public class SelectionCopier {
             }
             if (text.getY() + text.getHeight() > contentBounds.endY) {
                 contentBounds.endY = text.getY() + text.getHeight();
+            }
+        }
+
+        for (final GGroup group : groups) {
+
+            if (group.getX() < contentBounds.startX) {
+                contentBounds.startX = group.getX();
+            }
+            if (group.getY() < contentBounds.startY) {
+                contentBounds.startY = group.getY();
+            }
+            if (group.getX() + group.getWidth() > contentBounds.endX) {
+                contentBounds.endX = group.getX() + group.getWidth();
+            }
+            if (group.getY() + group.getHeight() > contentBounds.endY) {
+                contentBounds.endY = group.getY() + group.getHeight();
             }
         }
 

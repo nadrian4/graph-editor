@@ -3,17 +3,18 @@
  */
 package de.tesis.dynaware.grapheditor.core.view;
 
+import de.tesis.dynaware.grapheditor.GConnectionSkin;
+import de.tesis.dynaware.grapheditor.GGroupSkin;
+import de.tesis.dynaware.grapheditor.GJointSkin;
+import de.tesis.dynaware.grapheditor.GNodeSkin;
+import de.tesis.dynaware.grapheditor.GTailSkin;
 import de.tesis.dynaware.grapheditor.GTextSkin;
+import de.tesis.dynaware.grapheditor.core.DefaultGraphEditor;
+import de.tesis.dynaware.grapheditor.utils.GraphEditorProperties;
 import javafx.collections.ObservableList;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
-import de.tesis.dynaware.grapheditor.GConnectionSkin;
-import de.tesis.dynaware.grapheditor.GJointSkin;
-import de.tesis.dynaware.grapheditor.GNodeSkin;
-import de.tesis.dynaware.grapheditor.GTailSkin;
-import de.tesis.dynaware.grapheditor.core.DefaultGraphEditor;
-import de.tesis.dynaware.grapheditor.utils.GraphEditorProperties;
 
 /**
  * The {@link Region} that all visual elements in the graph editor are added to.
@@ -39,12 +40,15 @@ public class GraphEditorView extends Region {
     private static final String STYLESHEET_DEFAULTS = "defaults.css";
 
     private static final String STYLE_CLASS = "graph-editor";
+    private static final String STYLE_CLASS_GROUP_LAYER = "graph-editor-group-layer";
     private static final String STYLE_CLASS_NODE_LAYER = "graph-editor-node-layer";
     private static final String STYLE_CLASS_CONNECTION_LAYER = "graph-editor-connection-layer";
 
+    private static final String GROUP_LAYER_ID = "groupLayer";
     private static final String NODE_LAYER_ID = "nodeLayer";
     private static final String CONNECTION_LAYER_ID = "connectionLayer";
 
+    private final GraphEditorViewLayer groupLayer = new GraphEditorViewLayer();
     private final GraphEditorViewLayer nodeLayer = new GraphEditorViewLayer();
     private final GraphEditorViewLayer connectionLayer = new GraphEditorViewLayer();
 
@@ -90,8 +94,18 @@ public class GraphEditorView extends Region {
      * Clears all elements from the view.
      */
     public void clear() {
+        groupLayer.getChildren().clear();
         nodeLayer.getChildren().clear();
         connectionLayer.getChildren().clear();
+    }
+
+    /**
+     * Adds a group skin to the view.
+     *
+     * @param groupSkin the {@link GGroupSkin} instance to be added
+     */
+    public void add(final GGroupSkin groupSkin) {
+        groupLayer.getChildren().add(groupSkin.getRoot());
     }
 
     /**
@@ -132,6 +146,10 @@ public class GraphEditorView extends Region {
 
     public void add(final GTextSkin textSkin) {
         nodeLayer.getChildren().add(textSkin.getRoot());
+    }
+
+    public void remove(final GGroupSkin groupSkin) {
+        groupLayer.getChildren().remove(groupSkin.getRoot());
     }
 
     /**
@@ -206,9 +224,9 @@ public class GraphEditorView extends Region {
     /**
      * Draws a selection box in the view.
      *
-     * @param x the x position of the selection box
-     * @param y the y position of the selection box
-     * @param width the width of the selection box
+     * @param x      the x position of the selection box
+     * @param y      the y position of the selection box
+     * @param width  the width of the selection box
      * @param height the height of the selection box
      */
     public void drawSelectionBox(final double x, final double y, final double width, final double height) {
@@ -229,7 +247,7 @@ public class GraphEditorView extends Region {
      * This increases performance if the content does not need to be redrawn. It <b>decreases</b> performance when the
      * content is redrawn. Use with care.
      * </p>
-     * 
+     *
      * <p>
      * <b>Note:</b> Currently leads to poor performance when scale transforms are used, or on retina displays.
      * </p>
@@ -237,12 +255,14 @@ public class GraphEditorView extends Region {
      * @param cache {@code true} to enable caching, {@code false} to disable it
      */
     public void setContentCache(final boolean cache) {
+        groupLayer.setCache(cache);
         nodeLayer.setCache(cache);
         connectionLayer.setCache(cache);
     }
 
     @Override
     protected void layoutChildren() {
+        groupLayer.resizeRelocate(0, 0, getWidth(), getHeight());
         nodeLayer.resizeRelocate(0, 0, getWidth(), getHeight());
         connectionLayer.resizeRelocate(0, 0, getWidth(), getHeight());
     }
@@ -252,17 +272,26 @@ public class GraphEditorView extends Region {
      */
     private void initializeLayers() {
 
+        groupLayer.setPickOnBounds(false);
         nodeLayer.setPickOnBounds(false);
         connectionLayer.setPickOnBounds(false);
 
+        groupLayer.cacheHintProperty().set(CacheHint.SPEED);
         nodeLayer.cacheHintProperty().set(CacheHint.SPEED);
         connectionLayer.cacheHintProperty().set(CacheHint.SPEED);
 
+        groupLayer.getStyleClass().addAll(STYLE_CLASS_GROUP_LAYER);
         nodeLayer.getStyleClass().addAll(STYLE_CLASS_NODE_LAYER);
         connectionLayer.getStyleClass().addAll(STYLE_CLASS_CONNECTION_LAYER);
 
+        groupLayer.setId(GROUP_LAYER_ID);
         nodeLayer.setId(NODE_LAYER_ID);
         connectionLayer.setId(CONNECTION_LAYER_ID);
+
+        groupLayer.maxWidthProperty().bind(maxWidthProperty());
+        groupLayer.maxHeightProperty().bind(maxHeightProperty());
+        groupLayer.minWidthProperty().bind(minWidthProperty());
+        groupLayer.minHeightProperty().bind(minHeightProperty());
 
         nodeLayer.maxWidthProperty().bind(maxWidthProperty());
         nodeLayer.maxHeightProperty().bind(maxHeightProperty());
@@ -275,6 +304,7 @@ public class GraphEditorView extends Region {
         connectionLayer.minHeightProperty().bind(minHeightProperty());
 
         // Node layer should be on top of connection layer, so we add it second.
+        getChildren().add(groupLayer);
         getChildren().add(connectionLayer);
         getChildren().add(nodeLayer);
     }

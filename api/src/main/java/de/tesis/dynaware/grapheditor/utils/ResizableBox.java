@@ -11,6 +11,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 
+import java.util.function.Predicate;
+
 /**
  * A draggable, resizable box that can display children.
  *
@@ -22,7 +24,7 @@ public class ResizableBox extends DraggableBox {
 
     private static final int DEFAULT_RESIZE_BORDER_TOLERANCE = 8;
 
-        private final BooleanProperty resizeEnabledNorthProperty = new SimpleBooleanProperty(true);
+    private final BooleanProperty resizeEnabledNorthProperty = new SimpleBooleanProperty(true);
     private final BooleanProperty resizeEnabledSouthProperty = new SimpleBooleanProperty(true);
     private final BooleanProperty resizeEnabledEastProperty = new SimpleBooleanProperty(true);
     private final BooleanProperty resizeEnabledWestProperty = new SimpleBooleanProperty(true);
@@ -175,6 +177,28 @@ public class ResizableBox extends DraggableBox {
         storeClickValuesForResize(event.getX(), event.getY());
     }
 
+    private Predicate<Point2D> resizeWestPredicate = point2D -> true;
+    private Predicate<Point2D> resizeEastPredicate = point2D -> true;
+    private Predicate<Point2D> resizeNorthPredicate = point2D -> true;
+    private Predicate<Point2D> resizeSouthPredicate = point2D -> true;
+
+
+    public void addResizeWestPredicate(Predicate<Point2D> predicate) {
+        this.resizeWestPredicate = resizeWestPredicate.and(predicate);
+    }
+
+    public void addResizeEastPredicate(Predicate<Point2D> predicate) {
+        this.resizeEastPredicate = resizeEastPredicate.and(predicate);
+    }
+
+    public void addResizeNorthPredicate(Predicate<Point2D> predicate) {
+        this.resizeNorthPredicate = resizeNorthPredicate.and(predicate);
+    }
+
+    public void addResizeSouthPredicate(Predicate<Point2D> predicate) {
+        this.resizeSouthPredicate = resizeSouthPredicate.and(predicate);
+    }
+
     @Override
     protected void handleMouseDragged(final MouseEvent event) {
 
@@ -256,38 +280,38 @@ public class ResizableBox extends DraggableBox {
     private void handleResize(final double x, final double y) {
 
         switch (lastMouseRegion) {
-        case NORTHEAST:
-            handleResizeNorth(y);
-            handleResizeEast(x);
-            break;
-        case NORTHWEST:
-            handleResizeNorth(y);
-            handleResizeWest(x);
-            break;
-        case SOUTHEAST:
-            handleResizeSouth(y);
-            handleResizeEast(x);
-            break;
-        case SOUTHWEST:
-            handleResizeSouth(y);
-            handleResizeWest(x);
-            break;
-        case NORTH:
-            handleResizeNorth(y);
-            break;
-        case SOUTH:
-            handleResizeSouth(y);
-            break;
-        case EAST:
-            handleResizeEast(x);
-            break;
-        case WEST:
-            handleResizeWest(x);
-            break;
-        case INSIDE:
-            break;
-        case OUTSIDE:
-            break;
+            case NORTHEAST:
+                handleResizeNorth(y);
+                handleResizeEast(x);
+                break;
+            case NORTHWEST:
+                handleResizeNorth(y);
+                handleResizeWest(x);
+                break;
+            case SOUTHEAST:
+                handleResizeSouth(y);
+                handleResizeEast(x);
+                break;
+            case SOUTHWEST:
+                handleResizeSouth(y);
+                handleResizeWest(x);
+                break;
+            case NORTH:
+                handleResizeNorth(y);
+                break;
+            case SOUTH:
+                handleResizeSouth(y);
+                break;
+            case EAST:
+                handleResizeEast(x);
+                break;
+            case WEST:
+                handleResizeWest(x);
+                break;
+            case INSIDE:
+                break;
+            case OUTSIDE:
+                break;
         }
     }
 
@@ -297,41 +321,44 @@ public class ResizableBox extends DraggableBox {
      * @param y the cursor scene-y position
      */
     private void handleResizeNorth(final double y) {
+        if (resizeNorthPredicate.test(new Point2D(0, y))) {
 
-        final double scaleFactor = getLocalToSceneTransform().getMyy();
+            final double scaleFactor = getLocalToSceneTransform().getMyy();
 
-        final double yDragDistance = (y - lastMouseY) / scaleFactor;
-        final double minResizeHeight = Math.max(getMinHeight(), 0);
 
-        double newLayoutY = lastLayoutY + yDragDistance;
-        double newHeight = lastHeight - yDragDistance;
+            final double yDragDistance = (y - lastMouseY) / scaleFactor;
+            final double minResizeHeight = Math.max(getMinHeight(), 0);
 
-        // Snap-to-grid logic here.
-        if (editorProperties.isSnapToGridOn()) {
+            double newLayoutY = lastLayoutY + yDragDistance;
+            double newHeight = lastHeight - yDragDistance;
 
-            // The -1 here is to put the rectangle border exactly on top of a grid line.
-            final double roundedLayoutY = roundToGridSpacing(newLayoutY) - 1;
-            newHeight = newHeight - roundedLayoutY + newLayoutY;
-            newLayoutY = roundedLayoutY;
-        } else {
+            // Snap-to-grid logic here.
+            if (editorProperties.isSnapToGridOn()) {
 
-            // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
-            final double roundedLayoutY = Math.round(newLayoutY);
-            newHeight = Math.round(newHeight - roundedLayoutY + newLayoutY);
-            newLayoutY = roundedLayoutY;
+                // The -1 here is to put the rectangle border exactly on top of a grid line.
+                final double roundedLayoutY = roundToGridSpacing(newLayoutY) - 1;
+                newHeight = newHeight - roundedLayoutY + newLayoutY;
+                newLayoutY = roundedLayoutY;
+            } else {
+
+                // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
+                final double roundedLayoutY = Math.round(newLayoutY);
+                newHeight = Math.round(newHeight - roundedLayoutY + newLayoutY);
+                newLayoutY = roundedLayoutY;
+            }
+
+            // Min & max resize logic here.
+            if (editorProperties.isNorthBoundActive() && newLayoutY < editorProperties.getNorthBoundValue()) {
+                newLayoutY = editorProperties.getNorthBoundValue();
+                newHeight = lastLayoutY + lastHeight - editorProperties.getNorthBoundValue();
+            } else if (newHeight < minResizeHeight) {
+                newLayoutY = lastLayoutY + lastHeight - minResizeHeight;
+                newHeight = minResizeHeight;
+            }
+
+            setLayoutY(newLayoutY);
+            setHeight(newHeight);
         }
-
-        // Min & max resize logic here.
-        if (editorProperties.isNorthBoundActive() && newLayoutY < editorProperties.getNorthBoundValue()) {
-            newLayoutY = editorProperties.getNorthBoundValue();
-            newHeight = lastLayoutY + lastHeight - editorProperties.getNorthBoundValue();
-        } else if (newHeight < minResizeHeight) {
-            newLayoutY = lastLayoutY + lastHeight - minResizeHeight;
-            newHeight = minResizeHeight;
-        }
-
-        setLayoutY(newLayoutY);
-        setHeight(newHeight);
     }
 
     /**
@@ -340,35 +367,37 @@ public class ResizableBox extends DraggableBox {
      * @param y the cursor scene-y position
      */
     private void handleResizeSouth(final double y) {
+        if (resizeSouthPredicate.test(new Point2D(0, y))) {
 
-        final double scaleFactor = getLocalToSceneTransform().getMyy();
+            final double scaleFactor = getLocalToSceneTransform().getMyy();
 
-        final double yDragDistance = (y - lastMouseY) / scaleFactor;
-        final double parentHeight = getParent().getLayoutBounds().getHeight();
+            final double yDragDistance = (y - lastMouseY) / scaleFactor;
+            final double parentHeight = getParent().getLayoutBounds().getHeight();
 
-        final double maxParentHeight = editorProperties.isSouthBoundActive() ? parentHeight : absoluteMaxHeight;
+            final double maxParentHeight = editorProperties.isSouthBoundActive() ? parentHeight : absoluteMaxHeight;
 
-        final double minResizeHeight = Math.max(getMinHeight(), 0);
-        final double maxAvailableHeight = maxParentHeight - getLayoutY() - editorProperties.getSouthBoundValue();
+            final double minResizeHeight = Math.max(getMinHeight(), 0);
+            final double maxAvailableHeight = maxParentHeight - getLayoutY() - editorProperties.getSouthBoundValue();
 
-        double newHeight = lastHeight + yDragDistance;
+            double newHeight = lastHeight + yDragDistance;
 
-        // Snap-to-grid logic here.
-        if (editorProperties.isSnapToGridOn()) {
-            newHeight = roundToGridSpacing(newHeight + lastLayoutY) - lastLayoutY;
-        } else {
-            // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
-            newHeight = Math.round(newHeight);
+            // Snap-to-grid logic here.
+            if (editorProperties.isSnapToGridOn()) {
+                newHeight = roundToGridSpacing(newHeight + lastLayoutY) - lastLayoutY;
+            } else {
+                // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
+                newHeight = Math.round(newHeight);
+            }
+
+            // Min & max resize logic here.
+            if (newHeight > maxAvailableHeight) {
+                newHeight = maxAvailableHeight;
+            } else if (newHeight < minResizeHeight) {
+                newHeight = minResizeHeight;
+            }
+
+            setHeight(newHeight);
         }
-
-        // Min & max resize logic here.
-        if (newHeight > maxAvailableHeight) {
-            newHeight = maxAvailableHeight;
-        } else if (newHeight < minResizeHeight) {
-            newHeight = minResizeHeight;
-        }
-
-        setHeight(newHeight);
     }
 
     /**
@@ -377,35 +406,37 @@ public class ResizableBox extends DraggableBox {
      * @param x the cursor scene-x position
      */
     private void handleResizeEast(final double x) {
+        if (resizeEastPredicate.test(new Point2D(x, 0))) {
 
-        final double scaleFactor = getLocalToSceneTransform().getMxx();
+            final double scaleFactor = getLocalToSceneTransform().getMxx();
 
-        final double xDragDistance = (x - lastMouseX) / scaleFactor;
-        final double parentWidth = getParent().getLayoutBounds().getWidth();
+            final double xDragDistance = (x - lastMouseX) / scaleFactor;
+            final double parentWidth = getParent().getLayoutBounds().getWidth();
 
-        final double maxParentWidth = editorProperties.isEastBoundActive() ? parentWidth : absoluteMaxWidth;
+            final double maxParentWidth = editorProperties.isEastBoundActive() ? parentWidth : absoluteMaxWidth;
 
-        final double minResizeWidth = Math.max(getMinWidth(), 0);
-        final double maxAvailableWidth = maxParentWidth - getLayoutX() - editorProperties.getEastBoundValue();
+            final double minResizeWidth = Math.max(getMinWidth(), 0);
+            final double maxAvailableWidth = maxParentWidth - getLayoutX() - editorProperties.getEastBoundValue();
 
-        double newWidth = lastWidth + xDragDistance;
+            double newWidth = lastWidth + xDragDistance;
 
-        // Snap-to-grid logic here.
-        if (editorProperties.isSnapToGridOn()) {
-            newWidth = roundToGridSpacing(newWidth + lastLayoutX) - lastLayoutX;
-        } else {
-            // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
-            newWidth = Math.round(newWidth);
+            // Snap-to-grid logic here.
+            if (editorProperties.isSnapToGridOn()) {
+                newWidth = roundToGridSpacing(newWidth + lastLayoutX) - lastLayoutX;
+            } else {
+                // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
+                newWidth = Math.round(newWidth);
+            }
+
+            // Min & max resize logic here.
+            if (newWidth > maxAvailableWidth) {
+                newWidth = maxAvailableWidth;
+            } else if (newWidth < minResizeWidth) {
+                newWidth = minResizeWidth;
+            }
+
+            setWidth(newWidth);
         }
-
-        // Min & max resize logic here.
-        if (newWidth > maxAvailableWidth) {
-            newWidth = maxAvailableWidth;
-        } else if (newWidth < minResizeWidth) {
-            newWidth = minResizeWidth;
-        }
-
-        setWidth(newWidth);
     }
 
     /**
@@ -414,41 +445,42 @@ public class ResizableBox extends DraggableBox {
      * @param x the cursor scene-x position
      */
     private void handleResizeWest(final double x) {
+        if (resizeWestPredicate.test(new Point2D(x, 0))) {
+            final double scaleFactor = getLocalToSceneTransform().getMxx();
 
-        final double scaleFactor = getLocalToSceneTransform().getMxx();
+            final double xDragDistance = (x - lastMouseX) / scaleFactor;
+            final double minResizeWidth = Math.max(getMinWidth(), 0);
 
-        final double xDragDistance = (x - lastMouseX) / scaleFactor;
-        final double minResizeWidth = Math.max(getMinWidth(), 0);
+            double newLayoutX = lastLayoutX + xDragDistance;
+            double newWidth = lastWidth - xDragDistance;
 
-        double newLayoutX = lastLayoutX + xDragDistance;
-        double newWidth = lastWidth - xDragDistance;
+            // Snap-to-grid logic here.
+            if (editorProperties.isSnapToGridOn()) {
 
-        // Snap-to-grid logic here.
-        if (editorProperties.isSnapToGridOn()) {
+                // The -1 here is to put the rectangle border exactly on top of a grid line.
+                final double roundedLayoutX = roundToGridSpacing(newLayoutX) - 1;
+                newWidth = newWidth - roundedLayoutX + newLayoutX;
+                newLayoutX = roundedLayoutX;
+            } else {
 
-            // The -1 here is to put the rectangle border exactly on top of a grid line.
-            final double roundedLayoutX = roundToGridSpacing(newLayoutX) - 1;
-            newWidth = newWidth - roundedLayoutX + newLayoutX;
-            newLayoutX = roundedLayoutX;
-        } else {
+                // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
+                final double roundedLayoutX = Math.round(newLayoutX);
+                newWidth = Math.round(newWidth - roundedLayoutX + newLayoutX);
+                newLayoutX = roundedLayoutX;
+            }
 
-            // Even if snap-to-grid is off, we use Math.round to ensure drawing 'on-pixel' when zoomed in past 100%.
-            final double roundedLayoutX = Math.round(newLayoutX);
-            newWidth = Math.round(newWidth - roundedLayoutX + newLayoutX);
-            newLayoutX = roundedLayoutX;
+            // Min & max resize logic here.
+            if (editorProperties.isWestBoundActive() && newLayoutX < editorProperties.getWestBoundValue()) {
+                newLayoutX = editorProperties.getWestBoundValue();
+                newWidth = lastLayoutX + lastWidth - editorProperties.getWestBoundValue();
+            } else if (newWidth < minResizeWidth) {
+                newLayoutX = lastLayoutX + lastWidth - minResizeWidth;
+                newWidth = minResizeWidth;
+            }
+
+            setLayoutX(newLayoutX);
+            setWidth(newWidth);
         }
-
-        // Min & max resize logic here.
-        if (editorProperties.isWestBoundActive() && newLayoutX < editorProperties.getWestBoundValue()) {
-            newLayoutX = editorProperties.getWestBoundValue();
-            newWidth = lastLayoutX + lastWidth - editorProperties.getWestBoundValue();
-        } else if (newWidth < minResizeWidth) {
-            newLayoutX = lastLayoutX + lastWidth - minResizeWidth;
-            newWidth = minResizeWidth;
-        }
-
-        setLayoutX(newLayoutX);
-        setWidth(newWidth);
     }
 
     /**
@@ -456,7 +488,6 @@ public class ResizableBox extends DraggableBox {
      *
      * @param x the x cursor position
      * @param y the y cursor position
-     *
      * @return the {@link RectangleMouseRegion} that the cursor is located in
      */
     private RectangleMouseRegion getMouseRegion(final double x, final double y) {
@@ -508,37 +539,37 @@ public class ResizableBox extends DraggableBox {
 
         switch (mouseRegion) {
 
-        case NORTHEAST:
-            setCursor(Cursor.NE_RESIZE);
-            break;
-        case NORTHWEST:
-            setCursor(Cursor.NW_RESIZE);
-            break;
-        case SOUTHEAST:
-            setCursor(Cursor.SE_RESIZE);
-            break;
-        case SOUTHWEST:
-            setCursor(Cursor.SW_RESIZE);
-            break;
-        case NORTH:
-            setCursor(Cursor.N_RESIZE);
-            break;
-        case SOUTH:
-            setCursor(Cursor.S_RESIZE);
-            break;
-        case EAST:
-            setCursor(Cursor.E_RESIZE);
-            break;
-        case WEST:
-            setCursor(Cursor.W_RESIZE);
-            break;
-        case INSIDE:
-            // Set to null instead of Cursor.DEFAULT so it doesn't overwrite cursor settings of parent.
-            setCursor(null);
-            break;
-        case OUTSIDE:
-            setCursor(null);
-            break;
+            case NORTHEAST:
+                setCursor(Cursor.NE_RESIZE);
+                break;
+            case NORTHWEST:
+                setCursor(Cursor.NW_RESIZE);
+                break;
+            case SOUTHEAST:
+                setCursor(Cursor.SE_RESIZE);
+                break;
+            case SOUTHWEST:
+                setCursor(Cursor.SW_RESIZE);
+                break;
+            case NORTH:
+                setCursor(Cursor.N_RESIZE);
+                break;
+            case SOUTH:
+                setCursor(Cursor.S_RESIZE);
+                break;
+            case EAST:
+                setCursor(Cursor.E_RESIZE);
+                break;
+            case WEST:
+                setCursor(Cursor.W_RESIZE);
+                break;
+            case INSIDE:
+                // Set to null instead of Cursor.DEFAULT so it doesn't overwrite cursor settings of parent.
+                setCursor(null);
+                break;
+            case OUTSIDE:
+                setCursor(null);
+                break;
         }
     }
 

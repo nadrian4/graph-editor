@@ -35,7 +35,7 @@ public class DefaultTailSkin extends GTailSkin {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultTailSkin.class);
 
-    private static final double ENDPOINT_SIZE = 25;
+    private static final double ENDPOINT_SIZE = 14;
 
     private static final String STYLE_CLASS = "default-tail";
     private static final String STYLE_CLASS_ENDPOINT = "default-tail-endpoint";
@@ -60,6 +60,25 @@ public class DefaultTailSkin extends GTailSkin {
         endpoint.getStyleClass().addAll(STYLE_CLASS_ENDPOINT, connector.getType());
         line.getStyleClass().setAll(STYLE_CLASS);
         group.setManaged(false);
+    }
+
+    @Override
+    public Polyline getLine() {
+        return line;
+    }
+
+    @Override
+    public void addOffset(double xOffset, double yOffset) {
+        for (int i = 2; i < line.getPoints().size() - 2; i = i + 2) {
+
+            final double x = GeometryUtils.moveOnPixel(line.getPoints().get(i));
+            final double y = GeometryUtils.moveOnPixel(line.getPoints().get(i + 1));
+            int xIndex = i;
+            line.getPoints().remove(i);
+            line.getPoints().add(i, x + xOffset);
+            line.getPoints().remove(i + 1);
+            line.getPoints().add(i + 1, y + yOffset);
+        }
     }
 
     @Override

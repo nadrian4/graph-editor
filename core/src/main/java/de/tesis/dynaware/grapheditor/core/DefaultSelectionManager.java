@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
@@ -107,6 +108,11 @@ public class DefaultSelectionManager implements SelectionManager {
     }
 
     @Override
+    public ObservableList<GGroup> getSelectedGroups() {
+        return selectionTracker.getSelectedGroups();
+    }
+
+    @Override
     public void selectAll() {
         selectionCreator.selectAllNodes(true);
         selectionCreator.selectAllJoints(true);
@@ -131,6 +137,11 @@ public class DefaultSelectionManager implements SelectionManager {
     @Override
     public void selectAllTexts() {
         selectionCreator.selectAllTexts(true);
+    }
+
+    @Override
+    public void selectAllGroups() {
+        selectionCreator.selectAllGroups(true);
     }
 
     @Override

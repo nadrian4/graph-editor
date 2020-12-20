@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor;
 
 import de.tesis.dynaware.grapheditor.model.GConnection;
 import de.tesis.dynaware.grapheditor.model.GConnector;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GNode;
 import de.tesis.dynaware.grapheditor.model.GText;
@@ -75,4 +76,8 @@ public interface SkinLookup {
     GTextSkin lookupText(GText text);
 
     List<GTextSkin> lookupTexts(List<GText> texts);
+
+    GGroupSkin lookupGroup(GGroup group);
+
+    List<GGroupSkin> lookupGroups(List<GGroup> groups);
 }

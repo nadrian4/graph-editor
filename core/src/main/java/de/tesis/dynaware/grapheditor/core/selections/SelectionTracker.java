@@ -1,18 +1,19 @@
 package de.tesis.dynaware.grapheditor.core.selections;
 
-import com.sun.org.apache.xpath.internal.operations.Gte;
-import de.tesis.dynaware.grapheditor.GTextSkin;
-import de.tesis.dynaware.grapheditor.model.GText;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import de.tesis.dynaware.grapheditor.GConnectionSkin;
+import de.tesis.dynaware.grapheditor.GGroupSkin;
 import de.tesis.dynaware.grapheditor.GJointSkin;
 import de.tesis.dynaware.grapheditor.GNodeSkin;
+import de.tesis.dynaware.grapheditor.GTextSkin;
 import de.tesis.dynaware.grapheditor.SkinLookup;
 import de.tesis.dynaware.grapheditor.model.GConnection;
+import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GJoint;
 import de.tesis.dynaware.grapheditor.model.GModel;
 import de.tesis.dynaware.grapheditor.model.GNode;
+import de.tesis.dynaware.grapheditor.model.GText;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Provides observable lists of selected nodes and joints for convenience.
@@ -23,6 +24,7 @@ public class SelectionTracker {
     ObservableList<GConnection> selectedConnections = FXCollections.observableArrayList();
     ObservableList<GJoint> selectedJoints = FXCollections.observableArrayList();
     ObservableList<GText> selectedTexts = FXCollections.observableArrayList();
+    ObservableList<GGroup> selectedGroups = FXCollections.observableArrayList();
 
     private final SkinLookup skinLookup;
 
@@ -44,6 +46,7 @@ public class SelectionTracker {
         trackNodes(model);
         trackConnectionsAndJoints(model);
         trackTexts(model);
+        trackGroups(model);
     }
 
     /**
@@ -57,6 +60,10 @@ public class SelectionTracker {
 
     public ObservableList<GText> getSelectedTexts() {
         return selectedTexts;
+    }
+
+    public ObservableList<GGroup> getSelectedGroups() {
+        return selectedGroups;
     }
 
     /**
@@ -121,6 +128,28 @@ public class SelectionTracker {
                     selectedTexts.add(text);
                 } else if (!newValue && selectedTexts.contains(text)) {
                     selectedTexts.remove(text);
+                }
+            });
+        }
+    }
+
+    private void trackGroups(final GModel model) {
+
+        selectedTexts.clear();
+
+        for (final GGroup group : model.getGroups()) {
+
+            final GGroupSkin groupSkin = skinLookup.lookupGroup(group);
+
+            if (groupSkin.isSelected()) {
+                selectedGroups.add(group);
+            }
+
+            groupSkin.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue && !selectedGroups.contains(group)) {
+                    selectedGroups.add(group);
+                } else if (!newValue && selectedGroups.contains(group)) {
+                    selectedGroups.remove(group);
                 }
             });
         }
