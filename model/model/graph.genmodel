@@ -27,10 +27,6 @@
     <genClasses ecoreClass="graph.ecore#//GNode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/y"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/width"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/height"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//GNode/subgraph"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/nodeType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/title"/>
@@ -38,7 +34,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/uniqueId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/color"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//GNode/category"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference graph.ecore#//GNode/groups"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//GNode/group"/>
     </genClasses>
     <genClasses ecoreClass="graph.ecore#//GConnection">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GConnection/id"/>
@@ -69,15 +65,19 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GCategory/removalCost"/>
     </genClasses>
     <genClasses ecoreClass="graph.ecore#//GGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GGroup/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GGroup/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//GGroup/nodes"/>
     </genClasses>
     <genClasses ecoreClass="graph.ecore#//GText">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/x"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/y"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/width"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GText/height"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="graph.ecore#//GResizable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GResizable/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GResizable/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GResizable/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GResizable/height"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

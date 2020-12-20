@@ -25,18 +25,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
         eType="#//GConnector" containment="true" eOpposite="#//GConnector/parent"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GNode" eSuperTypes="#//GConnectable">
+  <eClassifiers xsi:type="ecore:EClass" name="GNode" eSuperTypes="#//GConnectable #//GResizable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="151"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="101"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subgraph" eType="#//GModel"
         containment="true" eOpposite="#//GModel/supergraph"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodeType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -49,8 +41,7 @@
         defaultValueLiteral="0xffffffff"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" lowerBound="1"
         eType="#//GCategory"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
-        eType="#//GGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" eType="#//GGroup"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GConnection" eSuperTypes="#//GConnectable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -94,20 +85,26 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="removalCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GGroup">
+  <eClassifiers xsi:type="ecore:EClass" name="GGroup" eSuperTypes="#//GResizable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//GNode"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GText">
+  <eClassifiers xsi:type="ecore:EClass" name="GText" eSuperTypes="#//GResizable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GResizable" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="95"/>
+        defaultValueLiteral="151"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="35"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="101"/>
   </eClassifiers>
 </ecore:EPackage>
