@@ -177,26 +177,46 @@ public class ResizableBox extends DraggableBox {
         storeClickValuesForResize(event.getX(), event.getY());
     }
 
-    private Predicate<Point2D> resizeWestPredicate = point2D -> true;
-    private Predicate<Point2D> resizeEastPredicate = point2D -> true;
-    private Predicate<Point2D> resizeNorthPredicate = point2D -> true;
-    private Predicate<Point2D> resizeSouthPredicate = point2D -> true;
+    private Predicate<Point2D> resizeWestToEastPredicate = point2D -> true;
+    private Predicate<Point2D> resizeWestToWestPredicate = point2D -> true;
+    private Predicate<Point2D> resizeEastToEastPredicate = point2D -> true;
+    private Predicate<Point2D> resizeEastToWestPredicate = point2D -> true;
+    private Predicate<Point2D> resizeNorthToNorthPredicate = point2D -> true;
+    private Predicate<Point2D> resizeNorthToSouthPredicate = point2D -> true;
+    private Predicate<Point2D> resizeSouthToNorthPredicate = point2D -> true;
+    private Predicate<Point2D> resizeSouthToSouthPredicate = point2D -> true;
 
 
-    public void addResizeWestPredicate(Predicate<Point2D> predicate) {
-        this.resizeWestPredicate = resizeWestPredicate.and(predicate);
+    public void addResizeWestToEastPredicate(Predicate<Point2D> predicate) {
+        this.resizeWestToEastPredicate = resizeWestToEastPredicate.and(predicate);
     }
 
-    public void addResizeEastPredicate(Predicate<Point2D> predicate) {
-        this.resizeEastPredicate = resizeEastPredicate.and(predicate);
+    public void addResizeWestToWestPredicate(Predicate<Point2D> predicate) {
+        this.resizeWestToWestPredicate = resizeWestToWestPredicate.and(predicate);
     }
 
-    public void addResizeNorthPredicate(Predicate<Point2D> predicate) {
-        this.resizeNorthPredicate = resizeNorthPredicate.and(predicate);
+    public void addResizeEastToEastPredicate(Predicate<Point2D> predicate) {
+        this.resizeEastToEastPredicate = resizeEastToEastPredicate.and(predicate);
     }
 
-    public void addResizeSouthPredicate(Predicate<Point2D> predicate) {
-        this.resizeSouthPredicate = resizeSouthPredicate.and(predicate);
+    public void addResizeEastToWestPredicate(Predicate<Point2D> predicate) {
+        this.resizeEastToWestPredicate = resizeEastToWestPredicate.and(predicate);
+    }
+
+    public void addResizeNorthToNorthPredicate(Predicate<Point2D> predicate) {
+        this.resizeNorthToNorthPredicate = resizeNorthToNorthPredicate.and(predicate);
+    }
+
+    public void addResizeNorthToSouthPredicate(Predicate<Point2D> predicate) {
+        this.resizeNorthToSouthPredicate = resizeNorthToSouthPredicate.and(predicate);
+    }
+
+    public void addResizeSouthToNorthPredicate(Predicate<Point2D> predicate) {
+        this.resizeSouthToNorthPredicate = resizeSouthToNorthPredicate.and(predicate);
+    }
+
+    public void addResizeSouthToSouthPredicate(Predicate<Point2D> predicate) {
+        this.resizeSouthToSouthPredicate = resizeSouthToSouthPredicate.and(predicate);
     }
 
     @Override
@@ -321,12 +341,19 @@ public class ResizableBox extends DraggableBox {
      * @param y the cursor scene-y position
      */
     private void handleResizeNorth(final double y) {
-        if (resizeNorthPredicate.test(new Point2D(0, y))) {
 
-            final double scaleFactor = getLocalToSceneTransform().getMyy();
+        final double scaleFactor = getLocalToSceneTransform().getMyy();
 
 
-            final double yDragDistance = (y - lastMouseY) / scaleFactor;
+        final double yDragDistance = (y - lastMouseY) / scaleFactor;
+
+        Predicate<Point2D> predicate;
+        if (yDragDistance > 0) {
+            predicate = resizeNorthToSouthPredicate;
+        } else {
+            predicate = resizeNorthToNorthPredicate;
+        }
+        if (predicate.test(new Point2D(0, y))) {
             final double minResizeHeight = Math.max(getMinHeight(), 0);
 
             double newLayoutY = lastLayoutY + yDragDistance;
@@ -367,11 +394,16 @@ public class ResizableBox extends DraggableBox {
      * @param y the cursor scene-y position
      */
     private void handleResizeSouth(final double y) {
-        if (resizeSouthPredicate.test(new Point2D(0, y))) {
+        final double scaleFactor = getLocalToSceneTransform().getMyy();
+        final double yDragDistance = (y - lastMouseY) / scaleFactor;
+        Predicate<Point2D> predicate;
+        if (yDragDistance > 0) {
+            predicate = resizeSouthToSouthPredicate;
+        } else {
+            predicate = resizeSouthToNorthPredicate;
+        }
+        if (predicate.test(new Point2D(0, y))) {
 
-            final double scaleFactor = getLocalToSceneTransform().getMyy();
-
-            final double yDragDistance = (y - lastMouseY) / scaleFactor;
             final double parentHeight = getParent().getLayoutBounds().getHeight();
 
             final double maxParentHeight = editorProperties.isSouthBoundActive() ? parentHeight : absoluteMaxHeight;
@@ -406,11 +438,16 @@ public class ResizableBox extends DraggableBox {
      * @param x the cursor scene-x position
      */
     private void handleResizeEast(final double x) {
-        if (resizeEastPredicate.test(new Point2D(x, 0))) {
+        final double scaleFactor = getLocalToSceneTransform().getMxx();
 
-            final double scaleFactor = getLocalToSceneTransform().getMxx();
-
-            final double xDragDistance = (x - lastMouseX) / scaleFactor;
+        final double xDragDistance = (x - lastMouseX) / scaleFactor;
+        Predicate<Point2D> predicate;
+        if (xDragDistance > 0) {
+            predicate = resizeEastToEastPredicate;
+        } else {
+            predicate = resizeEastToWestPredicate;
+        }
+        if (predicate.test(new Point2D(x, 0))) {
             final double parentWidth = getParent().getLayoutBounds().getWidth();
 
             final double maxParentWidth = editorProperties.isEastBoundActive() ? parentWidth : absoluteMaxWidth;
@@ -445,10 +482,16 @@ public class ResizableBox extends DraggableBox {
      * @param x the cursor scene-x position
      */
     private void handleResizeWest(final double x) {
-        if (resizeWestPredicate.test(new Point2D(x, 0))) {
-            final double scaleFactor = getLocalToSceneTransform().getMxx();
+        final double scaleFactor = getLocalToSceneTransform().getMxx();
 
-            final double xDragDistance = (x - lastMouseX) / scaleFactor;
+        final double xDragDistance = (x - lastMouseX) / scaleFactor;
+        Predicate<Point2D> predicate;
+        if (xDragDistance > 0) {
+            predicate = resizeWestToEastPredicate;
+        } else {
+            predicate = resizeWestToWestPredicate;
+        }
+        if (predicate.test(new Point2D(x, 0))) {
             final double minResizeWidth = Math.max(getMinWidth(), 0);
 
             double newLayoutX = lastLayoutX + xDragDistance;
