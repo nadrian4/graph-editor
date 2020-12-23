@@ -23,21 +23,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link GNodeImpl#getX <em>X</em>}</li>
- *   <li>{@link GNodeImpl#getY <em>Y</em>}</li>
- *   <li>{@link GNodeImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link GNodeImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link GNodeImpl#getId <em>Id</em>}</li>
- *   <li>{@link GNodeImpl#getType <em>Type</em>}</li>
- *   <li>{@link GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
- *   <li>{@link GNodeImpl#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
- *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
- *   <li>{@link GNodeImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link GNodeImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getX <em>X</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getY <em>Y</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getActivationType <em>Activation Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -312,6 +313,26 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @ordered
 	 */
 	protected GGroup group;
+
+	/**
+	 * The default value of the '{@link #getActivationType() <em>Activation Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActivationType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ACTIVATION_TYPE_EDEFAULT = "DIRECT";
+
+	/**
+	 * The cached value of the '{@link #getActivationType() <em>Activation Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActivationType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String activationType = ACTIVATION_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -739,6 +760,29 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
+	public String getActivationType() {
+		return activationType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setActivationType(String newActivationType) {
+		String oldActivationType = activationType;
+		activationType = newActivationType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__ACTIVATION_TYPE, oldActivationType, activationType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraphPackage.GNODE__SUBGRAPH:
@@ -803,6 +847,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__GROUP:
 				if (resolve) return getGroup();
 				return basicGetGroup();
+			case GraphPackage.GNODE__ACTIVATION_TYPE:
+				return getActivationType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -861,6 +907,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__GROUP:
 				setGroup((GGroup)newValue);
 				return;
+			case GraphPackage.GNODE__ACTIVATION_TYPE:
+				setActivationType((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -918,6 +967,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__GROUP:
 				setGroup((GGroup)null);
 				return;
+			case GraphPackage.GNODE__ACTIVATION_TYPE:
+				setActivationType(ACTIVATION_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -960,6 +1012,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return category != null;
 			case GraphPackage.GNODE__GROUP:
 				return group != null;
+			case GraphPackage.GNODE__ACTIVATION_TYPE:
+				return ACTIVATION_TYPE_EDEFAULT == null ? activationType != null : !ACTIVATION_TYPE_EDEFAULT.equals(activationType);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1036,6 +1090,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 		result.append(coreUid);
 		result.append(", color: ");
 		result.append(color);
+		result.append(", activationType: ");
+		result.append(activationType);
 		result.append(')');
 		return result.toString();
 	}

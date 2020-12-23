@@ -44,6 +44,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" lowerBound="1"
         eType="#//GCategory"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="group" eType="#//GGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activationType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="DIRECT"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GConnection" eSuperTypes="#//GConnectable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

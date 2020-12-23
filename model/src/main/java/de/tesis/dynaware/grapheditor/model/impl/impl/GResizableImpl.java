@@ -20,10 +20,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link GResizableImpl#getX <em>X</em>}</li>
- *   <li>{@link GResizableImpl#getY <em>Y</em>}</li>
- *   <li>{@link GResizableImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link GResizableImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GResizableImpl#getX <em>X</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GResizableImpl#getY <em>Y</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GResizableImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GResizableImpl#getHeight <em>Height</em>}</li>
  * </ul>
  *
  * @generated

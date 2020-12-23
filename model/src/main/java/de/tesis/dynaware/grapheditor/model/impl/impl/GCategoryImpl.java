@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link GCategoryImpl#getName <em>Name</em>}</li>
- *   <li>{@link GCategoryImpl#getRemovalCost <em>Removal Cost</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GCategoryImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GCategoryImpl#getRemovalCost <em>Removal Cost</em>}</li>
  * </ul>
  *
  * @generated
