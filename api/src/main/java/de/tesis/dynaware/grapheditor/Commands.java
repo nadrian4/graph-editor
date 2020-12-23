@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Provides utility methods for editing a {@link GModel} via EMF commands.
@@ -234,7 +236,12 @@ public class Commands {
      * @param model the {@link GModel} being edited
      * @param nodes a list of {@link GNode} instances whose connectors should be removed
      */
+
     public static void clearConnectors(final GModel model, final List<GNode> nodes) {
+        clearConnectors(model, nodes, c -> true);
+    }
+
+    public static void clearConnectors(final GModel model, final List<GNode> nodes, Predicate<GConnector> connectorPredicate) {
 
         final EditingDomain editingDomain = getEditingDomain(model);
 
@@ -246,11 +253,10 @@ public class Commands {
             final Set<GConnector> connectorsToRemove = new HashSet<>();
 
             for (final GNode node : nodes) {
+                command.append(RemoveCommand.create(editingDomain, node, NODE_CONNECTORS, node.getConnectors().stream().filter(connectorPredicate).collect(Collectors.toList())));
+                connectorsToRemove.addAll(node.getConnectors().stream().filter(connectorPredicate).collect(Collectors.toList()));
 
-                command.append(RemoveCommand.create(editingDomain, node, NODE_CONNECTORS, node.getConnectors()));
-                connectorsToRemove.addAll(node.getConnectors());
-
-                for (final GConnector connector : node.getConnectors()) {
+                for (final GConnector connector : node.getConnectors().stream().filter(connectorPredicate).collect(Collectors.toList())) {
                     connectionsToRemove.addAll(connector.getConnections());
                 }
             }
@@ -269,7 +275,9 @@ public class Commands {
                 }
             }
 
-            command.append(RemoveCommand.create(editingDomain, model, CONNECTIONS, connectionsToRemove));
+            if (!connectionsToRemove.isEmpty()) {
+                command.append(RemoveCommand.create(editingDomain, model, CONNECTIONS, connectionsToRemove));
+            }
 
             if (command.canExecute()) {
                 editingDomain.getCommandStack().execute(command);
