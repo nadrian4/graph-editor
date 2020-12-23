@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link GResizable#getX <em>X</em>}</li>
- *   <li>{@link GResizable#getY <em>Y</em>}</li>
- *   <li>{@link GResizable#getWidth <em>Width</em>}</li>
- *   <li>{@link GResizable#getHeight <em>Height</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GResizable#getX <em>X</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GResizable#getY <em>Y</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GResizable#getWidth <em>Width</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GResizable#getHeight <em>Height</em>}</li>
  * </ul>
  *
- * @see GraphPackage#getGResizable()
+ * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGResizable()
  * @model abstract="true"
  * @generated
  */
@@ -31,14 +31,14 @@ public interface GResizable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>X</em>' attribute.
 	 * @see #setX(double)
-	 * @see GraphPackage#getGResizable_X()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGResizable_X()
 	 * @model default="0" required="true"
 	 * @generated
 	 */
 	double getX();
 
 	/**
-	 * Sets the value of the '{@link GResizable#getX <em>X</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GResizable#getX <em>X</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>X</em>' attribute.
@@ -54,14 +54,14 @@ public interface GResizable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Y</em>' attribute.
 	 * @see #setY(double)
-	 * @see GraphPackage#getGResizable_Y()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGResizable_Y()
 	 * @model default="0" required="true"
 	 * @generated
 	 */
 	double getY();
 
 	/**
-	 * Sets the value of the '{@link GResizable#getY <em>Y</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GResizable#getY <em>Y</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Y</em>' attribute.
@@ -77,14 +77,14 @@ public interface GResizable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width</em>' attribute.
 	 * @see #setWidth(double)
-	 * @see GraphPackage#getGResizable_Width()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGResizable_Width()
 	 * @model default="151" required="true"
 	 * @generated
 	 */
 	double getWidth();
 
 	/**
-	 * Sets the value of the '{@link GResizable#getWidth <em>Width</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GResizable#getWidth <em>Width</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Width</em>' attribute.
@@ -100,14 +100,14 @@ public interface GResizable extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(double)
-	 * @see GraphPackage#getGResizable_Height()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGResizable_Height()
 	 * @model default="101" required="true"
 	 * @generated
 	 */
 	double getHeight();
 
 	/**
-	 * Sets the value of the '{@link GResizable#getHeight <em>Height</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GResizable#getHeight <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Height</em>' attribute.

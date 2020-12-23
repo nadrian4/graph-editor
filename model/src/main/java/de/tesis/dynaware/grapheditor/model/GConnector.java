@@ -15,16 +15,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link GConnector#getId <em>Id</em>}</li>
- *   <li>{@link GConnector#getType <em>Type</em>}</li>
- *   <li>{@link GConnector#getParent <em>Parent</em>}</li>
- *   <li>{@link GConnector#getConnections <em>Connections</em>}</li>
- *   <li>{@link GConnector#getX <em>X</em>}</li>
- *   <li>{@link GConnector#getY <em>Y</em>}</li>
- *   <li>{@link GConnector#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#getId <em>Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#getType <em>Type</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#getParent <em>Parent</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#getConnections <em>Connections</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#getX <em>X</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#getY <em>Y</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnector#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}</li>
  * </ul>
  *
- * @see GraphPackage#getGConnector()
+ * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface GConnector extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see GraphPackage#getGConnector_Id()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_Id()
 	 * @model id="true"
 	 * @generated
 	 */
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link GConnector#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GConnector#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -57,14 +57,14 @@ public interface GConnector extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
-	 * @see GraphPackage#getGConnector_Type()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_Type()
 	 * @model
 	 * @generated
 	 */
 	String getType();
 
 	/**
-	 * Sets the value of the '{@link GConnector#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GConnector#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
@@ -75,20 +75,20 @@ public interface GConnector extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link GConnectable#getConnectors <em>Connectors</em>}'.
+	 * It is bidirectional and its opposite is '{@link de.tesis.dynaware.grapheditor.model.GConnectable#getConnectors <em>Connectors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parent</em>' container reference.
 	 * @see #setParent(GConnectable)
-	 * @see GraphPackage#getGConnector_Parent()
-	 * @see GConnectable#getConnectors
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_Parent()
+	 * @see de.tesis.dynaware.grapheditor.model.GConnectable#getConnectors
 	 * @model opposite="connectors" required="true" transient="false"
 	 * @generated
 	 */
 	GConnectable getParent();
 
 	/**
-	 * Sets the value of the '{@link GConnector#getParent <em>Parent</em>}' container reference.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GConnector#getParent <em>Parent</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Parent</em>' container reference.
@@ -99,11 +99,11 @@ public interface GConnector extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Connections</b></em>' reference list.
-	 * The list contents are of type {@link GConnection}.
+	 * The list contents are of type {@link de.tesis.dynaware.grapheditor.model.GConnection}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connections</em>' reference list.
-	 * @see GraphPackage#getGConnector_Connections()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_Connections()
 	 * @model
 	 * @generated
 	 */
@@ -115,14 +115,14 @@ public interface GConnector extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>X</em>' attribute.
 	 * @see #setX(double)
-	 * @see GraphPackage#getGConnector_X()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_X()
 	 * @model
 	 * @generated
 	 */
 	double getX();
 
 	/**
-	 * Sets the value of the '{@link GConnector#getX <em>X</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GConnector#getX <em>X</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>X</em>' attribute.
@@ -137,14 +137,14 @@ public interface GConnector extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Y</em>' attribute.
 	 * @see #setY(double)
-	 * @see GraphPackage#getGConnector_Y()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_Y()
 	 * @model
 	 * @generated
 	 */
 	double getY();
 
 	/**
-	 * Sets the value of the '{@link GConnector#getY <em>Y</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GConnector#getY <em>Y</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Y</em>' attribute.
@@ -160,14 +160,14 @@ public interface GConnector extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection Detached On Drag</em>' attribute.
 	 * @see #setConnectionDetachedOnDrag(boolean)
-	 * @see GraphPackage#getGConnector_ConnectionDetachedOnDrag()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnector_ConnectionDetachedOnDrag()
 	 * @model default="true" required="true"
 	 * @generated
 	 */
 	boolean isConnectionDetachedOnDrag();
 
 	/**
-	 * Sets the value of the '{@link GConnector#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GConnector#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Connection Detached On Drag</em>' attribute.

@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see GraphPackage
+ * @see de.tesis.dynaware.grapheditor.model.GraphPackage
  * @generated
  */
 public class GraphSwitch<T> extends Switch<T> {
@@ -143,7 +143,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GModel</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGModel(GModel object) {
@@ -158,7 +158,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GConnectable</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGConnectable(GConnectable object) {
@@ -173,7 +173,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GNode</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGNode(GNode object) {
@@ -188,7 +188,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GConnection</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGConnection(GConnection object) {
@@ -203,7 +203,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GConnector</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGConnector(GConnector object) {
@@ -218,7 +218,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GJoint</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGJoint(GJoint object) {
@@ -233,7 +233,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GCategory</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGCategory(GCategory object) {
@@ -248,7 +248,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GGroup</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGGroup(GGroup object) {
@@ -263,7 +263,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GText</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGText(GText object) {
@@ -278,7 +278,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>GResizable</em>'.
-	 * @see #doSwitch(EObject) doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseGResizable(GResizable object) {
@@ -293,7 +293,7 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(EObject)
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
 	@Override

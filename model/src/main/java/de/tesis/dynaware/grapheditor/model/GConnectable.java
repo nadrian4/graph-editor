@@ -15,23 +15,23 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link GConnectable#getConnectors <em>Connectors</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GConnectable#getConnectors <em>Connectors</em>}</li>
  * </ul>
  *
- * @see GraphPackage#getGConnectable()
+ * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnectable()
  * @model abstract="true"
  * @generated
  */
 public interface GConnectable extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Connectors</b></em>' containment reference list.
-	 * The list contents are of type {@link GConnector}.
-	 * It is bidirectional and its opposite is '{@link GConnector#getParent <em>Parent</em>}'.
+	 * The list contents are of type {@link de.tesis.dynaware.grapheditor.model.GConnector}.
+	 * It is bidirectional and its opposite is '{@link de.tesis.dynaware.grapheditor.model.GConnector#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connectors</em>' containment reference list.
-	 * @see GraphPackage#getGConnectable_Connectors()
-	 * @see GConnector#getParent
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGConnectable_Connectors()
+	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getParent
 	 * @model opposite="parent" containment="true"
 	 * @generated
 	 */

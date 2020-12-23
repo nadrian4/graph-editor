@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link GCategory#getName <em>Name</em>}</li>
- *   <li>{@link GCategory#getRemovalCost <em>Removal Cost</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GCategory#getName <em>Name</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GCategory#getRemovalCost <em>Removal Cost</em>}</li>
  * </ul>
  *
- * @see GraphPackage#getGCategory()
+ * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGCategory()
  * @model
  * @generated
  */
@@ -28,14 +28,14 @@ public interface GCategory extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see GraphPackage#getGCategory_Name()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGCategory_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link GCategory#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GCategory#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -50,14 +50,14 @@ public interface GCategory extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Removal Cost</em>' attribute.
 	 * @see #setRemovalCost(double)
-	 * @see GraphPackage#getGCategory_RemovalCost()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGCategory_RemovalCost()
 	 * @model
 	 * @generated
 	 */
 	double getRemovalCost();
 
 	/**
-	 * Sets the value of the '{@link GCategory#getRemovalCost <em>Removal Cost</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GCategory#getRemovalCost <em>Removal Cost</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Removal Cost</em>' attribute.

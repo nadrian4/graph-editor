@@ -101,7 +101,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link Registry EPackage.Registry} by the package
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
 	 * <p>Note: the correct way to create the package is via the static
 	 * factory method {@link #init init()}, which also performs
@@ -109,8 +109,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * if one already exists.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Registry
-	 * @see GraphPackage#eNS_URI
+	 * @see org.eclipse.emf.ecore.EPackage.Registry
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -138,10 +138,10 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	public static GraphPackage init() {
-		if (isInited) return (GraphPackage) Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
+		if (isInited) return (GraphPackage)EPackage.Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredGraphPackage = Registry.INSTANCE.get(eNS_URI);
+		Object registeredGraphPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
 		GraphPackageImpl theGraphPackage = registeredGraphPackage instanceof GraphPackageImpl ? (GraphPackageImpl)registeredGraphPackage : new GraphPackageImpl();
 
 		isInited = true;
@@ -156,7 +156,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		theGraphPackage.freeze();
 
 		// Update the registry and return the package
-		Registry.INSTANCE.put(GraphPackage.eNS_URI, theGraphPackage);
+		EPackage.Registry.INSTANCE.put(GraphPackage.eNS_URI, theGraphPackage);
 		return theGraphPackage;
 	}
 
@@ -376,7 +376,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGNode_Color() {
+	public EAttribute getGNode_CoreUid() {
 		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -386,8 +386,18 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getGNode_Color() {
+		return (EAttribute)gNodeEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getGNode_Category() {
-		return (EReference)gNodeEClass.getEStructuralFeatures().get(8);
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -397,7 +407,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EReference getGNode_Group() {
-		return (EReference)gNodeEClass.getEStructuralFeatures().get(9);
+		return (EReference)gNodeEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -676,7 +686,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGGroup_UniqueId() {
+	public EAttribute getGGroup_CoreUid() {
 		return (EAttribute)gGroupEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -686,8 +696,18 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getGGroup_UniqueId() {
+		return (EAttribute)gGroupEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getGGroup_Nodes() {
-		return (EReference)gGroupEClass.getEStructuralFeatures().get(3);
+		return (EReference)gGroupEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -822,6 +842,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEAttribute(gNodeEClass, GNODE__TITLE);
 		createEAttribute(gNodeEClass, GNODE__DESCRIPTION);
 		createEAttribute(gNodeEClass, GNODE__UNIQUE_ID);
+		createEAttribute(gNodeEClass, GNODE__CORE_UID);
 		createEAttribute(gNodeEClass, GNODE__COLOR);
 		createEReference(gNodeEClass, GNODE__CATEGORY);
 		createEReference(gNodeEClass, GNODE__GROUP);
@@ -857,6 +878,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		gGroupEClass = createEClass(GGROUP);
 		createEAttribute(gGroupEClass, GGROUP__ID);
 		createEAttribute(gGroupEClass, GGROUP__NAME);
+		createEAttribute(gGroupEClass, GGROUP__CORE_UID);
 		createEAttribute(gGroupEClass, GGROUP__UNIQUE_ID);
 		createEReference(gGroupEClass, GGROUP__NODES);
 
@@ -929,6 +951,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEAttribute(getGNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Description(), ecorePackage.getEString(), "description", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_UniqueId(), ecorePackage.getEString(), "uniqueId", "", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGNode_CoreUid(), ecorePackage.getEString(), "coreUid", "", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGNode_Color(), ecorePackage.getEString(), "color", "0xffffffff", 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGNode_Category(), this.getGCategory(), null, "category", null, 1, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGNode_Group(), this.getGGroup(), null, "group", null, 0, 1, GNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -964,6 +987,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEClass(gGroupEClass, GGroup.class, "GGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGGroup_Id(), ecorePackage.getEString(), "id", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGGroup_CoreUid(), ecorePackage.getEString(), "coreUid", null, 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGGroup_UniqueId(), ecorePackage.getEString(), "uniqueId", "", 0, 1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGGroup_Nodes(), this.getGNode(), null, "nodes", null, 0, -1, GGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

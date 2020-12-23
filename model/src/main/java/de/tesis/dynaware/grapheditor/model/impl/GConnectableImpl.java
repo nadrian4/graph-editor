@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link GConnectableImpl#getConnectors <em>Connectors</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectableImpl#getConnectors <em>Connectors</em>}</li>
  * </ul>
  *
  * @generated

@@ -23,10 +23,11 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link GGroupImpl#getId <em>Id</em>}</li>
- *   <li>{@link GGroupImpl#getName <em>Name</em>}</li>
- *   <li>{@link GGroupImpl#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link GGroupImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getCoreUid <em>Core Uid</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getNodes <em>Nodes</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,6 +72,26 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCoreUid() <em>Core Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoreUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CORE_UID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCoreUid() <em>Core Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoreUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected String coreUid = CORE_UID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUniqueId() <em>Unique Id</em>}' attribute.
@@ -173,6 +194,29 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 	 * @generated
 	 */
 	@Override
+	public String getCoreUid() {
+		return coreUid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCoreUid(String newCoreUid) {
+		String oldCoreUid = coreUid;
+		coreUid = newCoreUid;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GGROUP__CORE_UID, oldCoreUid, coreUid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getUniqueId() {
 		return uniqueId;
 	}
@@ -215,6 +259,8 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 				return getId();
 			case GraphPackage.GGROUP__NAME:
 				return getName();
+			case GraphPackage.GGROUP__CORE_UID:
+				return getCoreUid();
 			case GraphPackage.GGROUP__UNIQUE_ID:
 				return getUniqueId();
 			case GraphPackage.GGROUP__NODES:
@@ -237,6 +283,9 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 				return;
 			case GraphPackage.GGROUP__NAME:
 				setName((String)newValue);
+				return;
+			case GraphPackage.GGROUP__CORE_UID:
+				setCoreUid((String)newValue);
 				return;
 			case GraphPackage.GGROUP__UNIQUE_ID:
 				setUniqueId((String)newValue);
@@ -263,6 +312,9 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 			case GraphPackage.GGROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case GraphPackage.GGROUP__CORE_UID:
+				setCoreUid(CORE_UID_EDEFAULT);
+				return;
 			case GraphPackage.GGROUP__UNIQUE_ID:
 				setUniqueId(UNIQUE_ID_EDEFAULT);
 				return;
@@ -285,6 +337,8 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case GraphPackage.GGROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case GraphPackage.GGROUP__CORE_UID:
+				return CORE_UID_EDEFAULT == null ? coreUid != null : !CORE_UID_EDEFAULT.equals(coreUid);
 			case GraphPackage.GGROUP__UNIQUE_ID:
 				return UNIQUE_ID_EDEFAULT == null ? uniqueId != null : !UNIQUE_ID_EDEFAULT.equals(uniqueId);
 			case GraphPackage.GGROUP__NODES:
@@ -307,6 +361,8 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 		result.append(id);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", coreUid: ");
+		result.append(coreUid);
 		result.append(", uniqueId: ");
 		result.append(uniqueId);
 		result.append(')');

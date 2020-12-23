@@ -11,11 +11,11 @@ package de.tesis.dynaware.grapheditor.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link GText#getId <em>Id</em>}</li>
- *   <li>{@link GText#getText <em>Text</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GText#getId <em>Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.GText#getText <em>Text</em>}</li>
  * </ul>
  *
- * @see GraphPackage#getGText()
+ * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGText()
  * @model
  * @generated
  */
@@ -26,14 +26,14 @@ public interface GText extends GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see GraphPackage#getGText_Id()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGText_Id()
 	 * @model id="true"
 	 * @generated
 	 */
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link GText#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GText#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -48,14 +48,14 @@ public interface GText extends GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
-	 * @see GraphPackage#getGText_Text()
+	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGText_Text()
 	 * @model
 	 * @generated
 	 */
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link GText#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GText#getText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.

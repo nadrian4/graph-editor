@@ -23,20 +23,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link GNodeImpl#getX <em>X</em>}</li>
- *   <li>{@link GNodeImpl#getY <em>Y</em>}</li>
- *   <li>{@link GNodeImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link GNodeImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link GNodeImpl#getId <em>Id</em>}</li>
- *   <li>{@link GNodeImpl#getType <em>Type</em>}</li>
- *   <li>{@link GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
- *   <li>{@link GNodeImpl#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
- *   <li>{@link GNodeImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link GNodeImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getX <em>X</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getY <em>Y</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @generated
@@ -251,6 +252,26 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @ordered
 	 */
 	protected String uniqueId = UNIQUE_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCoreUid() <em>Core Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoreUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CORE_UID_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getCoreUid() <em>Core Uid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCoreUid()
+	 * @generated
+	 * @ordered
+	 */
+	protected String coreUid = CORE_UID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -592,6 +613,29 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
+	public String getCoreUid() {
+		return coreUid;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCoreUid(String newCoreUid) {
+		String oldCoreUid = coreUid;
+		coreUid = newCoreUid;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__CORE_UID, oldCoreUid, coreUid));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getColor() {
 		return color;
 	}
@@ -749,6 +793,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return getDescription();
 			case GraphPackage.GNODE__UNIQUE_ID:
 				return getUniqueId();
+			case GraphPackage.GNODE__CORE_UID:
+				return getCoreUid();
 			case GraphPackage.GNODE__COLOR:
 				return getColor();
 			case GraphPackage.GNODE__CATEGORY:
@@ -802,6 +848,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return;
 			case GraphPackage.GNODE__UNIQUE_ID:
 				setUniqueId((String)newValue);
+				return;
+			case GraphPackage.GNODE__CORE_UID:
+				setCoreUid((String)newValue);
 				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor((String)newValue);
@@ -857,6 +906,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__UNIQUE_ID:
 				setUniqueId(UNIQUE_ID_EDEFAULT);
 				return;
+			case GraphPackage.GNODE__CORE_UID:
+				setCoreUid(CORE_UID_EDEFAULT);
+				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor(COLOR_EDEFAULT);
 				return;
@@ -900,6 +952,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case GraphPackage.GNODE__UNIQUE_ID:
 				return UNIQUE_ID_EDEFAULT == null ? uniqueId != null : !UNIQUE_ID_EDEFAULT.equals(uniqueId);
+			case GraphPackage.GNODE__CORE_UID:
+				return CORE_UID_EDEFAULT == null ? coreUid != null : !CORE_UID_EDEFAULT.equals(coreUid);
 			case GraphPackage.GNODE__COLOR:
 				return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
 			case GraphPackage.GNODE__CATEGORY:
@@ -978,6 +1032,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 		result.append(description);
 		result.append(", uniqueId: ");
 		result.append(uniqueId);
+		result.append(", coreUid: ");
+		result.append(coreUid);
 		result.append(", color: ");
 		result.append(color);
 		result.append(')');
