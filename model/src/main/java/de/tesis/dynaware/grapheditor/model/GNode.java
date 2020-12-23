@@ -11,21 +11,22 @@ package de.tesis.dynaware.grapheditor.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getSubgraph <em>Subgraph</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getTitle <em>Title</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getDescription <em>Description</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getCoreUid <em>Core Uid</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getColor <em>Color</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getCategory <em>Category</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getGroup <em>Group</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.GNode#getActivationType <em>Activation Type</em>}</li>
+ *   <li>{@link GNode#getId <em>Id</em>}</li>
+ *   <li>{@link GNode#getType <em>Type</em>}</li>
+ *   <li>{@link GNode#getSubgraph <em>Subgraph</em>}</li>
+ *   <li>{@link GNode#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link GNode#getTitle <em>Title</em>}</li>
+ *   <li>{@link GNode#getDescription <em>Description</em>}</li>
+ *   <li>{@link GNode#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link GNode#getCoreUid <em>Core Uid</em>}</li>
+ *   <li>{@link GNode#getNodeId <em>Node Id</em>}</li>
+ *   <li>{@link GNode#getColor <em>Color</em>}</li>
+ *   <li>{@link GNode#getCategory <em>Category</em>}</li>
+ *   <li>{@link GNode#getGroup <em>Group</em>}</li>
+ *   <li>{@link GNode#getActivationType <em>Activation Type</em>}</li>
  * </ul>
  *
- * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode()
+ * @see GraphPackage#getGNode()
  * @model
  * @generated
  */
@@ -36,14 +37,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Id()
+	 * @see GraphPackage#getGNode_Id()
 	 * @model id="true"
 	 * @generated
 	 */
 	String getId();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -58,14 +59,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Type()
+	 * @see GraphPackage#getGNode_Type()
 	 * @model
 	 * @generated
 	 */
 	String getType();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
@@ -76,20 +77,20 @@ public interface GNode extends GConnectable, GResizable {
 
 	/**
 	 * Returns the value of the '<em><b>Subgraph</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link de.tesis.dynaware.grapheditor.model.GModel#getSupergraph <em>Supergraph</em>}'.
+	 * It is bidirectional and its opposite is '{@link GModel#getSupergraph <em>Supergraph</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subgraph</em>' containment reference.
 	 * @see #setSubgraph(GModel)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Subgraph()
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getSupergraph
+	 * @see GraphPackage#getGNode_Subgraph()
+	 * @see GModel#getSupergraph
 	 * @model opposite="supergraph" containment="true"
 	 * @generated
 	 */
 	GModel getSubgraph();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getSubgraph <em>Subgraph</em>}' containment reference.
+	 * Sets the value of the '{@link GNode#getSubgraph <em>Subgraph</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Subgraph</em>' containment reference.
@@ -105,14 +106,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Node Type</em>' attribute.
 	 * @see #setNodeType(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_NodeType()
+	 * @see GraphPackage#getGNode_NodeType()
 	 * @model default=""
 	 * @generated
 	 */
 	String getNodeType();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getNodeType <em>Node Type</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getNodeType <em>Node Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Node Type</em>' attribute.
@@ -127,14 +128,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Title()
+	 * @see GraphPackage#getGNode_Title()
 	 * @model
 	 * @generated
 	 */
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getTitle <em>Title</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getTitle <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Title</em>' attribute.
@@ -149,14 +150,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Description()
+	 * @see GraphPackage#getGNode_Description()
 	 * @model
 	 * @generated
 	 */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' attribute.
@@ -172,14 +173,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Unique Id</em>' attribute.
 	 * @see #setUniqueId(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_UniqueId()
+	 * @see GraphPackage#getGNode_UniqueId()
 	 * @model default=""
 	 * @generated
 	 */
 	String getUniqueId();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getUniqueId <em>Unique Id</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getUniqueId <em>Unique Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Unique Id</em>' attribute.
@@ -195,14 +196,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Core Uid</em>' attribute.
 	 * @see #setCoreUid(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_CoreUid()
+	 * @see GraphPackage#getGNode_CoreUid()
 	 * @model default="" transient="true"
 	 * @generated
 	 */
 	String getCoreUid();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getCoreUid <em>Core Uid</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getCoreUid <em>Core Uid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Core Uid</em>' attribute.
@@ -212,20 +213,42 @@ public interface GNode extends GConnectable, GResizable {
 	void setCoreUid(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Node Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Node Id</em>' attribute.
+	 * @see #setNodeId(String)
+	 * @see GraphPackage#getGNode_NodeId()
+	 * @model
+	 * @generated
+	 */
+	String getNodeId();
+
+	/**
+	 * Sets the value of the '{@link GNode#getNodeId <em>Node Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Node Id</em>' attribute.
+	 * @see #getNodeId()
+	 * @generated
+	 */
+	void setNodeId(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Color</b></em>' attribute.
 	 * The default value is <code>"0xffffffff"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Color</em>' attribute.
 	 * @see #setColor(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Color()
+	 * @see GraphPackage#getGNode_Color()
 	 * @model default="0xffffffff"
 	 * @generated
 	 */
 	String getColor();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getColor <em>Color</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getColor <em>Color</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Color</em>' attribute.
@@ -240,14 +263,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Category</em>' reference.
 	 * @see #setCategory(GCategory)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Category()
+	 * @see GraphPackage#getGNode_Category()
 	 * @model required="true"
 	 * @generated
 	 */
 	GCategory getCategory();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getCategory <em>Category</em>}' reference.
+	 * Sets the value of the '{@link GNode#getCategory <em>Category</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Category</em>' reference.
@@ -262,14 +285,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Group</em>' reference.
 	 * @see #setGroup(GGroup)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_Group()
+	 * @see GraphPackage#getGNode_Group()
 	 * @model
 	 * @generated
 	 */
 	GGroup getGroup();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getGroup <em>Group</em>}' reference.
+	 * Sets the value of the '{@link GNode#getGroup <em>Group</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Group</em>' reference.
@@ -285,14 +308,14 @@ public interface GNode extends GConnectable, GResizable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activation Type</em>' attribute.
 	 * @see #setActivationType(String)
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#getGNode_ActivationType()
+	 * @see GraphPackage#getGNode_ActivationType()
 	 * @model default="DIRECT"
 	 * @generated
 	 */
 	String getActivationType();
 
 	/**
-	 * Sets the value of the '{@link de.tesis.dynaware.grapheditor.model.GNode#getActivationType <em>Activation Type</em>}' attribute.
+	 * Sets the value of the '{@link GNode#getActivationType <em>Activation Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Activation Type</em>' attribute.

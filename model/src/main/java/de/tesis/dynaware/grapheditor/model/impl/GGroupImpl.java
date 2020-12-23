@@ -23,10 +23,10 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GGroupImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link GGroupImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link GGroupImpl#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link GGroupImpl#getNodes <em>Nodes</em>}</li>
  * </ul>
  *
  * @generated

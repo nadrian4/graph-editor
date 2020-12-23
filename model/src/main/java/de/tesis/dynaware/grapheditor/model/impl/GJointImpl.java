@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GJointImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GJointImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GJointImpl#getConnection <em>Connection</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GJointImpl#getX <em>X</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GJointImpl#getY <em>Y</em>}</li>
+ *   <li>{@link GJointImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GJointImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GJointImpl#getConnection <em>Connection</em>}</li>
+ *   <li>{@link GJointImpl#getX <em>X</em>}</li>
+ *   <li>{@link GJointImpl#getY <em>Y</em>}</li>
  * </ul>
  *
  * @generated

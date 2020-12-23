@@ -33,6 +33,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/uniqueId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/coreUid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/nodeId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//GNode/color"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//GNode/category"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//GNode/group"/>

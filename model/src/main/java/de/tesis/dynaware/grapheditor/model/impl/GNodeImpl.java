@@ -23,22 +23,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getX <em>X</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getY <em>Y</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getColor <em>Color</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getGroup <em>Group</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getActivationType <em>Activation Type</em>}</li>
+ *   <li>{@link GNodeImpl#getX <em>X</em>}</li>
+ *   <li>{@link GNodeImpl#getY <em>Y</em>}</li>
+ *   <li>{@link GNodeImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link GNodeImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link GNodeImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GNodeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
+ *   <li>{@link GNodeImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
+ *   <li>{@link GNodeImpl#getNodeId <em>Node Id</em>}</li>
+ *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link GNodeImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link GNodeImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link GNodeImpl#getActivationType <em>Activation Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -273,6 +274,26 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @ordered
 	 */
 	protected String coreUid = CORE_UID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getNodeId() <em>Node Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodeId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NODE_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getNodeId() <em>Node Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNodeId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String nodeId = NODE_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -657,6 +678,29 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 	 * @generated
 	 */
 	@Override
+	public String getNodeId() {
+		return nodeId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setNodeId(String newNodeId) {
+		String oldNodeId = nodeId;
+		nodeId = newNodeId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GNODE__NODE_ID, oldNodeId, nodeId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getColor() {
 		return color;
 	}
@@ -839,6 +883,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return getUniqueId();
 			case GraphPackage.GNODE__CORE_UID:
 				return getCoreUid();
+			case GraphPackage.GNODE__NODE_ID:
+				return getNodeId();
 			case GraphPackage.GNODE__COLOR:
 				return getColor();
 			case GraphPackage.GNODE__CATEGORY:
@@ -897,6 +943,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return;
 			case GraphPackage.GNODE__CORE_UID:
 				setCoreUid((String)newValue);
+				return;
+			case GraphPackage.GNODE__NODE_ID:
+				setNodeId((String)newValue);
 				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor((String)newValue);
@@ -958,6 +1007,9 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 			case GraphPackage.GNODE__CORE_UID:
 				setCoreUid(CORE_UID_EDEFAULT);
 				return;
+			case GraphPackage.GNODE__NODE_ID:
+				setNodeId(NODE_ID_EDEFAULT);
+				return;
 			case GraphPackage.GNODE__COLOR:
 				setColor(COLOR_EDEFAULT);
 				return;
@@ -1006,6 +1058,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 				return UNIQUE_ID_EDEFAULT == null ? uniqueId != null : !UNIQUE_ID_EDEFAULT.equals(uniqueId);
 			case GraphPackage.GNODE__CORE_UID:
 				return CORE_UID_EDEFAULT == null ? coreUid != null : !CORE_UID_EDEFAULT.equals(coreUid);
+			case GraphPackage.GNODE__NODE_ID:
+				return NODE_ID_EDEFAULT == null ? nodeId != null : !NODE_ID_EDEFAULT.equals(nodeId);
 			case GraphPackage.GNODE__COLOR:
 				return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
 			case GraphPackage.GNODE__CATEGORY:
@@ -1088,6 +1142,8 @@ public class GNodeImpl extends GConnectableImpl implements GNode {
 		result.append(uniqueId);
 		result.append(", coreUid: ");
 		result.append(coreUid);
+		result.append(", nodeId: ");
+		result.append(nodeId);
 		result.append(", color: ");
 		result.append(color);
 		result.append(", activationType: ");

@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GTextImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GTextImpl#getText <em>Text</em>}</li>
+ *   <li>{@link GTextImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GTextImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
