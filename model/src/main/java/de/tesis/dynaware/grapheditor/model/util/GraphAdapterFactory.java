@@ -254,13 +254,13 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.tesis.dynaware.grapheditor.model.GResizable <em>GResizable</em>}'.
+	 * Creates a new adapter for an object of class '{@link GResizable <em>GResizable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable
+	 * @see GResizable
 	 * @generated
 	 */
 	public Adapter createGResizableAdapter() {

@@ -171,7 +171,7 @@ public interface GNode extends GConnectable, GResizable {
 	 * @return the value of the '<em>Unique Id</em>' attribute.
 	 * @see #setUniqueId(String)
 	 * @see GraphPackage#getGNode_UniqueId()
-	 * @model default="" transient="true"
+	 * @model default=""
 	 * @generated
 	 */
 	String getUniqueId();

@@ -805,13 +805,22 @@ public interface GraphPackage extends EPackage {
 	int GGROUP__NAME = GRESIZABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Unique Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GGROUP__UNIQUE_ID = GRESIZABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GGROUP__NODES = GRESIZABLE_FEATURE_COUNT + 2;
+	int GGROUP__NODES = GRESIZABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>GGroup</em>' class.
@@ -820,7 +829,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GGROUP_FEATURE_COUNT = GRESIZABLE_FEATURE_COUNT + 3;
+	int GGROUP_FEATURE_COUNT = GRESIZABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>GGroup</em>' class.
@@ -1469,6 +1478,17 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGGroup_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link GGroup#getUniqueId <em>Unique Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unique Id</em>'.
+	 * @see GGroup#getUniqueId()
+	 * @see #getGGroup()
+	 * @generated
+	 */
+	EAttribute getGGroup_UniqueId();
+
+	/**
 	 * Returns the meta object for the reference list '{@link GGroup#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1512,54 +1532,54 @@ public interface GraphPackage extends EPackage {
 	EAttribute getGText_Text();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GResizable <em>GResizable</em>}'.
+	 * Returns the meta object for class '{@link GResizable <em>GResizable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GResizable</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable
+	 * @see GResizable
 	 * @generated
 	 */
 	EClass getGResizable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getX <em>X</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getX()
+	 * @see GResizable#getX()
 	 * @see #getGResizable()
 	 * @generated
 	 */
 	EAttribute getGResizable_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getY()
+	 * @see GResizable#getY()
 	 * @see #getGResizable()
 	 * @generated
 	 */
 	EAttribute getGResizable_Y();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getWidth <em>Width</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getWidth <em>Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getWidth()
+	 * @see GResizable#getWidth()
 	 * @see #getGResizable()
 	 * @generated
 	 */
 	EAttribute getGResizable_Width();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getHeight()
+	 * @see GResizable#getHeight()
 	 * @see #getGResizable()
 	 * @generated
 	 */
@@ -2011,6 +2031,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GGROUP__NAME = eINSTANCE.getGGroup_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GGROUP__UNIQUE_ID = eINSTANCE.getGGroup_UniqueId();
 
 		/**
 		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.

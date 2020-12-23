@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link GGroup#getId <em>Id</em>}</li>
  *   <li>{@link GGroup#getName <em>Name</em>}</li>
+ *   <li>{@link GGroup#getUniqueId <em>Unique Id</em>}</li>
  *   <li>{@link GGroup#getNodes <em>Nodes</em>}</li>
  * </ul>
  *
@@ -66,6 +67,29 @@ public interface GGroup extends GResizable {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Unique Id</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Unique Id</em>' attribute.
+	 * @see #setUniqueId(String)
+	 * @see GraphPackage#getGGroup_UniqueId()
+	 * @model default=""
+	 * @generated
+	 */
+	String getUniqueId();
+
+	/**
+	 * Sets the value of the '{@link GGroup#getUniqueId <em>Unique Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unique Id</em>' attribute.
+	 * @see #getUniqueId()
+	 * @generated
+	 */
+	void setUniqueId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Nodes</b></em>' reference list.

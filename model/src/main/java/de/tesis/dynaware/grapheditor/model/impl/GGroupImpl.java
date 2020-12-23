@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link GGroupImpl#getId <em>Id</em>}</li>
  *   <li>{@link GGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link GGroupImpl#getUniqueId <em>Unique Id</em>}</li>
  *   <li>{@link GGroupImpl#getNodes <em>Nodes</em>}</li>
  * </ul>
  *
@@ -70,6 +71,26 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUniqueId() <em>Unique Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUniqueId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String UNIQUE_ID_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getUniqueId() <em>Unique Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUniqueId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String uniqueId = UNIQUE_ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' reference list.
@@ -152,6 +173,29 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 	 * @generated
 	 */
 	@Override
+	public String getUniqueId() {
+		return uniqueId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setUniqueId(String newUniqueId) {
+		String oldUniqueId = uniqueId;
+		uniqueId = newUniqueId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GGROUP__UNIQUE_ID, oldUniqueId, uniqueId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<GNode> getNodes() {
 		if (nodes == null) {
 			nodes = new EObjectResolvingEList<GNode>(GNode.class, this, GraphPackage.GGROUP__NODES);
@@ -171,6 +215,8 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 				return getId();
 			case GraphPackage.GGROUP__NAME:
 				return getName();
+			case GraphPackage.GGROUP__UNIQUE_ID:
+				return getUniqueId();
 			case GraphPackage.GGROUP__NODES:
 				return getNodes();
 		}
@@ -191,6 +237,9 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 				return;
 			case GraphPackage.GGROUP__NAME:
 				setName((String)newValue);
+				return;
+			case GraphPackage.GGROUP__UNIQUE_ID:
+				setUniqueId((String)newValue);
 				return;
 			case GraphPackage.GGROUP__NODES:
 				getNodes().clear();
@@ -214,6 +263,9 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 			case GraphPackage.GGROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case GraphPackage.GGROUP__UNIQUE_ID:
+				setUniqueId(UNIQUE_ID_EDEFAULT);
+				return;
 			case GraphPackage.GGROUP__NODES:
 				getNodes().clear();
 				return;
@@ -233,6 +285,8 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case GraphPackage.GGROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case GraphPackage.GGROUP__UNIQUE_ID:
+				return UNIQUE_ID_EDEFAULT == null ? uniqueId != null : !UNIQUE_ID_EDEFAULT.equals(uniqueId);
 			case GraphPackage.GGROUP__NODES:
 				return nodes != null && !nodes.isEmpty();
 		}
@@ -253,6 +307,8 @@ public class GGroupImpl extends GResizableImpl implements GGroup {
 		result.append(id);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", uniqueId: ");
+		result.append(uniqueId);
 		result.append(')');
 		return result.toString();
 	}
