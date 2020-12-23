@@ -31,13 +31,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#getConnections <em>Connections</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#getX <em>X</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#getY <em>Y</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectorImpl#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}</li>
+ *   <li>{@link GConnectorImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GConnectorImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GConnectorImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link GConnectorImpl#getConnections <em>Connections</em>}</li>
+ *   <li>{@link GConnectorImpl#getX <em>X</em>}</li>
+ *   <li>{@link GConnectorImpl#getY <em>Y</em>}</li>
+ *   <li>{@link GConnectorImpl#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}</li>
  * </ul>
  *
  * @generated

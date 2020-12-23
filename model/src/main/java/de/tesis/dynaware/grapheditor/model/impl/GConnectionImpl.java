@@ -30,12 +30,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getSource <em>Source</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getJoints <em>Joints</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GConnectionImpl#getUid <em>Uid</em>}</li>
+ *   <li>{@link GConnectionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GConnectionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GConnectionImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link GConnectionImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link GConnectionImpl#getJoints <em>Joints</em>}</li>
+ *   <li>{@link GConnectionImpl#getUid <em>Uid</em>}</li>
  * </ul>
  *
  * @generated

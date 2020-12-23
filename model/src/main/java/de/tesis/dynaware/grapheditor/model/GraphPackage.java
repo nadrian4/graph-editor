@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see de.tesis.dynaware.grapheditor.model.GraphFactory
+ * @see GraphFactory
  * @model kind="package"
  * @generated
  */
@@ -943,683 +943,683 @@ public interface GraphPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GModel <em>GModel</em>}'.
+	 * Returns the meta object for class '{@link GModel <em>GModel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GModel</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel
+	 * @see GModel
 	 * @generated
 	 */
 	EClass getGModel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GModel#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getNodes()
+	 * @see GModel#getNodes()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EReference getGModel_Nodes();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GModel#getConnections <em>Connections</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getConnections <em>Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Connections</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getConnections()
+	 * @see GModel#getConnections()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EReference getGModel_Connections();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GModel#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link GModel#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getType()
+	 * @see GModel#getType()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EAttribute getGModel_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GModel#getContentWidth <em>Content Width</em>}'.
+	 * Returns the meta object for the attribute '{@link GModel#getContentWidth <em>Content Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Content Width</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getContentWidth()
+	 * @see GModel#getContentWidth()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EAttribute getGModel_ContentWidth();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GModel#getContentHeight <em>Content Height</em>}'.
+	 * Returns the meta object for the attribute '{@link GModel#getContentHeight <em>Content Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Content Height</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getContentHeight()
+	 * @see GModel#getContentHeight()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EAttribute getGModel_ContentHeight();
 
 	/**
-	 * Returns the meta object for the container reference '{@link de.tesis.dynaware.grapheditor.model.GModel#getSupergraph <em>Supergraph</em>}'.
+	 * Returns the meta object for the container reference '{@link GModel#getSupergraph <em>Supergraph</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Supergraph</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getSupergraph()
+	 * @see GModel#getSupergraph()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EReference getGModel_Supergraph();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GModel#getGroups <em>Groups</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getGroups <em>Groups</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Groups</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getGroups()
+	 * @see GModel#getGroups()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EReference getGModel_Groups();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GModel#getCategories <em>Categories</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Categories</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getCategories()
+	 * @see GModel#getCategories()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EReference getGModel_Categories();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GModel#getTexts <em>Texts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GModel#getTexts <em>Texts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Texts</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getTexts()
+	 * @see GModel#getTexts()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EReference getGModel_Texts();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GModel#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GModel#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GModel#getId()
+	 * @see GModel#getId()
 	 * @see #getGModel()
 	 * @generated
 	 */
 	EAttribute getGModel_Id();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GConnectable <em>GConnectable</em>}'.
+	 * Returns the meta object for class '{@link GConnectable <em>GConnectable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GConnectable</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnectable
+	 * @see GConnectable
 	 * @generated
 	 */
 	EClass getGConnectable();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GConnectable#getConnectors <em>Connectors</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GConnectable#getConnectors <em>Connectors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Connectors</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnectable#getConnectors()
+	 * @see GConnectable#getConnectors()
 	 * @see #getGConnectable()
 	 * @generated
 	 */
 	EReference getGConnectable_Connectors();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GNode <em>GNode</em>}'.
+	 * Returns the meta object for class '{@link GNode <em>GNode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GNode</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode
+	 * @see GNode
 	 * @generated
 	 */
 	EClass getGNode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getId()
+	 * @see GNode#getId()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getType()
+	 * @see GNode#getType()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_Type();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.tesis.dynaware.grapheditor.model.GNode#getSubgraph <em>Subgraph</em>}'.
+	 * Returns the meta object for the containment reference '{@link GNode#getSubgraph <em>Subgraph</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Subgraph</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getSubgraph()
+	 * @see GNode#getSubgraph()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EReference getGNode_Subgraph();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getNodeType <em>Node Type</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getNodeType <em>Node Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Node Type</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getNodeType()
+	 * @see GNode#getNodeType()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_NodeType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getTitle <em>Title</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Title</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getTitle()
+	 * @see GNode#getTitle()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_Title();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getDescription()
+	 * @see GNode#getDescription()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_Description();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getUniqueId <em>Unique Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getUniqueId <em>Unique Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Unique Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getUniqueId()
+	 * @see GNode#getUniqueId()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_UniqueId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getCoreUid <em>Core Uid</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getCoreUid <em>Core Uid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Core Uid</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getCoreUid()
+	 * @see GNode#getCoreUid()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_CoreUid();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GNode#getColor <em>Color</em>}'.
+	 * Returns the meta object for the attribute '{@link GNode#getColor <em>Color</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Color</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getColor()
+	 * @see GNode#getColor()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EAttribute getGNode_Color();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.tesis.dynaware.grapheditor.model.GNode#getCategory <em>Category</em>}'.
+	 * Returns the meta object for the reference '{@link GNode#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Category</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getCategory()
+	 * @see GNode#getCategory()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EReference getGNode_Category();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.tesis.dynaware.grapheditor.model.GNode#getGroup <em>Group</em>}'.
+	 * Returns the meta object for the reference '{@link GNode#getGroup <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Group</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GNode#getGroup()
+	 * @see GNode#getGroup()
 	 * @see #getGNode()
 	 * @generated
 	 */
 	EReference getGNode_Group();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GConnection <em>GConnection</em>}'.
+	 * Returns the meta object for class '{@link GConnection <em>GConnection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GConnection</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection
+	 * @see GConnection
 	 * @generated
 	 */
 	EClass getGConnection();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnection#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnection#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection#getId()
+	 * @see GConnection#getId()
 	 * @see #getGConnection()
 	 * @generated
 	 */
 	EAttribute getGConnection_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnection#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnection#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection#getType()
+	 * @see GConnection#getType()
 	 * @see #getGConnection()
 	 * @generated
 	 */
 	EAttribute getGConnection_Type();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.tesis.dynaware.grapheditor.model.GConnection#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link GConnection#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection#getSource()
+	 * @see GConnection#getSource()
 	 * @see #getGConnection()
 	 * @generated
 	 */
 	EReference getGConnection_Source();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.tesis.dynaware.grapheditor.model.GConnection#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link GConnection#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection#getTarget()
+	 * @see GConnection#getTarget()
 	 * @see #getGConnection()
 	 * @generated
 	 */
 	EReference getGConnection_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.tesis.dynaware.grapheditor.model.GConnection#getJoints <em>Joints</em>}'.
+	 * Returns the meta object for the containment reference list '{@link GConnection#getJoints <em>Joints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Joints</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection#getJoints()
+	 * @see GConnection#getJoints()
 	 * @see #getGConnection()
 	 * @generated
 	 */
 	EReference getGConnection_Joints();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnection#getUid <em>Uid</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnection#getUid <em>Uid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Uid</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnection#getUid()
+	 * @see GConnection#getUid()
 	 * @see #getGConnection()
 	 * @generated
 	 */
 	EAttribute getGConnection_Uid();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GConnector <em>GConnector</em>}'.
+	 * Returns the meta object for class '{@link GConnector <em>GConnector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GConnector</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector
+	 * @see GConnector
 	 * @generated
 	 */
 	EClass getGConnector();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnector#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnector#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getId()
+	 * @see GConnector#getId()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EAttribute getGConnector_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnector#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnector#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getType()
+	 * @see GConnector#getType()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EAttribute getGConnector_Type();
 
 	/**
-	 * Returns the meta object for the container reference '{@link de.tesis.dynaware.grapheditor.model.GConnector#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link GConnector#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getParent()
+	 * @see GConnector#getParent()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EReference getGConnector_Parent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.tesis.dynaware.grapheditor.model.GConnector#getConnections <em>Connections</em>}'.
+	 * Returns the meta object for the reference list '{@link GConnector#getConnections <em>Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Connections</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getConnections()
+	 * @see GConnector#getConnections()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EReference getGConnector_Connections();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnector#getX <em>X</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnector#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getX()
+	 * @see GConnector#getX()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EAttribute getGConnector_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnector#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnector#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#getY()
+	 * @see GConnector#getY()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EAttribute getGConnector_Y();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GConnector#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}'.
+	 * Returns the meta object for the attribute '{@link GConnector#isConnectionDetachedOnDrag <em>Connection Detached On Drag</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Connection Detached On Drag</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GConnector#isConnectionDetachedOnDrag()
+	 * @see GConnector#isConnectionDetachedOnDrag()
 	 * @see #getGConnector()
 	 * @generated
 	 */
 	EAttribute getGConnector_ConnectionDetachedOnDrag();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GJoint <em>GJoint</em>}'.
+	 * Returns the meta object for class '{@link GJoint <em>GJoint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GJoint</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint
+	 * @see GJoint
 	 * @generated
 	 */
 	EClass getGJoint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GJoint#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GJoint#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint#getId()
+	 * @see GJoint#getId()
 	 * @see #getGJoint()
 	 * @generated
 	 */
 	EAttribute getGJoint_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GJoint#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link GJoint#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint#getType()
+	 * @see GJoint#getType()
 	 * @see #getGJoint()
 	 * @generated
 	 */
 	EAttribute getGJoint_Type();
 
 	/**
-	 * Returns the meta object for the container reference '{@link de.tesis.dynaware.grapheditor.model.GJoint#getConnection <em>Connection</em>}'.
+	 * Returns the meta object for the container reference '{@link GJoint#getConnection <em>Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Connection</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint#getConnection()
+	 * @see GJoint#getConnection()
 	 * @see #getGJoint()
 	 * @generated
 	 */
 	EReference getGJoint_Connection();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GJoint#getX <em>X</em>}'.
+	 * Returns the meta object for the attribute '{@link GJoint#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint#getX()
+	 * @see GJoint#getX()
 	 * @see #getGJoint()
 	 * @generated
 	 */
 	EAttribute getGJoint_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GJoint#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link GJoint#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GJoint#getY()
+	 * @see GJoint#getY()
 	 * @see #getGJoint()
 	 * @generated
 	 */
 	EAttribute getGJoint_Y();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GCategory <em>GCategory</em>}'.
+	 * Returns the meta object for class '{@link GCategory <em>GCategory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GCategory</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GCategory
+	 * @see GCategory
 	 * @generated
 	 */
 	EClass getGCategory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GCategory#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link GCategory#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GCategory#getName()
+	 * @see GCategory#getName()
 	 * @see #getGCategory()
 	 * @generated
 	 */
 	EAttribute getGCategory_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GCategory#getRemovalCost <em>Removal Cost</em>}'.
+	 * Returns the meta object for the attribute '{@link GCategory#getRemovalCost <em>Removal Cost</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Removal Cost</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GCategory#getRemovalCost()
+	 * @see GCategory#getRemovalCost()
 	 * @see #getGCategory()
 	 * @generated
 	 */
 	EAttribute getGCategory_RemovalCost();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GGroup <em>GGroup</em>}'.
+	 * Returns the meta object for class '{@link GGroup <em>GGroup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GGroup</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup
+	 * @see GGroup
 	 * @generated
 	 */
 	EClass getGGroup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GGroup#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GGroup#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup#getId()
+	 * @see GGroup#getId()
 	 * @see #getGGroup()
 	 * @generated
 	 */
 	EAttribute getGGroup_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GGroup#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link GGroup#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup#getName()
+	 * @see GGroup#getName()
 	 * @see #getGGroup()
 	 * @generated
 	 */
 	EAttribute getGGroup_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GGroup#getCoreUid <em>Core Uid</em>}'.
+	 * Returns the meta object for the attribute '{@link GGroup#getCoreUid <em>Core Uid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Core Uid</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup#getCoreUid()
+	 * @see GGroup#getCoreUid()
 	 * @see #getGGroup()
 	 * @generated
 	 */
 	EAttribute getGGroup_CoreUid();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GGroup#getUniqueId <em>Unique Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GGroup#getUniqueId <em>Unique Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Unique Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup#getUniqueId()
+	 * @see GGroup#getUniqueId()
 	 * @see #getGGroup()
 	 * @generated
 	 */
 	EAttribute getGGroup_UniqueId();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.tesis.dynaware.grapheditor.model.GGroup#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the reference list '{@link GGroup#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Nodes</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GGroup#getNodes()
+	 * @see GGroup#getNodes()
 	 * @see #getGGroup()
 	 * @generated
 	 */
 	EReference getGGroup_Nodes();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GText <em>GText</em>}'.
+	 * Returns the meta object for class '{@link GText <em>GText</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GText</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText
+	 * @see GText
 	 * @generated
 	 */
 	EClass getGText();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getId()
+	 * @see GText#getId()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GText#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute '{@link GText#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GText#getText()
+	 * @see GText#getText()
 	 * @see #getGText()
 	 * @generated
 	 */
 	EAttribute getGText_Text();
 
 	/**
-	 * Returns the meta object for class '{@link de.tesis.dynaware.grapheditor.model.GResizable <em>GResizable</em>}'.
+	 * Returns the meta object for class '{@link GResizable <em>GResizable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>GResizable</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable
+	 * @see GResizable
 	 * @generated
 	 */
 	EClass getGResizable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getX <em>X</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>X</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getX()
+	 * @see GResizable#getX()
 	 * @see #getGResizable()
 	 * @generated
 	 */
 	EAttribute getGResizable_X();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getY <em>Y</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Y</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getY()
+	 * @see GResizable#getY()
 	 * @see #getGResizable()
 	 * @generated
 	 */
 	EAttribute getGResizable_Y();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getWidth <em>Width</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getWidth <em>Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getWidth()
+	 * @see GResizable#getWidth()
 	 * @see #getGResizable()
 	 * @generated
 	 */
 	EAttribute getGResizable_Width();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.tesis.dynaware.grapheditor.model.GResizable#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link GResizable#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see de.tesis.dynaware.grapheditor.model.GResizable#getHeight()
+	 * @see GResizable#getHeight()
 	 * @see #getGResizable()
 	 * @generated
 	 */

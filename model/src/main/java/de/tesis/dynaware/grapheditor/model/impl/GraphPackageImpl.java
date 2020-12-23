@@ -101,7 +101,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * {@link Registry EPackage.Registry} by the package
 	 * package URI value.
 	 * <p>Note: the correct way to create the package is via the static
 	 * factory method {@link #init init()}, which also performs
@@ -109,8 +109,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * if one already exists.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.tesis.dynaware.grapheditor.model.GraphPackage#eNS_URI
+	 * @see Registry
+	 * @see GraphPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -138,10 +138,10 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	public static GraphPackage init() {
-		if (isInited) return (GraphPackage)EPackage.Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
+		if (isInited) return (GraphPackage) Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredGraphPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		Object registeredGraphPackage = Registry.INSTANCE.get(eNS_URI);
 		GraphPackageImpl theGraphPackage = registeredGraphPackage instanceof GraphPackageImpl ? (GraphPackageImpl)registeredGraphPackage : new GraphPackageImpl();
 
 		isInited = true;
@@ -156,7 +156,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		theGraphPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(GraphPackage.eNS_URI, theGraphPackage);
+		Registry.INSTANCE.put(GraphPackage.eNS_URI, theGraphPackage);
 		return theGraphPackage;
 	}
 

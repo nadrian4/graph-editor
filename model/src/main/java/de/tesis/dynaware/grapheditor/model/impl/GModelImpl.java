@@ -34,16 +34,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getNodes <em>Nodes</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getConnections <em>Connections</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getContentWidth <em>Content Width</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getContentHeight <em>Content Height</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getSupergraph <em>Supergraph</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getGroups <em>Groups</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getCategories <em>Categories</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getTexts <em>Texts</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GModelImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GModelImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link GModelImpl#getConnections <em>Connections</em>}</li>
+ *   <li>{@link GModelImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GModelImpl#getContentWidth <em>Content Width</em>}</li>
+ *   <li>{@link GModelImpl#getContentHeight <em>Content Height</em>}</li>
+ *   <li>{@link GModelImpl#getSupergraph <em>Supergraph</em>}</li>
+ *   <li>{@link GModelImpl#getGroups <em>Groups</em>}</li>
+ *   <li>{@link GModelImpl#getCategories <em>Categories</em>}</li>
+ *   <li>{@link GModelImpl#getTexts <em>Texts</em>}</li>
+ *   <li>{@link GModelImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated

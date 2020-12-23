@@ -23,21 +23,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getX <em>X</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getY <em>Y</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getNodeType <em>Node Type</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getColor <em>Color</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link de.tesis.dynaware.grapheditor.model.impl.GNodeImpl#getGroup <em>Group</em>}</li>
+ *   <li>{@link GNodeImpl#getX <em>X</em>}</li>
+ *   <li>{@link GNodeImpl#getY <em>Y</em>}</li>
+ *   <li>{@link GNodeImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link GNodeImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link GNodeImpl#getId <em>Id</em>}</li>
+ *   <li>{@link GNodeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link GNodeImpl#getSubgraph <em>Subgraph</em>}</li>
+ *   <li>{@link GNodeImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link GNodeImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link GNodeImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link GNodeImpl#getUniqueId <em>Unique Id</em>}</li>
+ *   <li>{@link GNodeImpl#getCoreUid <em>Core Uid</em>}</li>
+ *   <li>{@link GNodeImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link GNodeImpl#getCategory <em>Category</em>}</li>
+ *   <li>{@link GNodeImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
  * @generated
