@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 
+import de.tesis.dynaware.grapheditor.core.emf.factory.BoostedXMIResourceFactoryImpl;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -120,7 +121,7 @@ public class GraphEditorPersistence {
         final String samplePath = getClass().getResource(file).toExternalForm();
 
         final URI fileUri = URI.createURI(samplePath);
-        final XMIResourceFactoryImpl resourceFactory = new XMIResourceFactoryImpl();
+        final XMIResourceFactoryImpl resourceFactory = new BoostedXMIResourceFactoryImpl();
         final Resource resource = resourceFactory.createResource(fileUri);
 
         try {
@@ -177,7 +178,7 @@ public class GraphEditorPersistence {
         final EditingDomain editingDomain = AdapterFactoryEditingDomain.getEditingDomainFor(model);
 
         final URI fileUri = URI.createFileURI(absolutePath);
-        final XMIResourceFactoryImpl resourceFactory = new XMIResourceFactoryImpl();
+        final XMIResourceFactoryImpl resourceFactory = new BoostedXMIResourceFactoryImpl();
         final Resource resource = resourceFactory.createResource(fileUri);
         resource.getContents().add(model);
 
@@ -203,7 +204,7 @@ public class GraphEditorPersistence {
 
         final URI fileUri = URI.createFileURI(file.getAbsolutePath());
 
-        final XMIResourceFactoryImpl resourceFactory = new XMIResourceFactoryImpl();
+        final XMIResourceFactoryImpl resourceFactory = new BoostedXMIResourceFactoryImpl();
         final Resource resource = resourceFactory.createResource(fileUri);
 
         try {

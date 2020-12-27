@@ -6,6 +6,7 @@ package de.tesis.dynaware.grapheditor.core.data;
 import java.io.IOException;
 import java.util.Collections;
 
+import de.tesis.dynaware.grapheditor.core.emf.factory.BoostedXMIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -36,7 +37,7 @@ public class DummyDataFactory {
         final String testFilePath = DummyDataFactory.class.getResource(TEST_FILE).toExternalForm();
 
         final URI fileUri = URI.createURI(testFilePath);
-        final XMIResourceFactoryImpl resourceFactory = new XMIResourceFactoryImpl();
+        final XMIResourceFactoryImpl resourceFactory = new BoostedXMIResourceFactoryImpl();
         final Resource resource = resourceFactory.createResource(fileUri);
 
         try {

@@ -5,6 +5,7 @@ package de.tesis.dynaware.grapheditor.core.model;
 
 import java.util.List;
 
+import de.tesis.dynaware.grapheditor.core.emf.factory.BoostedXMIResourceFactoryImpl;
 import de.tesis.dynaware.grapheditor.model.GGroup;
 import de.tesis.dynaware.grapheditor.model.GText;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -160,7 +161,7 @@ public class ModelEditingManager {
 
         if (newModel.eResource() == null) {
 
-            final XMIResourceFactoryImpl resourceFactory = new XMIResourceFactoryImpl();
+            final XMIResourceFactoryImpl resourceFactory = new BoostedXMIResourceFactoryImpl();
             final Resource resource = resourceFactory.createResource(DEFAULT_URI);
             resource.getContents().add(newModel);
         }
