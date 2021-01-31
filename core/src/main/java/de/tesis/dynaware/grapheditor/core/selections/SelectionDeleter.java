@@ -87,7 +87,7 @@ public class SelectionDeleter {
             }
         }
 
-        if (!nodesToDelete.isEmpty() || !connectionsToDelete.isEmpty() || !textsToDelete.isEmpty()) {
+        if (!nodesToDelete.isEmpty() || !connectionsToDelete.isEmpty() || !textsToDelete.isEmpty() || !groupsToDelete.isEmpty()) {
 
             final CompoundCommand command = modelEditingManager.remove(nodesToDelete, connectionsToDelete, textsToDelete, groupsToDelete);
 

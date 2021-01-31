@@ -62,7 +62,19 @@ public abstract class GNodeSkin extends GSkin {
 
     }
 
+    public void setBackup() {
+
+    }
+
     public void setColor() {
+
+    }
+
+    public void setTemporaryColor() {
+
+    }
+
+    public void restoreColor() {
 
     }
 

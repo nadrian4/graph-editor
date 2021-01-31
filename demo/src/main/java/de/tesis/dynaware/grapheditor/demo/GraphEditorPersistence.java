@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 import de.tesis.dynaware.grapheditor.core.emf.factory.BoostedXMIResourceFactoryImpl;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
